@@ -1,0 +1,76 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class CameraMovement : MonoBehaviour
+{
+    public float speed;
+    public float scrollSpeed;
+
+    private Camera cam;
+    // Start is called before the first frame update
+    void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.position += Vector3.back * speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.position += Vector3.forward * speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.position += Vector3.left * speed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.position += Vector3.right * speed * Time.deltaTime;
+        }
+
+        if (cam.fieldOfView >= 20f)
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+            {
+                cam.fieldOfView -= scrollSpeed * Time.deltaTime;
+                //transform.position += Vector3.down * scrollSpeed * Time.deltaTime;
+            }
+        }
+        if (cam.fieldOfView <= 80f)
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+            {
+                cam.fieldOfView += scrollSpeed * Time.deltaTime;
+                //transform.position += Vector3.up * scrollSpeed * Time.deltaTime;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isOverUi())
+        {
+            //Clique avec la souris pour faire un debug.log du nom du hit
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.tag == "Maison")
+                {
+                    hit.collider.GetComponent<House>().touched();
+                }
+            }
+            
+        }
+        
+    }
+
+    private bool isOverUi()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
+    }
+}
