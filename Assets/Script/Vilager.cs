@@ -6,14 +6,22 @@ public class Vilager : MonoBehaviour
 {
     [Header("Vilager Parameters")]
     public string name;
-    [SerializeField] public class VariableHolder
-    {
-        public string var1 = "Villager";
-        public string var2 = "Vagabond";
-        public string var3 = "Teste";
-    }
 
-    public VariableHolder instance = new VariableHolder();
+    public enum types
+    {
+        village,
+        food_picker,
+        lumberjack,
+        digger,
+        mason,
+        vagrant
+    };
+    public types type;
+    public float tiredness;
+    public float food;
+    public int age;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
