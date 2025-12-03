@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Vilager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Vilager : MonoBehaviour
 
     public enum types
     {
-        village,
+        villager,
         food_picker,
         lumberjack,
         digger,
@@ -17,20 +18,33 @@ public class Vilager : MonoBehaviour
         vagrant
     };
     public types type;
-    public float tiredness;
-    public float food;
-    public int age;
-    
+    public float tiredness = 100;
+    public float food = 100;
+    public int age = 50;
+    private NavMeshAgent agent;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(RandomWalk());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    IEnumerator RandomWalk()
+    {
+        Debug.Log("start Walking random");
+        if (agent.hasPath == false)
+        {
+            agent.destination = new Vector3(Random.Range(-15,15),0,Random.Range(-15,15));
+        }
+        Debug.Log("end Walking random");
+        yield return new WaitForSeconds(1);
+        StartCoroutine(RandomWalk());
     }
 }
