@@ -206,6 +206,95 @@ Transform:
   m_Children: []
   m_Father: {fileID: 682617208}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!1001 &119898800
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 557332713937314534, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1476020633}
+    - target: {fileID: 3974522480760168444, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: rock
+      value: 
+      objectReference: {fileID: 8173293448709616742}
+    - target: {fileID: 3974522480760168444, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974522480760168444, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: wood
+      value: 
+      objectReference: {fileID: 739333735}
+    - target: {fileID: 3974522480760168444, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: render1
+      value: 
+      objectReference: {fileID: 1708602491}
+    - target: {fileID: 4842740956823502705, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842740956823502705, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842740956823502705, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599785978848493894, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.27056885
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599785978848493894, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599785978848493894, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3577683
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599785978848493894, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599785978848493894, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599785978848493894, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599785978848493894, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599785978848493894, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599785978848493894, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7599785978848493894, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204488505769726622, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+      propertyPath: m_Name
+      value: Villager 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
 --- !u!1 &120422453
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +463,182 @@ Transform:
   m_Children: []
   m_Father: {fileID: 682617208}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!21 &194481970
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Villager (Instance) (Instance) (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
+--- !u!21 &219641820
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default-Material (Instance) (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _EMISSION
+  m_InvalidKeywords: []
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Detail:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Occlusion:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaTestRef: 0.5
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _EmissionScaleUI: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Lightmapping: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0.99999994}
+    - _EmissionColorUI: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColorWithMapUI: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &229956696
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +751,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 248834742}
     m_Modifications:
+    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
+      propertyPath: name
+      value: Maison de bidule
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
+      propertyPath: sleeping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843223308659692748, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+      propertyPath: name
+      value: Maison ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843223308659692748, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+      propertyPath: sleeping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5932472216744719857, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.64
@@ -530,14 +811,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Maison (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
-      propertyPath: name
-      value: Maison de bidule
-      objectReference: {fileID: 0}
-    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
-      propertyPath: sleeping
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -556,6 +829,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 248834742}
     m_Modifications:
+    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
+      propertyPath: name
+      value: Maison de machin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843223308659692748, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+      propertyPath: name
+      value: Maison de Feur
+      objectReference: {fileID: 0}
     - target: {fileID: 5932472216744719857, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.64
@@ -599,10 +880,6 @@ PrefabInstance:
     - target: {fileID: 7544567567371372963, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_Name
       value: Maison (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
-      propertyPath: name
-      value: Maison de machin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1074,6 +1351,68 @@ Transform:
   - {fileID: 346886813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &739333734
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 609336371814945543, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_Name
+      value: Bois
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175708024439914468, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.332237
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175708024439914468, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175708024439914468, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.451208
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175708024439914468, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175708024439914468, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175708024439914468, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175708024439914468, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175708024439914468, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175708024439914468, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175708024439914468, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+--- !u!1 &739333735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 609336371814945543, guid: 61436ec9900f1694d90291c152cf007e, type: 3}
+  m_PrefabInstance: {fileID: 739333734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &740592723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,7 +2078,7 @@ PrefabInstance:
     - target: {fileID: 557332713937314534, guid: a53e62ef6625b9742bb4fe35f592bdd6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1199037486}
+      objectReference: {fileID: 194481970}
     - target: {fileID: 7599785978848493894, guid: a53e62ef6625b9742bb4fe35f592bdd6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1784,6 +2123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager
       objectReference: {fileID: 0}
+    - target: {fileID: 8204488505769726622, guid: a53e62ef6625b9742bb4fe35f592bdd6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1825,87 +2168,6 @@ Transform:
   - {fileID: 120422455}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1199037486
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Villager (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailNormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ParallaxMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _BumpScale: 1
-    - _Cutoff: 0.5
-    - _DetailNormalMapScale: 1
-    - _DstBlend: 0
-    - _GlossMapScale: 1
-    - _Glossiness: 0.5
-    - _GlossyReflections: 1
-    - _Metallic: 0
-    - _Mode: 0
-    - _OcclusionStrength: 1
-    - _Parallax: 0.02
-    - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
-    - _SrcBlend: 1
-    - _UVSec: 0
-    - _ZWrite: 1
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1206630376
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,6 +2252,101 @@ Transform:
   m_Children: []
   m_Father: {fileID: 682617208}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!21 &1476020633
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default-Material (Instance) (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _EMISSION
+  m_InvalidKeywords: []
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Detail:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Occlusion:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaTestRef: 0.5
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _EmissionScaleUI: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Lightmapping: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0.99999994}
+    - _EmissionColorUI: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColorWithMapUI: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1545734229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,6 +2524,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619542199}
   m_CullTransparentMesh: 1
+--- !u!212 &1708602491 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4842740956823502705, guid: 125ab33283a8d6f49b94b984e358f11b, type: 3}
+  m_PrefabInstance: {fileID: 119898800}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1733249362
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,6 +2621,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 248834742}
     m_Modifications:
+    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
+      propertyPath: name
+      value: "Maison de Zo\xE9"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843223308659692748, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+      propertyPath: name
+      value: Maison de Sam
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843223308659692748, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+      propertyPath: sleeping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5932472216744719857, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.05
@@ -2302,10 +2676,6 @@ PrefabInstance:
     - target: {fileID: 7544567567371372963, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_Name
       value: Maison
-      objectReference: {fileID: 0}
-    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
-      propertyPath: name
-      value: "Maison de Zo\xE9"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2493,6 +2863,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 248834742}
     m_Modifications:
+    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
+      propertyPath: name
+      value: Maison de Sam
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
+      propertyPath: sleeping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843223308659692748, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+      propertyPath: name
+      value: Maison de Joseph
+      objectReference: {fileID: 0}
     - target: {fileID: 5932472216744719857, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.05
@@ -2536,14 +2918,6 @@ PrefabInstance:
     - target: {fileID: 7544567567371372963, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_Name
       value: Maison (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
-      propertyPath: name
-      value: Maison de Sam
-      objectReference: {fileID: 0}
-    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
-      propertyPath: sleeping
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2647,6 +3021,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 248834742}
     m_Modifications:
+    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
+      propertyPath: name
+      value: Maison de truc
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843223308659692748, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+      propertyPath: name
+      value: Maison de Bidule
+      objectReference: {fileID: 0}
     - target: {fileID: 5932472216744719857, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.64
@@ -2690,10 +3072,6 @@ PrefabInstance:
     - target: {fileID: 7544567567371372963, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_Name
       value: Maison (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6325272520808651124, guid: 6fedd3ab9f733ff4b805a01adadc77c0, type: 3}
-      propertyPath: name
-      value: Maison de truc
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2762,6 +3140,68 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+--- !u!1001 &6837205414572226194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2554973510499939524, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554973510499939524, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554973510499939524, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554973510499939524, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554973510499939524, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554973510499939524, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554973510499939524, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554973510499939524, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554973510499939524, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554973510499939524, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774171788408816564, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_Name
+      value: Rock
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+--- !u!1 &8173293448709616742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4774171788408816564, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+  m_PrefabInstance: {fileID: 6837205414572226194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2776,3 +3216,6 @@ SceneRoots:
   - {fileID: 229956699}
   - {fileID: 1545734233}
   - {fileID: 991004794}
+  - {fileID: 739333734}
+  - {fileID: 6837205414572226194}
+  - {fileID: 119898800}

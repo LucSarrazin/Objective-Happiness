@@ -43,7 +43,7 @@ public class CameraMovement : MonoBehaviour
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
 
-        if (cam.fieldOfView >= 20f)
+        if (cam.fieldOfView > 20f)
         {
             if (Input.GetAxis("Mouse ScrollWheel") > 0f)
             {
@@ -51,7 +51,7 @@ public class CameraMovement : MonoBehaviour
                 //transform.position += Vector3.down * scrollSpeed * Time.deltaTime;
             }
         }
-        if (cam.fieldOfView <= 60f)
+        if (cam.fieldOfView < 60f)
         {
             if (Input.GetAxis("Mouse ScrollWheel") < 0f)
             {
@@ -67,7 +67,7 @@ public class CameraMovement : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.tag == "Maison")
+                if (hit.collider.tag == "House")
                 {
                     hit.collider.GetComponent<House>().touched();
                 }
