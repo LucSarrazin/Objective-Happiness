@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 3090488275340181009}
   - component: {fileID: 6809103791032179516}
   - component: {fileID: 1419030895515488034}
+  - component: {fileID: 6860853131054268018}
   m_Layer: 0
   m_Name: buche
   m_TagString: Untagged
@@ -136,5 +137,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.32, y: 0.16000001, z: 0.20000002}
+  m_Size: {x: 0.16, y: 0.05, z: 0.20000002}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &6860853131054268018
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8610448918562162984}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.08, y: 0.025, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
