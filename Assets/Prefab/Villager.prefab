@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8204488505769726622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.214, y: 0.34, z: -5.74}
+  m_LocalPosition: {x: 0, y: 0.34, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1978444937a4a3c41ac1f01fbce28dda, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,7 +119,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.49999997
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -146,5 +146,7 @@ MonoBehaviour:
   name: Luc
   type: 0
   tiredness: 100
-  food: 100
+  hunger: 100
   age: 10
+  ageOfDeath: 50
+  render: {fileID: 557332713937314534}

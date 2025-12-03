@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -9,15 +10,22 @@ public class CameraMovement : MonoBehaviour
     public float scrollSpeed;
 
     private Camera cam;
+    
+    PlayerInput playerInput;
+    InputAction move;
     // Start is called before the first frame update
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
+        move = playerInput.actions.FindAction("Move");
         cam = GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector2 direction = move.ReadValue<Vector2>();
+        
         if (Input.GetKey(KeyCode.DownArrow))
         {
             transform.position += Vector3.back * speed * Time.deltaTime;
@@ -43,7 +51,7 @@ public class CameraMovement : MonoBehaviour
                 //transform.position += Vector3.down * scrollSpeed * Time.deltaTime;
             }
         }
-        if (cam.fieldOfView <= 80f)
+        if (cam.fieldOfView <= 60f)
         {
             if (Input.GetAxis("Mouse ScrollWheel") < 0f)
             {
