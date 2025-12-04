@@ -71,6 +71,10 @@ public class CameraMovement : MonoBehaviour
                 {
                     hit.collider.GetComponent<House>().touched();
                 }
+                if (hit.collider.tag == "Villager")
+                {
+                    hit.collider.GetComponent<Villager>().Touched();
+                }
             }
             
         }
