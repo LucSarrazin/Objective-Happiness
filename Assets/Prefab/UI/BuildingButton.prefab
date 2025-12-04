@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4401949356089816910}
   - component: {fileID: 1484730297293267667}
   m_Layer: 5
-  m_Name: Building
+  m_Name: BuildingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,3 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e250733e7fd9cd459f2e6d751ac176e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previewBuilding: {fileID: 8749344854982730023, guid: d2c6da37ebbca6a4f9d717a58468e026, type: 3}
+  previewIcon: {fileID: 783542250522803975, guid: 37be77758c4edb94ca868dc6cbb46d87, type: 3}
