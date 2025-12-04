@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SelectGrid : MonoBehaviour
 {
-    [SerializeField] public int gridSize;
+    [SerializeField] public int gridCellSize;
 
 
     // Start is called before the first frame update
