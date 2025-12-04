@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Villager : MonoBehaviour
@@ -25,6 +27,7 @@ public class Villager : MonoBehaviour
     public int age = 10;
     public int ageOfDeath;
     
+    [Space]
     
     [SerializeField] private bool woodPlace;
     [SerializeField] private bool rockPlace;
@@ -33,10 +36,21 @@ public class Villager : MonoBehaviour
     [SerializeField] private GameObject[] rockList;
     [SerializeField] private GameObject[] foodList;
     
-    [Header("Villager Objects")]
+    [Space]
+    
+    [Header("Villager Unity Parameters")]
     private NavMeshAgent agent;
     [SerializeField] private MeshRenderer render;
     [SerializeField] private SpriteRenderer render1;
+    
+    [Space]
+    
+    [Header("Villager UI Parameters")]
+    [SerializeField] private TextMeshProUGUI nameUI;
+    [SerializeField] private TextMeshProUGUI typeUI;
+    [SerializeField] private Slider hungrySlider;
+    [SerializeField] private TextMeshProUGUI ageUI;
+    [SerializeField] private GameObject UI;
     
     private void OnValidate()
     {
@@ -158,6 +172,7 @@ public class Villager : MonoBehaviour
         {
             Debug.Log(name + " is dead from hunger...");
         }
+        UpdateInfo();
 
         // Three Fonction to verify that the villager is where there is food/tree/rock and stop there
         if (woodPlace == true && agent.hasPath == false)
@@ -182,14 +197,45 @@ public class Villager : MonoBehaviour
 
     IEnumerator RandomWalk()
     {
-        Debug.Log("start Walking random");
+        //Debug.Log("start Walking random");
         if (agent.hasPath == false)
         {
             agent.destination = new Vector3(Random.Range(-15,15),0,Random.Range(-15,15));
         }
-        Debug.Log("end Walking random");
+        //Debug.Log("end Walking random");
         yield return new WaitForSeconds(1);
         StartCoroutine(RandomWalk());
+    }
+
+    private void UpdateInfo()
+    {
+         nameUI.text = name;
+         typeUI.text = type.ToString();
+         hungrySlider.value = hunger;
+         ageUI.text = age.ToString();
+    }
+
+    private void ShowInfo()
+    {
+        UI.SetActive(true);
+    }
+
+    public void HideInfo()
+    {
+        UI.SetActive(false);
+    }
+    
+    public void Touched()
+    {
+        UpdateInfo();
+        ShowInfo();
+        Debug.Log(name + " has been touched");
+        
+    }
+
+    public void LearnButton()
+    {
+        
     }
     
     
