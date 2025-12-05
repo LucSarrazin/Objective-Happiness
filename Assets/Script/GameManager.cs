@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     static int days = 1;
     static float minutes;
     static int totalWood = 5;
@@ -14,7 +16,18 @@ public class GameManager : MonoBehaviour
     static int totalPopulation = 5;
     
     public float elapsedTime = 0f;
-    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +39,8 @@ public class GameManager : MonoBehaviour
         numberMason = 1;
         totalPopulation = 5;
     }
+    
+    
 
     void StartDay()
     {
