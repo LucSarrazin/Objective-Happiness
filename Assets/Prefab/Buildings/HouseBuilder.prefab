@@ -1619,6 +1619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingPrefab: {fileID: 7544567567371372963, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+  buildingCosts: {fileID: 11400000, guid: 32e1c6958804475439eefc34c99eaf89, type: 2}
 --- !u!54 &344498590320001328
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,12 +8,14 @@ using UnityEngine.UI;
 
 public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private GameObject previewBuilding;
+    [SerializeField] private GameObject buildingBuilder;
+    [SerializeField] private BuildingCosts buildingCosts;
 
-    [Header("Building Costs")]
-    [SerializeField] private int requiredMason;
-    [SerializeField] private int woodCost;
-    [SerializeField] private int rockCost;
+    [Header("UI Elements")]
+    [SerializeField] private TextMeshProUGUI masonCounter;
+    [SerializeField] private TextMeshProUGUI woodCounter;
+    [SerializeField] private TextMeshProUGUI rockCounter;
+    [SerializeField] private GameObject costPanel;
 
     private GameObject building;
     private Animator animator;
@@ -28,11 +31,25 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         image = GetComponent<Image>();
         animator = GetComponentInParent<Animator>();
         button = GetComponent<Button>();
+
+        masonCounter.text = buildingCosts.requiredMason.ToString();
+        woodCounter.text = buildingCosts.woodCost.ToString();
+        rockCounter.text = buildingCosts.rockCost.ToString();
     }
 
-    public void OnEnable()
+    public void Update()
     {
-        button.interactable = true;
+        masonCounter.color = (GameManager.numberMason < buildingCosts.requiredMason) ? Color.red : Color.black;
+        woodCounter.color = (GameManager.totalWood < buildingCosts.woodCost) ? Color.red : Color.black;
+        rockCounter.color = (GameManager.totalRock < buildingCosts.rockCost) ? Color.red : Color.black;
+
+
+        button.interactable = GameManager.numberMason >= buildingCosts.requiredMason &&
+                              GameManager.totalWood >= buildingCosts.woodCost &&
+                              GameManager.totalRock >= buildingCosts.rockCost;
+
+        if (button.interactable)
+            costPanel.SetActive(false);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -41,7 +58,7 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
             return;
         defaultPosition = rectTransform.position;
         image.color = new Color(1, 1, 1, 0.6f);
-        building = Instantiate(previewBuilding, Vector3.zero, Quaternion.identity);
+        building = Instantiate(buildingBuilder, Vector3.zero, Quaternion.identity);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -57,7 +74,7 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
         buildPosition = new Vector3(
             Mathf.Round(hit.point.x),
-            0,
+            0, // TODO : raycast for height map
             Mathf.Round(hit.point.z)
         );
 
