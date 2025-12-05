@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e250733e7fd9cd459f2e6d751ac176e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingBuilder: {fileID: 8749344854982730023, guid: d2c6da37ebbca6a4f9d717a58468e026, type: 3}
-  buildingCosts: {fileID: 11400000, guid: 32e1c6958804475439eefc34c99eaf89, type: 2}
+  buildingBuilder: {fileID: 0}
+  buildingCosts: {fileID: 0}
   masonCounter: {fileID: 296635127816204721}
   woodCounter: {fileID: 342427634957774725}
   rockCounter: {fileID: 5296133679347317747}
