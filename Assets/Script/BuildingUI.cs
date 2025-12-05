@@ -9,12 +9,17 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 {
     [SerializeField] private GameObject previewBuilding;
 
+    [Header("Building Costs")]
+    [SerializeField] private int requiredMason;
+    [SerializeField] private int woodCost;
+    [SerializeField] private int rockCost;
+
     private GameObject building;
     private Animator animator;
     private RectTransform rectTransform;
     private Image image;
+    private Button button;
     private Vector2 defaultPosition;
-
     private Vector3 buildPosition;
 
     public void Awake()
@@ -22,10 +27,18 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
         animator = GetComponentInParent<Animator>();
+        button = GetComponent<Button>();
+    }
+
+    public void OnEnable()
+    {
+        button.interactable = true;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!button.interactable)
+            return;
         defaultPosition = rectTransform.position;
         image.color = new Color(1, 1, 1, 0.6f);
         building = Instantiate(previewBuilding, Vector3.zero, Quaternion.identity);
@@ -33,6 +46,8 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!button.interactable)
+            return;
         rectTransform.position = Input.mousePosition;
 
         RaycastHit hit;
@@ -51,6 +66,8 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!button.interactable)
+            return;
         image.color = new Color(1, 1, 1, 1);
         rectTransform.position = defaultPosition;
         Destroy(building);
