@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph;
@@ -19,7 +20,7 @@ public class PreviewBuilder : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Building"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Buildings"))
         {
             spriteRenderer.color = new Color(1, 0, 0, alpha);
             canBuild = false;
@@ -28,7 +29,7 @@ public class PreviewBuilder : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Building"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("Buildings"))
         {
             spriteRenderer.color = new Color(1, 1, 1, alpha);
             canBuild = true;
