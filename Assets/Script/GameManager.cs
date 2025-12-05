@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public static int totalProgress = 0;
     public static int numberMason = 1;
     public static int totalPopulation = 5;
+
+    private bool dayStart = false;
+    public bool night = false;
     
     public float elapsedTime = 0f;
     private void Awake()
@@ -51,14 +54,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Timer days of 5 minutes
-        
-        minutes -= Time.deltaTime;
-        elapsedTime = Mathf.Floor(minutes / 60);
-        if (minutes <= 0)
+        if (dayStart == true)
         {
-            Debug.Log("Nul!");
+            minutes -= Time.deltaTime;
+            elapsedTime = Mathf.Floor(minutes / 60);
+            if (minutes <= 0)
+            {
+                Debug.Log("Nul!");
+                dayStart = false;
+                night = true;
+            }
+            Debug.Log(elapsedTime);
         }
-        Debug.Log(elapsedTime);
     }
 
     public void StopTime()
