@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7330056775335354927}
   - component: {fileID: 2660993905456354305}
   - component: {fileID: 7897753217582792051}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Sleeping
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 7689531446488854932}
   - component: {fileID: 5056674561916582111}
   - component: {fileID: 2306939696816330155}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 838741211641888907}
   - component: {fileID: 4917724750461016747}
   - component: {fileID: 7179754415723837822}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8800499191923932882}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: TypeProperties
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 1011283967417780496}
   - component: {fileID: 4506779258230015452}
   - component: {fileID: 4021130406913234860}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 5334444739223241736}
   - component: {fileID: 238441987237418035}
   - component: {fileID: 2893844795278125963}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 1020524596419726112}
   - component: {fileID: 7170451627339600406}
   - component: {fileID: 7914498446099421302}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 5072972941330383852}
   - component: {fileID: 512970448485386745}
   - component: {fileID: 4807772336901221679}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,8 +758,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2843223308659692748}
-        m_TargetAssemblyTypeName: Maison, Assembly-CSharp
+      - m_Target: {fileID: 1372710838100136041}
+        m_TargetAssemblyTypeName: House, Assembly-CSharp
         m_MethodName: HideInfo
         m_Mode: 1
         m_Arguments:
@@ -779,7 +779,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7035490682641710970}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: SleepingProperties
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -817,7 +817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 439079054312102470}
   - component: {fileID: 2045679759349690450}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 8448224943843519681}
   - component: {fileID: 8457391199993815169}
   - component: {fileID: 4602732221966845576}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: TypeValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,11 +1036,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3737322909616969237}
   - component: {fileID: 9000790403224257125}
-  - component: {fileID: 2843223308659692748}
-  - component: {fileID: 4471325831720000239}
   - component: {fileID: 5787815611174648915}
-  m_Layer: 0
-  m_Name: Maison
+  m_Layer: 7
+  m_Name: House
   m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1114,46 +1112,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2843223308659692748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6572496185401605921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 332bb9d37f552874c9e757e9eef71fc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Maison de Luc
-  type: House
-  sleeping: 0
-  nameUI: {fileID: 8755632275642611072}
-  typeUI: {fileID: 4602732221966845576}
-  sleepingUI: {fileID: 2045679759349690450}
-  UI: {fileID: 3986654878915784668}
---- !u!65 &4471325831720000239
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6572496185401605921}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 20.479998, y: 20.479998, z: 3.5350764}
-  m_Center: {x: 0, y: -0.0000008583505, z: 1.667537}
 --- !u!208 &5787815611174648915
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1181,7 +1139,7 @@ GameObject:
   - component: {fileID: 5626593895771973746}
   - component: {fileID: 3262916164633698740}
   - component: {fileID: 3441693926036073174}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Properties
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1315,7 +1273,7 @@ GameObject:
   - component: {fileID: 6096907307170503168}
   - component: {fileID: 5057704208542327643}
   - component: {fileID: 8755632275642611072}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: NameValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1447,7 +1405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7079306684931657767}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: NameProperties
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1486,7 +1444,7 @@ GameObject:
   - component: {fileID: 981302556047666294}
   - component: {fileID: 6019311447656480495}
   - component: {fileID: 5272585792549170520}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1618,7 +1576,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5932472216744719857}
-  m_Layer: 0
+  - component: {fileID: 1372710838100136041}
+  - component: {fileID: 3582587561254707735}
+  m_Layer: 7
   m_Name: House
   m_TagString: House
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -1638,49 +1598,35 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4922800126474113560}
   - {fileID: 3737322909616969237}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8334836412537529758
-GameObject:
+--- !u!114 &1372710838100136041
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4922800126474113560}
-  - component: {fileID: 7107204527700110192}
-  m_Layer: 7
-  m_Name: Trigger
-  m_TagString: House
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4922800126474113560
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8334836412537529758}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 1.145, z: 0.27}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5932472216744719857}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7107204527700110192
+  m_GameObject: {fileID: 7544567567371372963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332bb9d37f552874c9e757e9eef71fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Maison de Luc
+  type: House
+  sleeping: 0
+  nameUI: {fileID: 8755632275642611072}
+  typeUI: {fileID: 4602732221966845576}
+  sleepingUI: {fileID: 2045679759349690450}
+  UI: {fileID: 3986654878915784668}
+--- !u!65 &3582587561254707735
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8334836412537529758}
+  m_GameObject: {fileID: 7544567567371372963}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1694,4 +1640,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2.8033693, y: 2.2300522, z: 2.220769}
-  m_Center: {x: -0.016578078, y: -0.15218914, z: 0.26617527}
+  m_Center: {x: 0, y: 1, z: 0.5}

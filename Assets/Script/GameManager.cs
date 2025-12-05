@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int days = 1;
-    public float minutes;
-    public int totalWood = 5;
-    public int totalRock = 5;
-    public int totalFood = 5;
-    public int totalProgress = 0;
-    public int numberMason = 1;
-    public int totalPopulation = 5;
+    static int days = 1;
+    static float minutes;
+    static int totalWood = 5;
+    static int totalRock = 5;
+    static int totalFood = 5;
+    static int totalProgress = 0;
+    static int numberMason = 1;
+    static int totalPopulation = 5;
+    
+    public float elapsedTime = 0f;
     
     // Start is called before the first frame update
     void Start()
@@ -33,9 +35,36 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        // Timer days of 5 minutes
+        
+        minutes -= Time.deltaTime;
+        elapsedTime = Mathf.Floor(minutes / 60);
+        if (minutes <= 0)
         {
-            Time.timeScale = 0;
+            Debug.Log("Nul!");
         }
+        Debug.Log(elapsedTime);
     }
+
+    public void StopTime()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void StartTime()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void DoubleTime()
+    {
+        Time.timeScale = 2;
+    }
+
+    public void TripleTime()
+    {
+        Time.timeScale = 3;
+    }
+ 
+    
 }

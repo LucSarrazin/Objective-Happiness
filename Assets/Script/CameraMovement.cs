@@ -28,26 +28,26 @@ public class CameraMovement : MonoBehaviour
         
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.position += Vector3.back * speed * Time.deltaTime;
+            transform.position += Vector3.back * speed * Time.unscaledDeltaTime;
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.position += Vector3.forward * speed * Time.deltaTime;
+            transform.position += Vector3.forward * speed * Time.unscaledDeltaTime;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            transform.position += Vector3.left * speed * Time.unscaledDeltaTime;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.position += Vector3.right * speed * Time.unscaledDeltaTime;
         }
 
         if (cam.fieldOfView > 20f)
         {
             if (Input.GetAxis("Mouse ScrollWheel") > 0f)
             {
-                cam.fieldOfView -= scrollSpeed * Time.deltaTime;
+                cam.fieldOfView -= scrollSpeed * Time.unscaledDeltaTime;
                 //transform.position += Vector3.down * scrollSpeed * Time.deltaTime;
             }
         }
@@ -55,7 +55,7 @@ public class CameraMovement : MonoBehaviour
         {
             if (Input.GetAxis("Mouse ScrollWheel") < 0f)
             {
-                cam.fieldOfView += scrollSpeed * Time.deltaTime;
+                cam.fieldOfView += scrollSpeed * Time.unscaledDeltaTime;
                 //transform.position += Vector3.up * scrollSpeed * Time.deltaTime;
             }
         }
@@ -64,14 +64,14 @@ public class CameraMovement : MonoBehaviour
         {
             //Clique avec la souris pour faire un debug.log du nom du hit
             RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.tag == "House")
+                if (hit.collider.CompareTag("House"))
                 {
-                    hit.collider.GetComponent<House>().touched();
+                    hit.collider.GetComponent<House>().Touched();
                 }
-                if (hit.collider.tag == "Villager")
+                if (hit.collider.CompareTag("Villager"))
                 {
                     hit.collider.GetComponent<Villager>().Touched();
                 }
