@@ -7,6 +7,7 @@ using UnityEngine;
 public class PreviewBuilder : MonoBehaviour
 {
     [SerializeField] private GameObject buildingPrefab;
+    [SerializeField] private BuildingCosts buildingCosts;
 
     private SpriteRenderer spriteRenderer;
     private float alpha = 0.5f;
@@ -40,12 +41,13 @@ public class PreviewBuilder : MonoBehaviour
     {
         if (canBuild)
         {
-            Debug.Log("Building placed!");  
             GameObject placedBuilding = Instantiate(buildingPrefab, transform.position, Quaternion.identity);
+
+            GameManager.totalWood -= buildingCosts.woodCost;
+            GameManager.totalRock -= buildingCosts.rockCost;
+
             SpriteRenderer placedSpriteRenderer = placedBuilding.GetComponent<SpriteRenderer>();
             Destroy(gameObject);
         }
-        else
-            Debug.Log("Cannot build here!");
     }
 }
