@@ -52,20 +52,24 @@ public class Villager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ageUI;
     [SerializeField] private GameObject UI;
     
-    private void OnValidate()
+    // private void OnValidate()
+    // {
+    //     if (gameObject.scene.rootCount == 0)
+    //         return;
+    //     updateType();
+    // }
+
+    private void Awake()
     {
-        if (gameObject.scene.rootCount == 0)
-            return;
-        updateType();
+        woodList = GameObject.FindGameObjectsWithTag("Wood");
+        rockList = GameObject.FindGameObjectsWithTag("Rock");
+        foodList = GameObject.FindGameObjectsWithTag("Food");
     }
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        woodList = GameObject.FindGameObjectsWithTag("Wood");
-        rockList = GameObject.FindGameObjectsWithTag("Rock");
-        foodList = GameObject.FindGameObjectsWithTag("Food");
         updateType();
         StartCoroutine(RandomWalk());
     }

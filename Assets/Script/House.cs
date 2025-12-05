@@ -41,7 +41,7 @@ public class House : MonoBehaviour
         UI.SetActive(false);
     }
     
-    public void touched()
+    public void Touched()
     {
         UpdateInfo();
         ShowInfo();
