@@ -6,14 +6,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    static int days = 1;
-    static float minutes;
-    static int totalWood = 5;
-    static int totalRock = 5;
-    static int totalFood = 5;
-    static int totalProgress = 0;
-    static int numberMason = 1;
-    static int totalPopulation = 5;
+    public static int days = 1;
+    public static float minutes;
+    public static int totalWood = 5;
+    public static int totalRock = 5;
+    public static int totalFood = 5;
+    public static int totalProgress = 0;
+    public static int numberMason = 1;
+    public static int totalPopulation = 5;
     
     public float elapsedTime = 0f;
     private void Awake()
