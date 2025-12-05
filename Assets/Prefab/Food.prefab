@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7047415865057449061}
-  m_Layer: 0
+  - component: {fileID: 9160218902780038864}
+  m_Layer: 7
   m_Name: Food
   m_TagString: Food
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 8697332021200556715}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9160218902780038864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434766824315932509}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3974761740652974625
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,9 +64,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8697332021200556715}
   - component: {fileID: 8041296968106677556}
-  - component: {fileID: 339231206995113355}
   - component: {fileID: 2290847695795954650}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,27 +139,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &339231206995113355
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3974761740652974625}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.32, y: 0.32, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!208 &2290847695795954650
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -149,9 +149,9 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.005, y: 0.025, z: 0.1}
+  m_Extents: {x: 0.075, y: 0.04, z: 0.055}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Center: {x: -0.03, y: -0.02, z: 0}
   m_TimeToStationary: 0.5

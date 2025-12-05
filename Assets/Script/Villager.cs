@@ -26,6 +26,7 @@ public class Villager : MonoBehaviour
     public float hunger = 100;
     public int age = 10;
     public int ageOfDeath;
+    public bool sleep = false;
     
     [Space]
     
@@ -35,6 +36,7 @@ public class Villager : MonoBehaviour
     [SerializeField] private GameObject[] woodList;
     [SerializeField] private GameObject[] rockList;
     [SerializeField] private GameObject[] foodList;
+    [SerializeField] private GameObject[] houseList;
     
     [Space]
     
@@ -64,6 +66,7 @@ public class Villager : MonoBehaviour
         woodList = GameObject.FindGameObjectsWithTag("Wood");
         rockList = GameObject.FindGameObjectsWithTag("Rock");
         foodList = GameObject.FindGameObjectsWithTag("Food");
+        houseList = GameObject.FindGameObjectsWithTag("House");
     }
 
     // Start is called before the first frame update
@@ -197,6 +200,15 @@ public class Villager : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine("searchingFood");
         }
+
+        if (GameManager.Instance.night == true)
+        {
+            if (type != types.vagrant)
+            {
+                StopAllCoroutines();
+                StartCoroutine("goBackHome");
+            }
+        }
     }
 
     IEnumerator RandomWalk()
@@ -209,6 +221,33 @@ public class Villager : MonoBehaviour
         //Debug.Log("end Walking random");
         yield return new WaitForSeconds(1);
         StartCoroutine(RandomWalk());
+    }
+    
+    IEnumerator goBackHome()
+    {
+        GameObject home = houseList[Random.Range(0,houseList.Length)];
+        House house = home.GetComponent<House>();
+        while (house.sleeping == true)
+        {
+            home = houseList[Random.Range(0,houseList.Length)];
+            house = home.GetComponent<House>();
+        }
+        
+        while (sleep == true)
+        {
+            if (agent.hasPath == false)
+            {
+                agent.speed = 5f;
+                agent.destination = home.transform.position;
+                house.sleeping = true;
+            }
+
+            if (agent.isStopped == true)
+            {
+                Debug.Log(name + " is sleeping");
+            }
+            yield return null;
+        }
     }
 
     private void UpdateInfo()
