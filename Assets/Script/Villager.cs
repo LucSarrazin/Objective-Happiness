@@ -205,8 +205,13 @@ public class Villager : MonoBehaviour
         {
             if (type != types.vagrant)
             {
-                StopAllCoroutines();
-                StartCoroutine("goBackHome");
+                if (sleep == false)
+                {
+                    sleep = true;
+                    StopAllCoroutines();
+                    Debug.Log("Début de la nuit");
+                    StartCoroutine("goBackHome");
+                }
             }
         }
     }
