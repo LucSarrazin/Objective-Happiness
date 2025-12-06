@@ -1230,12 +1230,20 @@ PrefabInstance:
       value: Villager 2 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b17c0a274b3343c4fbad5ebf88c86a3e, type: 3}
+    - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3532468616724757659, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1851,12 +1859,20 @@ PrefabInstance:
       value: Villager 2
       objectReference: {fileID: 0}
     - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4093733aabd7a0a45a300840a8a355d6, type: 3}
+    - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3532468616724757659, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4072,16 +4088,20 @@ PrefabInstance:
       value: Villager 2 (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f23835e6c817b1d4a986363ce8094226, type: 3}
+    - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3532468616724757659, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4245,11 +4265,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_Color.b
-      value: 0.015686275
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_Color.g
-      value: 0.92156863
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3532468616724757659, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5035,6 +5059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfb111ad79598e4e9c38bc0be211daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  night: 0
   elapsedTime: 0
 --- !u!4 &1860822421
 Transform:
@@ -5547,6 +5572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager
       objectReference: {fileID: 0}
+    - target: {fileID: 1497828013105722264, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c98a82238791f74380ce06ebb3b1bdf, type: 3}
     - target: {fileID: 3532468616724757659, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.22183877

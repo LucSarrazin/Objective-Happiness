@@ -22,6 +22,7 @@ public class Villager : MonoBehaviour
         mason
     };
     public types type;
+    public Sprite[] spriteList;
     public float tiredness = 100;
     public float hunger = 100;
     public int age = 10;
@@ -83,14 +84,12 @@ public class Villager : MonoBehaviour
         {
             case types.vagrant:
                 Debug.Log(name + " villager is vagrant");
-                render1.color = Color.white;
-                render.material.color = Color.white;
+                render1.sprite = spriteList[4];
                 StopAllCoroutines();
                 break;
             case types.food_picker:
                 Debug.unityLogger.Log(name + " villager is food picker");
-                render1.color = Color.blue;
-                render.material.color = Color.blue;
+                render1.sprite = spriteList[1];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a food picker and going to take food");
                 agent.destination = foodList[Random.Range(0,foodList.Length)].transform.position;
@@ -98,8 +97,7 @@ public class Villager : MonoBehaviour
                 break;
             case types.lumberjack:
                 Debug.Log(name + " villager is lumberjack");
-                render1.color = Color.green;
-                render.material.color = Color.green;
+                render1.sprite = spriteList[2];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a lumberjack and going to take wood");
                 agent.destination = woodList[Random.Range(0,woodList.Length)].transform.position;
@@ -107,8 +105,7 @@ public class Villager : MonoBehaviour
                 break;
             case types.digger:
                 Debug.Log(name + " villager is digger");
-                render1.color = Color.yellow;
-                render.material.color = Color.yellow;
+                render1.sprite = spriteList[0];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a digger and going to mine rock");
                 agent.destination = rockList[Random.Range(0,rockList.Length)].transform.position;
@@ -116,8 +113,7 @@ public class Villager : MonoBehaviour
                 break;
             case types.mason:
                 Debug.Log(name + " villager is mason");
-                render1.color = Color.black;
-                render.material.color = Color.black;
+                render1.sprite = spriteList[3];
                 StopAllCoroutines();
                 break;
         }
@@ -205,8 +201,10 @@ public class Villager : MonoBehaviour
         {
             if (type != types.vagrant)
             {
+                StopAllCoroutines();
                 if (sleep == false)
                 {
+                    Debug.Log("Start night villager");
                     sleep = true;
                     StopAllCoroutines();
                     Debug.Log("Début de la nuit");
