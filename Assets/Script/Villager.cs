@@ -40,6 +40,7 @@ public class Villager : MonoBehaviour
     [SerializeField] private GameObject[] foodList;
     [SerializeField] private GameObject[] houseList;
     [SerializeField] private GameObject school;
+    [SerializeField] private GameObject[] buildingInConstruction;
     
     [Space]
     
