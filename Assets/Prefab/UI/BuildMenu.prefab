@@ -941,7 +941,7 @@ PrefabInstance:
     - target: {fileID: 1484730297293267667, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: buildingCosts
       value: 
-      objectReference: {fileID: 11400000, guid: 32e1c6958804475439eefc34c99eaf89, type: 2}
+      objectReference: {fileID: 11400000, guid: 9432a826505ecda43bff0f9b203c4ed0, type: 2}
     - target: {fileID: 1484730297293267667, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: buildingPrefab
       value: 

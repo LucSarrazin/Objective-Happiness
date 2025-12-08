@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ConstructionSite : MonoBehaviour
 {
-    [SerializeField] private GameObject buildingPrefab;
     [SerializeField] private BuildingCosts buildingCosts;
 
     private float timeLeft = 0f;
@@ -31,7 +30,7 @@ public class ConstructionSite : MonoBehaviour
             timeLeft += Time.deltaTime;
             if (timeLeft >= buildingCosts.buildTime)
             {
-                Instantiate(buildingPrefab, transform.position, Quaternion.identity);
+                Instantiate(buildingCosts.buildingPrefab, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private GameObject buildingBuilder;
     [SerializeField] private BuildingCosts buildingCosts;
 
     [Header("UI Elements")]
@@ -58,7 +57,7 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
             return;
         defaultPosition = rectTransform.position;
         image.color = new Color(1, 1, 1, 0.6f);
-        building = Instantiate(buildingBuilder, Vector3.zero, Quaternion.identity);
+        building = Instantiate(buildingCosts.builderPrefab, Vector3.zero, Quaternion.identity);
     }
 
     public void OnDrag(PointerEventData eventData)

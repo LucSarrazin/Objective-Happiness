@@ -69,7 +69,7 @@ public class CameraMovement : MonoBehaviour
             {
                 if (hit.collider.CompareTag("House"))
                 {
-                    hit.collider.GetComponent<House>().Touched();
+                    hit.collider.GetComponentInParent<House>().Touched();
                 }
                 if (hit.collider.CompareTag("Villager"))
                 {
