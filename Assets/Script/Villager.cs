@@ -38,6 +38,7 @@ public class Villager : MonoBehaviour
     [SerializeField] private GameObject[] rockList;
     [SerializeField] private GameObject[] foodList;
     [SerializeField] private GameObject[] houseList;
+    [SerializeField] private GameObject school;
     
     [Space]
     
@@ -68,6 +69,7 @@ public class Villager : MonoBehaviour
         rockList = GameObject.FindGameObjectsWithTag("Rock");
         foodList = GameObject.FindGameObjectsWithTag("Food");
         houseList = GameObject.FindGameObjectsWithTag("House");
+        school = GameObject.FindGameObjectWithTag("School");
     }
 
     // Start is called before the first frame update
@@ -201,13 +203,15 @@ public class Villager : MonoBehaviour
         {
             if (type != types.vagrant)
             {
-                StopAllCoroutines();
                 if (sleep == false)
                 {
-                    Debug.Log("Start night villager");
                     sleep = true;
                     StopAllCoroutines();
                     Debug.Log("Début de la nuit");
+                    tiredness = 0;
+                    woodPlace = false;
+                    foodPlace = false;
+                    rockPlace = false;
                     StartCoroutine("goBackHome");
                 }
             }
@@ -228,29 +232,43 @@ public class Villager : MonoBehaviour
     
     IEnumerator goBackHome()
     {
-        GameObject home = houseList[Random.Range(0,houseList.Length)];
-        House house = home.GetComponent<House>();
-        while (house.sleeping == true)
+        Debug.Log("Go Back Home Villager");
+        
+        House house = null;
+        GameObject home = null;
+        bool foundHome = false;
+
+        for (int i = 0; i < houseList.Length; i++)
         {
-            home = houseList[Random.Range(0,houseList.Length)];
-            house = home.GetComponent<House>();
+            GameObject homeTest = houseList[Random.Range(0, houseList.Length)];
+            House houseTest = homeTest.GetComponent<House>();
+            Debug.Log("Test house: " + houseTest.name);
+
+            if (!houseTest.sleeping)
+            {
+                home = homeTest;
+                house = houseTest;
+                foundHome = true;
+                break;
+            }
         }
         
-        while (sleep == true)
+        if (!foundHome)
         {
-            if (agent.hasPath == false)
-            {
-                agent.speed = 5f;
-                agent.destination = home.transform.position;
-                house.sleeping = true;
-            }
-
-            if (agent.isStopped == true)
-            {
-                Debug.Log(name + " is sleeping");
-            }
-            yield return null;
+            Debug.LogWarning(name + " has no house available !");
+            StartCoroutine("RandomWalk");
+            yield break;
         }
+        
+        house.sleeping = true;
+        agent.speed = 5f;
+        agent.destination = home.transform.position;
+        if (agent.isStopped == true)
+        {
+            yield return null;
+            Debug.Log(name + " is sleeping");
+        }
+        yield return null;
     }
 
     private void UpdateInfo()
@@ -281,7 +299,8 @@ public class Villager : MonoBehaviour
 
     public void LearnButton()
     {
-        
+        StopAllCoroutines();
+        agent.destination = school.transform.position;
     }
     
     

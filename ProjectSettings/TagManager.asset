@@ -10,6 +10,9 @@ TagManager:
   - Rock
   - GameManager
   - Food
+  - Museum
+  - Farm
+  - School
   layers:
   - Default
   - TransparentFX
