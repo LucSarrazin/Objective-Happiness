@@ -36,6 +36,12 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         rockCounter.text = buildingCosts.rockCost.ToString();
     }
 
+    public void OnEnable()
+    {
+        image.color = new Color(1, 1, 1, 1);
+        rectTransform.position = defaultPosition;
+    }
+
     public void Update()
     {
         masonCounter.color = (GameManager.numberMason < buildingCosts.requiredMason) ? Color.red : Color.black;
@@ -82,16 +88,14 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
     {
         if (!button.interactable)
             return;
-        image.color = new Color(1, 1, 1, 1);
-        rectTransform.position = defaultPosition;
         building.GetComponent<ConstructionSite>().Place();
         animator.Play("IdleBuild");
     }
 
     public void OnDisable()
     {
-        image.color = new Color(1, 1, 1, 1);
-        rectTransform.position = defaultPosition;
+        if (building == null)
+            return;
         building.GetComponent<ConstructionSite>().Place();
     }
 }
