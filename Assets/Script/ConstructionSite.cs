@@ -9,6 +9,7 @@ public class ConstructionSite : MonoBehaviour
 
     private float timeLeft = 0f;
     public int masonCount = 0;
+    public bool isBuilding = false;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -24,7 +25,8 @@ public class ConstructionSite : MonoBehaviour
 
     public void Update()
     {
-        if (masonCount >= buildingCosts.requiredMason)
+        isBuilding = masonCount >= buildingCosts.requiredMason;
+        if (isBuilding)
         {
             timeLeft += Time.deltaTime;
             if (timeLeft >= buildingCosts.buildTime)
