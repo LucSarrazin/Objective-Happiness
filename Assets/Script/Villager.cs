@@ -28,6 +28,7 @@ public class Villager : MonoBehaviour
     public int age = 10;
     public int ageOfDeath;
     public bool sleep = false;
+    public float numberOfTimeToLearn;
     
     [Space]
     
@@ -55,6 +56,8 @@ public class Villager : MonoBehaviour
     [SerializeField] private Slider hungrySlider;
     [SerializeField] private TextMeshProUGUI ageUI;
     [SerializeField] private GameObject UI;
+    [SerializeField] private TMP_Dropdown dropdownUI;
+    [SerializeField] private Button learnButtonUI;
     
     // private void OnValidate()
     // {
@@ -88,6 +91,7 @@ public class Villager : MonoBehaviour
                 Debug.Log(name + " villager is vagrant");
                 render1.sprite = spriteList[4];
                 StopAllCoroutines();
+                StartCoroutine("RandomWalk");
                 break;
             case types.food_picker:
                 Debug.unityLogger.Log(name + " villager is food picker");
@@ -117,6 +121,7 @@ public class Villager : MonoBehaviour
                 Debug.Log(name + " villager is mason");
                 render1.sprite = spriteList[3];
                 StopAllCoroutines();
+                StartCoroutine("RandomWalk");
                 break;
         }
     }
@@ -300,9 +305,51 @@ public class Villager : MonoBehaviour
     public void LearnButton()
     {
         StopAllCoroutines();
+        HideInfo();
+        learnButtonUI.interactable = false;
+        switch (dropdownUI.value)
+        {
+            case 0:
+                type = types.food_picker;
+                break;
+            case 1:
+                type = types.lumberjack;
+                break;
+            case 2:
+                type = types.digger;
+                break;
+            case 3:
+                type = types.mason;
+                break;
+        }
         agent.destination = school.transform.position;
+        StartCoroutine("startingSchool");
     }
-    
+
+    IEnumerator startingSchool()
+    {
+        while (agent.hasPath == true)
+        {
+            yield return null;
+        }
+
+        render1.enabled = false;
+        yield return new WaitForSeconds(numberOfTimeToLearn);
+        updateType();
+        render1.enabled = true;
+        learnButtonUI.interactable = true;
+    }
+
+    IEnumerator needToBuild(Transform destination)
+    {
+        agent.destination = destination.position;
+        while (agent.hasPath == true)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(15f);
+        // The next part idk help Gaspard !
+    }
     
     
 }
