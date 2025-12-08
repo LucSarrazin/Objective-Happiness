@@ -5,33 +5,77 @@ using UnityEngine;
 public class ConstructionSite : MonoBehaviour
 {
     [SerializeField] private BuildingCosts buildingCosts;
+    [SerializeField] private MonoBehaviour buildingScript;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    private float timeLeft = 0f;
+    private bool isPreview = true;
+    private float alpha = 0.5f;
+    private bool canBuild = true;
+
+    private float buildTime = 0f;
     public int masonCount = 0;
     public bool isBuilding = false;
 
+    public void Awake()
+    {
+        if (buildingScript.enabled)
+            Destroy(this);
+        else
+            spriteRenderer.color = new Color(1, 1, 1, alpha);
+    }
+
+    public void Place()
+    {
+        if (canBuild)
+        {
+            GameManager.totalWood -= buildingCosts.woodCost;
+            GameManager.totalRock -= buildingCosts.rockCost;
+
+            isPreview = false;
+        }
+        else
+            Destroy(gameObject);
+    }
+
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Villager" && other.gameObject.GetComponent<Villager>().type == Villager.types.mason)
+        if (isPreview && other.gameObject.layer == LayerMask.NameToLayer("Buildings"))
+        {
+            spriteRenderer.color = new Color(1, 0, 0, alpha);
+            canBuild = false;
+        }
+        else if (other.gameObject.tag == "Villager" && other.gameObject.GetComponent<Villager>().type == Villager.types.mason)
             masonCount++;
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Villager" && other.gameObject.GetComponent<Villager>().type == Villager.types.mason)
+        if (isPreview && other.gameObject.layer == LayerMask.NameToLayer("Buildings"))
+        {
+            spriteRenderer.color = new Color(1, 1, 1, alpha);
+            canBuild = true;
+        }
+        else if (other.gameObject.tag == "Villager" && other.gameObject.GetComponent<Villager>().type == Villager.types.mason)
             masonCount--;
     }
 
     public void Update()
     {
+        if (isPreview)
+            return;
+
+        spriteRenderer.color = new Color(1, 1, 1, buildTime / buildingCosts.buildTime * .6f + .2f);  // starts at .2, jumps from .8 to 1 when finishing, for clear demarcation
+
         isBuilding = masonCount >= buildingCosts.requiredMason;
         if (isBuilding)
         {
-            timeLeft += Time.deltaTime;
-            if (timeLeft >= buildingCosts.buildTime)
+            buildTime += Time.deltaTime;
+
+            if (buildTime >= buildingCosts.buildTime)
             {
-                Instantiate(buildingCosts.buildingPrefab, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                spriteRenderer.color = new Color(1, 1, 1, 1);
+                buildingScript.enabled = true;
+                Destroy(this);
             }
         }
     }

@@ -46,18 +46,16 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         button.interactable = GameManager.numberMason >= buildingCosts.requiredMason &&
                               GameManager.totalWood >= buildingCosts.woodCost &&
                               GameManager.totalRock >= buildingCosts.rockCost;
-
-        if (button.interactable)
-            costPanel.SetActive(false);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!button.interactable)
             return;
+        costPanel.SetActive(false);
         defaultPosition = rectTransform.position;
         image.color = new Color(1, 1, 1, 0.6f);
-        building = Instantiate(buildingCosts.builderPrefab, Vector3.zero, Quaternion.identity);
+        building = Instantiate(buildingCosts.buildingPrefab, Vector3.zero, Quaternion.identity);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -86,7 +84,14 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
             return;
         image.color = new Color(1, 1, 1, 1);
         rectTransform.position = defaultPosition;
-        Destroy(building);
+        building.GetComponent<ConstructionSite>().Place();
         animator.Play("IdleBuild");
+    }
+
+    public void OnDisable()
+    {
+        image.color = new Color(1, 1, 1, 1);
+        rectTransform.position = defaultPosition;
+        building.GetComponent<ConstructionSite>().Place();
     }
 }
