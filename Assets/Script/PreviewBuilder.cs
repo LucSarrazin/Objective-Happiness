@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PreviewBuilder : MonoBehaviour
 {
-    [SerializeField] private GameObject buildingPrefab;
+    [SerializeField] private GameObject constructionPrefab;
     [SerializeField] private BuildingCosts buildingCosts;
 
     private SpriteRenderer spriteRenderer;
@@ -41,7 +41,7 @@ public class PreviewBuilder : MonoBehaviour
     {
         if (canBuild)
         {
-            GameObject placedBuilding = Instantiate(buildingPrefab, transform.position, Quaternion.identity);
+            GameObject placedBuilding = Instantiate(constructionPrefab, transform.position, Quaternion.identity);
 
             GameManager.totalWood -= buildingCosts.woodCost;
             GameManager.totalRock -= buildingCosts.rockCost;

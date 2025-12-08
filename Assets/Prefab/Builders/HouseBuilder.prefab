@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: buildingPrefab
       value: 
       objectReference: {fileID: 7544567567371372963, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+    - target: {fileID: 4811424111200082428, guid: d2c6da37ebbca6a4f9d717a58468e026, type: 3}
+      propertyPath: constructionPrefab
+      value: 
+      objectReference: {fileID: 5974644610096557854, guid: 7a03b173273469a45a9c6c972b260105, type: 3}
     - target: {fileID: 6094556685743159243, guid: d2c6da37ebbca6a4f9d717a58468e026, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.049999952

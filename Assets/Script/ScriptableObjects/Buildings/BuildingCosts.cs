@@ -8,4 +8,5 @@ public class BuildingCosts : ScriptableObject
     public int requiredMason;
     public int woodCost;
     public int rockCost;
+    public float buildTime;
 }
