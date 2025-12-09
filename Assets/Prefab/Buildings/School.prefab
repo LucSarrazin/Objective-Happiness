@@ -1637,7 +1637,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 4.0244656, y: 3.0029593, z: 3.279593}
@@ -1657,5 +1657,6 @@ MonoBehaviour:
   buildingCosts: {fileID: 11400000, guid: 51824c93d8c07dd48960b43f09cc0368, type: 2}
   buildingScript: {fileID: 5216516688462456141}
   spriteRenderer: {fileID: 9000790403224257125}
+  isPreview: 1
   masonCount: 0
   isBuilding: 0
