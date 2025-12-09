@@ -298,7 +298,7 @@ PrefabInstance:
     - target: {fileID: 1484730297293267667, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: buildingCosts
       value: 
-      objectReference: {fileID: 11400000, guid: 32e1c6958804475439eefc34c99eaf89, type: 2}
+      objectReference: {fileID: 11400000, guid: 51824c93d8c07dd48960b43f09cc0368, type: 2}
     - target: {fileID: 1484730297293267667, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: buildingPrefab
       value: 
@@ -307,6 +307,10 @@ PrefabInstance:
       propertyPath: buildingBuilder
       value: 
       objectReference: {fileID: 2338563535806700835, guid: ad8e8bba2c2091544a3bc7019b90e7e2, type: 3}
+    - target: {fileID: 2571564666811817773, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c008472d77a4a6c4baa28c776ad82c50, type: 3}
     - target: {fileID: 4034472647195931997, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Name
       value: School
@@ -437,7 +441,7 @@ PrefabInstance:
     - target: {fileID: 1484730297293267667, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: buildingCosts
       value: 
-      objectReference: {fileID: 11400000, guid: 32e1c6958804475439eefc34c99eaf89, type: 2}
+      objectReference: {fileID: 11400000, guid: 84848703ac79d2342af13a2ef743f99d, type: 2}
     - target: {fileID: 1484730297293267667, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: buildingPrefab
       value: 
@@ -446,6 +450,10 @@ PrefabInstance:
       propertyPath: buildingBuilder
       value: 
       objectReference: {fileID: 2338563535806700835, guid: ad8e8bba2c2091544a3bc7019b90e7e2, type: 3}
+    - target: {fileID: 2571564666811817773, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 66f0df706bf24494eb3785c1cd6526ac, type: 3}
     - target: {fileID: 4034472647195931997, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Name
       value: Museum
@@ -732,6 +740,10 @@ PrefabInstance:
       propertyPath: buildingBuilder
       value: 
       objectReference: {fileID: 2338563535806700835, guid: ad8e8bba2c2091544a3bc7019b90e7e2, type: 3}
+    - target: {fileID: 2571564666811817773, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aa8bf1be0d9dd444cb0477b06c4a67b6, type: 3}
     - target: {fileID: 4034472647195931997, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Name
       value: House
@@ -871,6 +883,10 @@ PrefabInstance:
       propertyPath: buildingBuilder
       value: 
       objectReference: {fileID: 2338563535806700835, guid: ad8e8bba2c2091544a3bc7019b90e7e2, type: 3}
+    - target: {fileID: 2571564666811817773, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f12e03f1a0cf394095e5753d8e9473e, type: 3}
     - target: {fileID: 4034472647195931997, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Name
       value: Farm

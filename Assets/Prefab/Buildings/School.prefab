@@ -1578,6 +1578,7 @@ GameObject:
   - component: {fileID: 5932472216744719857}
   - component: {fileID: 1372710838100136041}
   - component: {fileID: 3582587561254707735}
+  - component: {fileID: 743604820063768353}
   m_Layer: 7
   m_Name: School
   m_TagString: School
@@ -1608,7 +1609,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7544567567371372963}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 332bb9d37f552874c9e757e9eef71fc8, type: 3}
   m_Name: 
@@ -1641,3 +1642,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.0244656, y: 3.0029593, z: 3.279593}
   m_Center: {x: -0.043970585, y: 1.3864536, z: 0.563658}
+--- !u!114 &743604820063768353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544567567371372963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee93cdd3b799d3245bbb5d8f8b718698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingCosts: {fileID: 11400000, guid: 51824c93d8c07dd48960b43f09cc0368, type: 2}
+  buildingScript: {fileID: 1372710838100136041}
+  spriteRenderer: {fileID: 9000790403224257125}
+  masonCount: 0
+  isBuilding: 0

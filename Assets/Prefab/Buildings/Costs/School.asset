@@ -16,3 +16,4 @@ MonoBehaviour:
   woodCost: 30
   rockCost: 15
   buildTime: 100
+  buildingPrefab: {fileID: 7544567567371372963, guid: d0b0e9f8a359ab7498d9d544b651eec0, type: 3}

@@ -1578,6 +1578,7 @@ GameObject:
   - component: {fileID: 5932472216744719857}
   - component: {fileID: 1372710838100136041}
   - component: {fileID: 3582587561254707735}
+  - component: {fileID: 8094606156584882541}
   m_Layer: 7
   m_Name: Museum
   m_TagString: Museum
@@ -1608,7 +1609,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7544567567371372963}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 332bb9d37f552874c9e757e9eef71fc8, type: 3}
   m_Name: 
@@ -1641,3 +1642,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.4941847, y: 3.1739817, z: 3.1555188}
   m_Center: {x: -0.15459216, y: 1.4719648, z: 0.47997248}
+--- !u!114 &8094606156584882541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544567567371372963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee93cdd3b799d3245bbb5d8f8b718698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingCosts: {fileID: 11400000, guid: 84848703ac79d2342af13a2ef743f99d, type: 2}
+  buildingScript: {fileID: 1372710838100136041}
+  spriteRenderer: {fileID: 9000790403224257125}
+  masonCount: 0
+  isBuilding: 0
