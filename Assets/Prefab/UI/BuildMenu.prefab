@@ -38,8 +38,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 3.493164, y: 1.3430023}
+  m_SizeDelta: {x: -266.0369, y: -87.6983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4395598551355740692
 MonoBehaviour:
@@ -54,16 +54,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 15
-    m_Right: 15
-    m_Top: 15
-    m_Bottom: 15
-  m_ChildAlignment: 3
-  m_Spacing: 15
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 50
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -105,8 +105,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 57.257385, y: 57.257385}
-  m_SizeDelta: {x: 84.5148, y: 84.5149}
+  m_AnchoredPosition: {x: 106.45557, y: 101.0397}
+  m_SizeDelta: {x: 157.5275, y: 145.1275}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6802979539080219625
 CanvasRenderer:
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bf5c9318d9f180d42982954781851e63, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 773256c3a2b4f474ebc3339fa951e168, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -319,6 +319,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: School
       objectReference: {fileID: 0}
+    - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_text
+      value: School is where villagers learn a trade.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_fontSize
+      value: 29.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -345,11 +353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 143.48123
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 209.5297
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -381,11 +389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 935
+      value: 652.1843
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -231.5092
+      value: -104.76485
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -466,6 +474,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Museum
       objectReference: {fileID: 0}
+    - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_text
+      value: A tribute to the creature to increase the townfolks happiness.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_fontSize
+      value: 27.25
+      objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -492,11 +508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 143.48123
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 209.5297
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -528,11 +544,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 670
+      value: 458.70306
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -231.5092
+      value: -104.76485
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -601,9 +617,25 @@ PrefabInstance:
       propertyPath: buildingBuilder
       value: 
       objectReference: {fileID: 2338563535806700835, guid: ad8e8bba2c2091544a3bc7019b90e7e2, type: 3}
+    - target: {fileID: 2571564666811817773, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c008472d77a4a6c4baa28c776ad82c50, type: 3}
+    - target: {fileID: 2571564666811817773, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4034472647195931997, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Name
       value: Librarie
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_text
+      value: A crypt to increase the townfolks happiness.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_fontSize
+      value: 29.2
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Pivot.x
@@ -631,11 +663,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 143.48123
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 209.5297
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -667,11 +699,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1200
+      value: 845.6655
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -231.5092
+      value: -104.76485
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -760,6 +792,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
+    - target: {fileID: 5600438929542604549, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_text
+      value: 'House is where villagers can have a rest after a long night of work. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -786,11 +830,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 143.48123
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 209.5297
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -822,11 +866,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 140
+      value: 71.740616
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -231.5092
+      value: -104.76485
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -899,9 +943,21 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6f12e03f1a0cf394095e5753d8e9473e, type: 3}
+    - target: {fileID: 2571564666811817773, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4034472647195931997, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Name
       value: Farm
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_text
+      value: A "farm" to increase food by 1.5x.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
+      propertyPath: m_fontSize
+      value: 32.2
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Pivot.x
@@ -929,11 +985,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 250
+      value: 143.48123
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 209.5297
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -965,11 +1021,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 405
+      value: 265.22186
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -231.5092
+      value: -104.76485
       objectReference: {fileID: 0}
     - target: {fileID: 8419135518789140986, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -4014,6 +4014,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1545734233}
     m_Modifications:
+    - target: {fileID: 2100303094246248963, guid: 186f9ae59d2029a448f1ec6bf6edf0b1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -58.33333
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013602446892518889, guid: 186f9ae59d2029a448f1ec6bf6edf0b1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -58.33333
+      objectReference: {fileID: 0}
     - target: {fileID: 3755982632027657556, guid: 186f9ae59d2029a448f1ec6bf6edf0b1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4106,9 +4114,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4330934334860676549, guid: 186f9ae59d2029a448f1ec6bf6edf0b1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -58.33333
+      objectReference: {fileID: 0}
     - target: {fileID: 7340855165298384827, guid: 186f9ae59d2029a448f1ec6bf6edf0b1, type: 3}
       propertyPath: m_Name
       value: BuildMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785191174098009630, guid: 186f9ae59d2029a448f1ec6bf6edf0b1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -58.33333
+      objectReference: {fileID: 0}
+    - target: {fileID: 8837847751374340895, guid: 186f9ae59d2029a448f1ec6bf6edf0b1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -58.33333
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4245,9 +4265,9 @@ Canvas:
   m_GameObject: {fileID: 1545734229}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 963194227}
-  m_PlaneDistance: 0.3
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0

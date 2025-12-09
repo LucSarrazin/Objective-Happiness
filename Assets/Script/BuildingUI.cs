@@ -68,6 +68,7 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
     {
         if (!button.interactable)
             return;
+        costPanel.SetActive(false);
         rectTransform.position = Input.mousePosition;
 
         RaycastHit hit;
