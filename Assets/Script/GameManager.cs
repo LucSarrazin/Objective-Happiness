@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public bool night = false;
     public static List<GameObject> ListBuildingInConstruction = new List<GameObject>();
     public List<GameObject> ListBuildingInConstructions;
+    public static int numberFarm = 0;
     
     public float elapsedTime = 0f;
     private void Awake()
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
         totalProgress = 0;
         numberMason = 1;
         totalPopulation = 5;
+        numberFarm = 0;
     }
     
     
