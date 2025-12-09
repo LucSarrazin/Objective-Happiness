@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -31,6 +32,7 @@ public class Villager : MonoBehaviour
     public float numberOfTimeToLearn;
     public bool goToLearn;
     private int previousCount = 0;
+    private bool masonUsed;
     
     [Space]
     
@@ -135,8 +137,10 @@ public class Villager : MonoBehaviour
             if (agent.hasPath == false)
             {
                 Debug.Log(name + " start chooping");
-                yield return new WaitForSeconds(5f);
-                Debug.Log(name + " get " + Random.Range(1,6));
+                yield return new WaitForSeconds(60f);
+                int wood = Random.Range(1, 4);
+                GameManager.totalWood += wood;
+                Debug.Log(name + " get " + wood);
                 agent.destination = woodList[Random.Range(0,woodList.Length)].transform.position;
             }
             yield return null;
@@ -150,8 +154,10 @@ public class Villager : MonoBehaviour
             if (agent.hasPath == false)
             {
                 Debug.Log(name + " start minning");
-                yield return new WaitForSeconds(5f);
-                Debug.Log(name + " get " + Random.Range(1,6));
+                yield return new WaitForSeconds(60f);
+                int rock = Random.Range(1, 4);
+                GameManager.totalWood += rock;
+                Debug.Log(name + " get " + rock);
                 agent.destination = rockList[Random.Range(0,rockList.Length)].transform.position;
             }
             yield return null;
@@ -165,8 +171,12 @@ public class Villager : MonoBehaviour
             if (agent.hasPath == false)
             {
                 Debug.Log(name + " start searching food");
-                yield return new WaitForSeconds(5f);
-                Debug.Log(name + " get " + Random.Range(1,6));
+                yield return new WaitForSeconds(60f);
+                int rand = Random.Range(1, 4);
+                float multiplier = Mathf.Pow(1.5f, GameManager.numberFarm);
+                int food = Mathf.RoundToInt(rand * multiplier);
+                GameManager.totalFood += food;
+                Debug.Log(name + " get " + food);
                 agent.destination = foodList[Random.Range(0,foodList.Length)].transform.position;
             }
             yield return null;
@@ -237,10 +247,14 @@ public class Villager : MonoBehaviour
         
         int currentCount = GameManager.ListBuildingInConstruction.Count;
 
-        // Si un élément a été ajouté
         if (currentCount > previousCount)
         {
-            needToBuild();
+            if (type == types.mason && masonUsed == false)
+            {
+                masonUsed = true;
+                StopAllCoroutines();
+                StartCoroutine("needToBuild");
+            }
         }
 
         previousCount = currentCount;
@@ -424,7 +438,18 @@ public class Villager : MonoBehaviour
         {
             yield return null;
         }
-        
+
+        while (constructionSite.isBuilding == true)
+        {
+            yield return null;
+        }
+        if (constructionSite.isBuilding == false)
+        {
+            StartCoroutine("RandomWalk");
+            masonUsed = false;
+        }
+
+
     }
     
     
