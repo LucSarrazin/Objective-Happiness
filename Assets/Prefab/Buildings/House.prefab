@@ -1476,6 +1476,7 @@ GameObject:
   - component: {fileID: 5932472216744719857}
   - component: {fileID: 1372710838100136041}
   - component: {fileID: 1830557642115193615}
+  - component: {fileID: 4349640384182704346}
   - component: {fileID: 2906363855720991440}
   - component: {fileID: 317353365915280341}
   m_Layer: 7
@@ -1536,8 +1537,25 @@ MonoBehaviour:
   buildingCosts: {fileID: 11400000, guid: 32e1c6958804475439eefc34c99eaf89, type: 2}
   buildingScript: {fileID: 1372710838100136041}
   spriteRenderer: {fileID: 4162136511051267071}
+  isPreview: 1
   masonCount: 0
   isBuilding: 0
+--- !u!208 &4349640384182704346
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544567567371372963}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.25, y: 0.5, z: 0.655}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.54}
+  m_TimeToStationary: 0.5
 --- !u!65 &2906363855720991440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1596,7 +1614,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7881392878915039307}
   - component: {fileID: 4162136511051267071}
-  - component: {fileID: 2457986300055311207}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: House
@@ -1665,25 +1682,9 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!208 &2457986300055311207
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8107960793584403864}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 10.240001, y: 10.240001, z: 0.1}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5

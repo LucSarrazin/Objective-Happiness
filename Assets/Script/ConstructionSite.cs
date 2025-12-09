@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ConstructionSite : MonoBehaviour
 {
     [SerializeField] private BuildingCosts buildingCosts;
     [SerializeField] private MonoBehaviour buildingScript;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    private NavMeshObstacle navMeshObstacle;
 
-    private bool isPreview = true;
+    public bool isPreview = true;
     private float alpha = 0.5f;
     private bool canBuild = true;
 
@@ -19,9 +22,14 @@ public class ConstructionSite : MonoBehaviour
     public void Awake()
     {
         if (buildingScript.enabled)
+        {
             Destroy(this);
-        else
-            spriteRenderer.color = new Color(1, 1, 1, alpha);
+            return;
+        }
+
+        spriteRenderer.color = new Color(1, 1, 1, alpha);
+        navMeshObstacle = GetComponent<NavMeshObstacle>();
+        navMeshObstacle.enabled = false;
     }
 
     public void Place()
@@ -32,12 +40,13 @@ public class ConstructionSite : MonoBehaviour
             GameManager.totalRock -= buildingCosts.rockCost;
 
             isPreview = false;
+            GameManager.ListBuildingInConstruction.Add(gameObject);
         }
         else
             Destroy(gameObject);
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (isPreview && other.gameObject.layer == LayerMask.NameToLayer("Buildings"))
         {
@@ -75,6 +84,8 @@ public class ConstructionSite : MonoBehaviour
             {
                 spriteRenderer.color = new Color(1, 1, 1, 1);
                 buildingScript.enabled = true;
+                navMeshObstacle.enabled = true;
+                GameManager.ListBuildingInConstruction.Remove(gameObject);
                 Destroy(this);
             }
         }

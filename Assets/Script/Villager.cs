@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -29,6 +30,9 @@ public class Villager : MonoBehaviour
     public int ageOfDeath;
     public bool sleep = false;
     public float numberOfTimeToLearn;
+    public bool goToLearn;
+    private int previousCount = 0;
+    private bool masonUsed;
     
     [Space]
     
@@ -39,7 +43,7 @@ public class Villager : MonoBehaviour
     [SerializeField] private GameObject[] rockList;
     [SerializeField] private GameObject[] foodList;
     [SerializeField] private GameObject[] houseList;
-    [SerializeField] private GameObject school;
+    [SerializeField] private GameObject[] schoolList;
     [SerializeField] private GameObject[] buildingInConstruction;
     
     [Space]
@@ -73,7 +77,7 @@ public class Villager : MonoBehaviour
         rockList = GameObject.FindGameObjectsWithTag("Rock");
         foodList = GameObject.FindGameObjectsWithTag("Food");
         houseList = GameObject.FindGameObjectsWithTag("House");
-        school = GameObject.FindGameObjectWithTag("School");
+        schoolList = GameObject.FindGameObjectsWithTag("School");
     }
 
     // Start is called before the first frame update
@@ -133,8 +137,10 @@ public class Villager : MonoBehaviour
             if (agent.hasPath == false)
             {
                 Debug.Log(name + " start chooping");
-                yield return new WaitForSeconds(5f);
-                Debug.Log(name + " get " + Random.Range(1,6));
+                yield return new WaitForSeconds(60f);
+                int wood = Random.Range(1, 4);
+                GameManager.totalWood += wood;
+                Debug.Log(name + " get " + wood);
                 agent.destination = woodList[Random.Range(0,woodList.Length)].transform.position;
             }
             yield return null;
@@ -148,8 +154,10 @@ public class Villager : MonoBehaviour
             if (agent.hasPath == false)
             {
                 Debug.Log(name + " start minning");
-                yield return new WaitForSeconds(5f);
-                Debug.Log(name + " get " + Random.Range(1,6));
+                yield return new WaitForSeconds(60f);
+                int rock = Random.Range(1, 4);
+                GameManager.totalWood += rock;
+                Debug.Log(name + " get " + rock);
                 agent.destination = rockList[Random.Range(0,rockList.Length)].transform.position;
             }
             yield return null;
@@ -163,8 +171,12 @@ public class Villager : MonoBehaviour
             if (agent.hasPath == false)
             {
                 Debug.Log(name + " start searching food");
-                yield return new WaitForSeconds(5f);
-                Debug.Log(name + " get " + Random.Range(1,6));
+                yield return new WaitForSeconds(60f);
+                int rand = Random.Range(1, 4);
+                float multiplier = Mathf.Pow(1.5f, GameManager.numberFarm);
+                int food = Mathf.RoundToInt(rand * multiplier);
+                GameManager.totalFood += food;
+                Debug.Log(name + " get " + food);
                 agent.destination = foodList[Random.Range(0,foodList.Length)].transform.position;
             }
             yield return null;
@@ -222,7 +234,33 @@ public class Villager : MonoBehaviour
                 }
             }
         }
+
+        if (schoolList.Length == 0)
+        {
+           learnButtonUI.interactable = false; 
+        }
+        else if(schoolList.Length >= 1 && goToLearn == false)
+        {
+            learnButtonUI.interactable = true; 
+        }
+        
+        
+        int currentCount = GameManager.ListBuildingInConstruction.Count;
+
+        if (currentCount > previousCount)
+        {
+            if (type == types.mason && masonUsed == false)
+            {
+                masonUsed = true;
+                StopAllCoroutines();
+                StartCoroutine("needToBuild");
+            }
+        }
+
+        previousCount = currentCount;
+        
     }
+    
 
     IEnumerator RandomWalk()
     {
@@ -305,6 +343,7 @@ public class Villager : MonoBehaviour
 
     public void LearnButton()
     {
+        goToLearn = true;
         StopAllCoroutines();
         HideInfo();
         learnButtonUI.interactable = false;
@@ -323,33 +362,94 @@ public class Villager : MonoBehaviour
                 type = types.mason;
                 break;
         }
-        agent.destination = school.transform.position;
         StartCoroutine("startingSchool");
     }
 
     IEnumerator startingSchool()
     {
-        while (agent.hasPath == true)
+        School school = null;
+        GameObject schoolPlace = null;
+        bool foundSchool = false;
+
+        for (int i = 0; i < schoolList.Length; i++)
+        {
+            GameObject schoolPlaceTest = schoolList[Random.Range(0, schoolList.Length)];
+            School schoolTest = schoolPlaceTest.GetComponent<School>();
+
+            if (!schoolTest.maxStudent)
+            {
+                schoolPlace = schoolPlaceTest;
+                school = schoolTest;
+                foundSchool = true;
+                break;
+            }
+        }
+        
+        if (!foundSchool)
+        {
+            Debug.LogWarning(name + " has no school available !");
+            StartCoroutine("RandomWalk");
+            yield break;
+        }
+        
+        school.maxStudent = true;
+        agent.speed = 3f;
+        agent.destination = schoolPlace.transform.position;
+
+        while (agent.pathPending || agent.remainingDistance > 0.2f)
         {
             yield return null;
         }
-
+        Debug.Log(name + " is studying");
         render1.enabled = false;
         yield return new WaitForSeconds(numberOfTimeToLearn);
         updateType();
         render1.enabled = true;
         learnButtonUI.interactable = true;
+        goToLearn = false;
+        agent.speed = 1f;
     }
 
-    IEnumerator needToBuild(Transform destination)
+    IEnumerator needToBuild()
     {
-        agent.destination = destination.position;
-        while (agent.hasPath == true)
+        int masonCountMax = 0;
+        GameObject masonPlace = null;
+        ConstructionSite constructionSite = null;
+
+        for (int i = 0; i < GameManager.ListBuildingInConstruction.Count; i++)
+        {
+            GameObject buildingInConstruction = GameManager.ListBuildingInConstruction[i];
+            ConstructionSite constructionSiteTest = buildingInConstruction.GetComponent<ConstructionSite>();
+            if (constructionSiteTest != null)
+            {
+                if (masonCountMax > constructionSiteTest.masonCount)
+                {
+                    masonCountMax = constructionSiteTest.masonCount;
+                }
+                constructionSite = constructionSiteTest;
+                masonPlace = buildingInConstruction;
+                break;
+            }
+        }
+        
+        agent.destination = masonPlace.transform.position;
+        
+        while (agent.pathPending || agent.remainingDistance > 0.2f)
         {
             yield return null;
         }
-        yield return new WaitForSeconds(15f);
-        // The next part idk help Gaspard !
+
+        while (constructionSite.isBuilding == true)
+        {
+            yield return null;
+        }
+        if (constructionSite.isBuilding == false)
+        {
+            StartCoroutine("RandomWalk");
+            masonUsed = false;
+        }
+
+
     }
     
     

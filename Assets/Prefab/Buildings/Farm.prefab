@@ -1036,7 +1036,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3737322909616969237}
   - component: {fileID: 9000790403224257125}
-  - component: {fileID: 5787815611174648915}
   m_Layer: 7
   m_Name: Farm
   m_TagString: Untagged
@@ -1106,28 +1105,12 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!208 &5787815611174648915
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6572496185401605921}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 8.05, y: 10.240001, z: 0.1}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &6603483660110925453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,8 +1560,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5932472216744719857}
   - component: {fileID: 1372710838100136041}
-  - component: {fileID: 3582587561254707735}
   - component: {fileID: 7824082233162412168}
+  - component: {fileID: 5092507672604851981}
+  - component: {fileID: 3582587561254707735}
+  - component: {fileID: 7969703736001541627}
   m_Layer: 7
   m_Name: Farm
   m_TagString: Farm
@@ -1621,6 +1606,40 @@ MonoBehaviour:
   typeUI: {fileID: 4602732221966845576}
   sleepingUI: {fileID: 2045679759349690450}
   UI: {fileID: 3986654878915784668}
+--- !u!114 &7824082233162412168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544567567371372963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee93cdd3b799d3245bbb5d8f8b718698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingCosts: {fileID: 11400000, guid: 9432a826505ecda43bff0f9b203c4ed0, type: 2}
+  buildingScript: {fileID: 1372710838100136041}
+  spriteRenderer: {fileID: 9000790403224257125}
+  isPreview: 1
+  masonCount: 0
+  isBuilding: 0
+--- !u!208 &5092507672604851981
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544567567371372963}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.07, y: 0.5, z: 0.76}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.24}
+  m_TimeToStationary: 0.5
 --- !u!65 &3582587561254707735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1637,25 +1656,35 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.338328, y: 2.8617218, z: 2.863333}
   m_Center: {x: -0.03401804, y: 1.3158349, z: 0.49544278}
---- !u!114 &7824082233162412168
-MonoBehaviour:
+--- !u!54 &7969703736001541627
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7544567567371372963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee93cdd3b799d3245bbb5d8f8b718698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingCosts: {fileID: 11400000, guid: 9432a826505ecda43bff0f9b203c4ed0, type: 2}
-  buildingScript: {fileID: 1372710838100136041}
-  spriteRenderer: {fileID: 9000790403224257125}
-  masonCount: 0
-  isBuilding: 0
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
