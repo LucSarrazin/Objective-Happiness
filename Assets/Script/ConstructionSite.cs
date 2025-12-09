@@ -9,7 +9,7 @@ public class ConstructionSite : MonoBehaviour
     [SerializeField] private MonoBehaviour buildingScript;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    private bool isPreview = true;
+    public bool isPreview = true;
     private float alpha = 0.5f;
     private bool canBuild = true;
 
