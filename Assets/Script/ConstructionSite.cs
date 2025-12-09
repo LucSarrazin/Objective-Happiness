@@ -39,7 +39,7 @@ public class ConstructionSite : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (isPreview && other.gameObject.layer == LayerMask.NameToLayer("Buildings"))
         {
