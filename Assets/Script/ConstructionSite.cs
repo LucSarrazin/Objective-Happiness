@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ConstructionSite : MonoBehaviour
@@ -32,6 +33,7 @@ public class ConstructionSite : MonoBehaviour
             GameManager.totalRock -= buildingCosts.rockCost;
 
             isPreview = false;
+            GameManager.ListBuildingInConstruction.Add(gameObject);
         }
         else
             Destroy(gameObject);
@@ -75,6 +77,7 @@ public class ConstructionSite : MonoBehaviour
             {
                 spriteRenderer.color = new Color(1, 1, 1, 1);
                 buildingScript.enabled = true;
+                GameManager.ListBuildingInConstruction.Remove(gameObject);
                 Destroy(this);
             }
         }
