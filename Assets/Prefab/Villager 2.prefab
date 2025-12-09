@@ -1729,7 +1729,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 20.25, y: 20.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2667,6 +2667,7 @@ MonoBehaviour:
   foodList: []
   houseList: []
   school: {fileID: 0}
+  buildingInConstruction: []
   render: {fileID: 4778444648154738307}
   render1: {fileID: 1497828013105722264}
   nameUI: {fileID: 6933562006264975909}
