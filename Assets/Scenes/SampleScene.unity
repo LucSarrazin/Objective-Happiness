@@ -5124,6 +5124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   night: 0
+  ListBuildingInConstructions: []
   elapsedTime: 0
 --- !u!4 &1860822421
 Transform:
