@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ConstructionSite : MonoBehaviour
 {
     [SerializeField] private BuildingCosts buildingCosts;
     [SerializeField] private MonoBehaviour buildingScript;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    private NavMeshObstacle navMeshObstacle;
 
     public bool isPreview = true;
     private float alpha = 0.5f;
@@ -20,9 +22,14 @@ public class ConstructionSite : MonoBehaviour
     public void Awake()
     {
         if (buildingScript.enabled)
+        {
             Destroy(this);
-        else
-            spriteRenderer.color = new Color(1, 1, 1, alpha);
+            return;
+        }
+
+        spriteRenderer.color = new Color(1, 1, 1, alpha);
+        navMeshObstacle = GetComponent<NavMeshObstacle>();
+        navMeshObstacle.enabled = false;
     }
 
     public void Place()
@@ -77,6 +84,7 @@ public class ConstructionSite : MonoBehaviour
             {
                 spriteRenderer.color = new Color(1, 1, 1, 1);
                 buildingScript.enabled = true;
+                navMeshObstacle.enabled = true;
                 GameManager.ListBuildingInConstruction.Remove(gameObject);
                 Destroy(this);
             }
