@@ -30,6 +30,7 @@ public class Villager : MonoBehaviour
     public bool sleep = false;
     public float numberOfTimeToLearn;
     public bool goToLearn;
+    private int previousCount = 0;
     
     [Space]
     
@@ -232,7 +233,20 @@ public class Villager : MonoBehaviour
         {
             learnButtonUI.interactable = true; 
         }
+        
+        
+        int currentCount = GameManager.ListBuildingInConstruction.Count;
+
+        // Si un élément a été ajouté
+        if (currentCount > previousCount)
+        {
+            needToBuild();
+        }
+
+        previousCount = currentCount;
+        
     }
+    
 
     IEnumerator RandomWalk()
     {
@@ -367,28 +381,50 @@ public class Villager : MonoBehaviour
         school.maxStudent = true;
         agent.speed = 3f;
         agent.destination = schoolPlace.transform.position;
-        if (agent.isStopped == true)
+
+        while (agent.pathPending || agent.remainingDistance > 0.2f)
         {
             yield return null;
-            Debug.Log(name + " is studing");
-            render1.enabled = false;
-            yield return new WaitForSeconds(numberOfTimeToLearn);
-            updateType();
-            render1.enabled = true;
-            learnButtonUI.interactable = true;
-            goToLearn = false;
         }
+        Debug.Log(name + " is studying");
+        render1.enabled = false;
+        yield return new WaitForSeconds(numberOfTimeToLearn);
+        updateType();
+        render1.enabled = true;
+        learnButtonUI.interactable = true;
+        goToLearn = false;
+        agent.speed = 1f;
     }
 
-    IEnumerator needToBuild(Transform destination)
+    IEnumerator needToBuild()
     {
-        agent.destination = destination.position;
-        while (agent.hasPath == true)
+        int masonCountMax = 0;
+        GameObject masonPlace = null;
+        ConstructionSite constructionSite = null;
+
+        for (int i = 0; i < GameManager.ListBuildingInConstruction.Count; i++)
+        {
+            GameObject buildingInConstruction = GameManager.ListBuildingInConstruction[i];
+            ConstructionSite constructionSiteTest = buildingInConstruction.GetComponent<ConstructionSite>();
+            if (constructionSiteTest != null)
+            {
+                if (masonCountMax > constructionSiteTest.masonCount)
+                {
+                    masonCountMax = constructionSiteTest.masonCount;
+                }
+                constructionSite = constructionSiteTest;
+                masonPlace = buildingInConstruction;
+                break;
+            }
+        }
+        
+        agent.destination = masonPlace.transform.position;
+        
+        while (agent.pathPending || agent.remainingDistance > 0.2f)
         {
             yield return null;
         }
-        yield return new WaitForSeconds(15f);
-        // The next part idk help Gaspard !
+        
     }
     
     
