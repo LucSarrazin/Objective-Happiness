@@ -758,7 +758,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1372710838100136041}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: House, Assembly-CSharp
         m_MethodName: HideInfo
         m_Mode: 1
@@ -1576,7 +1576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5932472216744719857}
-  - component: {fileID: 1372710838100136041}
+  - component: {fileID: 5216516688462456141}
   - component: {fileID: 3582587561254707735}
   - component: {fileID: 743604820063768353}
   m_Layer: 7
@@ -1602,7 +1602,7 @@ Transform:
   - {fileID: 3737322909616969237}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1372710838100136041
+--- !u!114 &5216516688462456141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1611,15 +1611,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7544567567371372963}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 332bb9d37f552874c9e757e9eef71fc8, type: 3}
+  m_Script: {fileID: 11500000, guid: c4a35bb58f86c1746b68aa951951e00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Maison de Luc
-  type: House
-  sleeping: 0
+  name: Ecole de Samuel
+  type: Ecole
+  maxStudent: 0
   nameUI: {fileID: 8755632275642611072}
   typeUI: {fileID: 4602732221966845576}
-  sleepingUI: {fileID: 2045679759349690450}
+  studingUI: {fileID: 2045679759349690450}
   UI: {fileID: 3986654878915784668}
 --- !u!65 &3582587561254707735
 BoxCollider:
@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingCosts: {fileID: 11400000, guid: 51824c93d8c07dd48960b43f09cc0368, type: 2}
-  buildingScript: {fileID: 1372710838100136041}
+  buildingScript: {fileID: 5216516688462456141}
   spriteRenderer: {fileID: 9000790403224257125}
   masonCount: 0
   isBuilding: 0

@@ -29,6 +29,7 @@ public class Villager : MonoBehaviour
     public int ageOfDeath;
     public bool sleep = false;
     public float numberOfTimeToLearn;
+    public bool goToLearn;
     
     [Space]
     
@@ -39,7 +40,7 @@ public class Villager : MonoBehaviour
     [SerializeField] private GameObject[] rockList;
     [SerializeField] private GameObject[] foodList;
     [SerializeField] private GameObject[] houseList;
-    [SerializeField] private GameObject school;
+    [SerializeField] private GameObject[] schoolList;
     [SerializeField] private GameObject[] buildingInConstruction;
     
     [Space]
@@ -73,7 +74,7 @@ public class Villager : MonoBehaviour
         rockList = GameObject.FindGameObjectsWithTag("Rock");
         foodList = GameObject.FindGameObjectsWithTag("Food");
         houseList = GameObject.FindGameObjectsWithTag("House");
-        school = GameObject.FindGameObjectWithTag("School");
+        schoolList = GameObject.FindGameObjectsWithTag("School");
     }
 
     // Start is called before the first frame update
@@ -222,6 +223,15 @@ public class Villager : MonoBehaviour
                 }
             }
         }
+
+        if (schoolList.Length == 0)
+        {
+           learnButtonUI.interactable = false; 
+        }
+        else if(schoolList.Length >= 1 && goToLearn == false)
+        {
+            learnButtonUI.interactable = true; 
+        }
     }
 
     IEnumerator RandomWalk()
@@ -305,6 +315,7 @@ public class Villager : MonoBehaviour
 
     public void LearnButton()
     {
+        goToLearn = true;
         StopAllCoroutines();
         HideInfo();
         learnButtonUI.interactable = false;
@@ -323,22 +334,50 @@ public class Villager : MonoBehaviour
                 type = types.mason;
                 break;
         }
-        agent.destination = school.transform.position;
         StartCoroutine("startingSchool");
     }
 
     IEnumerator startingSchool()
     {
-        while (agent.hasPath == true)
+        School school = null;
+        GameObject schoolPlace = null;
+        bool foundSchool = false;
+
+        for (int i = 0; i < schoolList.Length; i++)
+        {
+            GameObject schoolPlaceTest = schoolList[Random.Range(0, schoolList.Length)];
+            School schoolTest = schoolPlaceTest.GetComponent<School>();
+
+            if (!schoolTest.maxStudent)
+            {
+                schoolPlace = schoolPlaceTest;
+                school = schoolTest;
+                foundSchool = true;
+                break;
+            }
+        }
+        
+        if (!foundSchool)
+        {
+            Debug.LogWarning(name + " has no school available !");
+            StartCoroutine("RandomWalk");
+            yield break;
+        }
+        
+        school.maxStudent = true;
+        agent.speed = 3f;
+        agent.destination = schoolPlace.transform.position;
+        if (agent.isStopped == true)
         {
             yield return null;
+            Debug.Log(name + " is studing");
+            render1.enabled = false;
+            yield return new WaitForSeconds(numberOfTimeToLearn);
+            updateType();
+            render1.enabled = true;
+            learnButtonUI.interactable = true;
+            goToLearn = false;
         }
-
-        render1.enabled = false;
-        yield return new WaitForSeconds(numberOfTimeToLearn);
-        updateType();
-        render1.enabled = true;
-        learnButtonUI.interactable = true;
     }
 
     IEnumerator needToBuild(Transform destination)
