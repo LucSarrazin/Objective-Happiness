@@ -237,10 +237,13 @@ public class Villager : MonoBehaviour
         
         int currentCount = GameManager.ListBuildingInConstruction.Count;
 
-        // Si un élément a été ajouté
         if (currentCount > previousCount)
         {
-            needToBuild();
+            if (type == types.mason)
+            {
+                StopAllCoroutines();
+                StartCoroutine("needToBuild");
+            }
         }
 
         previousCount = currentCount;
@@ -424,7 +427,17 @@ public class Villager : MonoBehaviour
         {
             yield return null;
         }
-        
+
+        while (constructionSite.isBuilding == true)
+        {
+            yield return null;
+        }
+        if (constructionSite.isBuilding == false)
+        {
+            StartCoroutine("RandomWalk");
+        }
+
+
     }
     
     
