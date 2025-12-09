@@ -16,7 +16,7 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
     [SerializeField] private TextMeshProUGUI rockCounter;
     [SerializeField] private GameObject costPanel;
 
-    private GameObject building;
+    private GameObject building = null;
     private Animator animator;
     private RectTransform rectTransform;
     private Image image;
@@ -89,14 +89,26 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
     {
         if (!button.interactable)
             return;
-        building.GetComponent<ConstructionSite>().Place();
+
         animator.Play("IdleBuild");
+
+        image.color = new Color(1, 1, 1, 1);
+        rectTransform.position = defaultPosition;
+
+        building.GetComponent<ConstructionSite>().Place();
     }
 
     public void OnDisable()
     {
         if (building == null)
             return;
-        building.GetComponent<ConstructionSite>().Place();
+
+        animator.Play("IdleBuild");
+
+        image.color = new Color(1, 1, 1, 1);
+        rectTransform.position = defaultPosition;
+
+        if (building.GetComponent<ConstructionSite>().isPreview)
+            Destroy(building);
     }
 }

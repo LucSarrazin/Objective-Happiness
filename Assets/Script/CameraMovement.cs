@@ -67,7 +67,7 @@ public class CameraMovement : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.CompareTag("House"))
+                if (hit.collider.CompareTag("House") && hit.collider.GetComponentInParent<House>().enabled)
                 {
                     hit.collider.GetComponentInParent<House>().Touched();
                 }
