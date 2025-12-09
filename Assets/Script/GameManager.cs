@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     private bool dayStart = false;
     public bool night = false;
+    public static GameObject[] ListBuildingInConstruction;
     
     public float elapsedTime = 0f;
     private void Awake()
