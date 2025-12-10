@@ -439,14 +439,24 @@ public class Villager : MonoBehaviour
             yield return null;
         }
 
+        constructionSite.masonCount++;
+
         while (constructionSite.isBuilding == true)
         {
+            Debug.Log("Building");
             yield return null;
         }
-        if (constructionSite.isBuilding == false)
+
+        if (GameManager.ListBuildingInConstruction.Count > 0)
+        {
+            StartCoroutine("needToBuild");
+            Debug.Log("start Building");
+        }
+        else
         {
             StartCoroutine("RandomWalk");
             masonUsed = false;
+            Debug.Log("start Random walking");
         }
 
 
