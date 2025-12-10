@@ -40,7 +40,7 @@ public class ConstructionSite : MonoBehaviour
             GameManager.totalRock -= buildingCosts.rockCost;
 
             isPreview = false;
-            GameManager.ListBuildingInConstruction.Add(gameObject);
+            GameManager.Instance.ListBuildingInConstruction.Add(gameObject);
         }
         else
             Destroy(gameObject);
@@ -82,10 +82,11 @@ public class ConstructionSite : MonoBehaviour
 
             if (buildTime >= buildingCosts.buildTime)
             {
+                isBuilding = false;
                 spriteRenderer.color = new Color(1, 1, 1, 1);
                 buildingScript.enabled = true;
                 navMeshObstacle.enabled = true;
-                GameManager.ListBuildingInConstruction.Remove(gameObject);
+                GameManager.Instance.ListBuildingInConstruction.Remove(gameObject);
                 Destroy(this);
             }
         }
