@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bafd1f70aa7eb46b7146e5cc614ed1, type: 3}
+  m_Name: Crypt
+  m_EditorClassIdentifier: 
+  requiredMason: 3
+  woodCost: 0
+  rockCost: 80
+  buildTime: 100
+  buildingPrefab: {fileID: 7544567567371372963, guid: bed69ec59e714e74c9f4d7fc8ca298dd, type: 3}
