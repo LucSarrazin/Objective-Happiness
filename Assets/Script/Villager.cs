@@ -245,7 +245,7 @@ public class Villager : MonoBehaviour
         }
         
         
-        int currentCount = GameManager.ListBuildingInConstruction.Count;
+        int currentCount = GameManager.Instance.ListBuildingInConstruction.Count;
 
         if (currentCount > previousCount)
         {
@@ -416,9 +416,9 @@ public class Villager : MonoBehaviour
         GameObject masonPlace = null;
         ConstructionSite constructionSite = null;
 
-        for (int i = 0; i < GameManager.ListBuildingInConstruction.Count; i++)
+        for (int i = 0; i < GameManager.Instance.ListBuildingInConstruction.Count; i++)
         {
-            GameObject buildingInConstruction = GameManager.ListBuildingInConstruction[i];
+            GameObject buildingInConstruction = GameManager.Instance.ListBuildingInConstruction[i];
             ConstructionSite constructionSiteTest = buildingInConstruction.GetComponent<ConstructionSite>();
             if (constructionSiteTest != null)
             {
@@ -439,14 +439,24 @@ public class Villager : MonoBehaviour
             yield return null;
         }
 
+        constructionSite.masonCount++;
+
         while (constructionSite.isBuilding == true)
         {
+            Debug.Log("Building");
             yield return null;
         }
-        if (constructionSite.isBuilding == false)
+
+        if (GameManager.Instance.ListBuildingInConstruction.Count > 0)
+        {
+            StartCoroutine("needToBuild");
+            Debug.Log("start Building");
+        }
+        else
         {
             StartCoroutine("RandomWalk");
             masonUsed = false;
+            Debug.Log("start Random walking");
         }
 
 

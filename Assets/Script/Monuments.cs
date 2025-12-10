@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Monuments : MonoBehaviour
 {
-    [SerializeField] private int prosperityBoost;
+    [SerializeField] private float prosperityBoost;
 
     private void OnEnable()
     {
-        GameManager.totalProgress += prosperityBoost;
+        GameManager.Instance.totalProgress += prosperityBoost;
     }
 }

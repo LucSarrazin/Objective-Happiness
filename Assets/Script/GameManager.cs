@@ -11,14 +11,16 @@ public class GameManager : MonoBehaviour
     public static int totalWood = 5;
     public static int totalRock = 5;
     public static int totalFood = 5;
-    public static int totalProgress = 0;
     public static int numberMason = 1;
     public static int totalPopulation = 5;
 
+    public static readonly float requieredProgress = 100f;
+
+
+    public float totalProgress = 0f;
     private bool dayStart = false;
     public bool night = false;
-    public static List<GameObject> ListBuildingInConstruction = new List<GameObject>();
-    public List<GameObject> ListBuildingInConstructions;
+    public List<GameObject> ListBuildingInConstruction = new List<GameObject>();
     public static int numberFarm = 0;
     
     public float elapsedTime = 0f;
@@ -57,6 +59,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (totalProgress < requieredProgress)
+            totalProgress += Time.deltaTime * 5; // THIS IS JUST FOR TESTING PURPOSES, DO NOT SHIP, REMOVE LATER
+
         // Timer days of 5 minutes
         if (dayStart == true)
         {
@@ -70,7 +75,6 @@ public class GameManager : MonoBehaviour
             }
             Debug.Log(elapsedTime);
         }
-        ListBuildingInConstructions = ListBuildingInConstruction;
     }
 
     public void StopTime()
