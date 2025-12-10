@@ -24,9 +24,11 @@ public class UIVillager : MonoBehaviour
         Villager.goToLearn = true;
         HideInfo();
         Villager.learnButtonUI.interactable = false;
-        StopAllCoroutines();
-        StartCoroutine("startingSchool");
+
+        Villager.StopAllCoroutines();
+        Villager.StartCoroutine("startingSchool");
     }
+
 
     public void ShowInfo()
     {

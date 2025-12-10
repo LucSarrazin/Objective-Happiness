@@ -98,6 +98,7 @@ public class Villager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         updateType();
         StartCoroutine(RandomWalk());
+        UI.SetActive(false);
     }
 
     void updateType()
@@ -207,7 +208,6 @@ public class Villager : MonoBehaviour
         {
             Debug.Log(name + " is dead from hunger...");
         }
-        UpdateInfo();
 
         // Three Fonction to verify that the villager is where there is food/tree/rock and stop there
         if (woodPlace == true && agent.hasPath == false)
@@ -343,6 +343,7 @@ public class Villager : MonoBehaviour
 
     public void ShowInfo()
     {
+        UpdateInfo();
         villagerUI.ShowInfo();
     }
     
@@ -352,7 +353,6 @@ public class Villager : MonoBehaviour
         UpdateInfo();
         ShowInfo();
         Debug.Log(name + " has been touched");
-        
     }
 
     IEnumerator startingSchool()

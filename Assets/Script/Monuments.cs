@@ -8,6 +8,12 @@ public class Monuments : MonoBehaviour
 
     private void OnEnable()
     {
+        
+        if (GameManager.Instance == null)
+        {
+            GameManager.Instance = FindObjectOfType<GameManager>();
+        }
+        
         GameManager.Instance.totalProgress += prosperityBoost;
     }
 }

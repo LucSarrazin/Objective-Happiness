@@ -2730,8 +2730,10 @@ MonoBehaviour:
   hungrySlider: {fileID: 7458602614339117660}
   ageUI: {fileID: 5734464286143553846}
   UI: {fileID: 3553598134465322720}
+  villagerUI: {fileID: 0}
   dropdownUI: {fileID: 4158013729949774777}
   learnButtonUI: {fileID: 3249734804324867844}
+  UIvillager: {fileID: 6106906622159401953, guid: 77ff0d7792547df459f7b00002aa80ea, type: 3}
 --- !u!1 &6002960990141148878
 GameObject:
   m_ObjectHideFlags: 0
