@@ -5333,19 +5333,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3252377524079231698, guid: 3ef26ff8311ae5d48ac975bd3bc88480, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3252377524079231698, guid: 3ef26ff8311ae5d48ac975bd3bc88480, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3252377524079231698, guid: 3ef26ff8311ae5d48ac975bd3bc88480, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3252377524079231698, guid: 3ef26ff8311ae5d48ac975bd3bc88480, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3252377524079231698, guid: 3ef26ff8311ae5d48ac975bd3bc88480, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5353,7 +5353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3252377524079231698, guid: 3ef26ff8311ae5d48ac975bd3bc88480, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 350.4125
+      value: 350.41248
       objectReference: {fileID: 0}
     - target: {fileID: 3252377524079231698, guid: 3ef26ff8311ae5d48ac975bd3bc88480, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5385,11 +5385,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3252377524079231698, guid: 3ef26ff8311ae5d48ac975bd3bc88480, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -827
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 3252377524079231698, guid: 3ef26ff8311ae5d48ac975bd3bc88480, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 263
+      value: -236
       objectReference: {fileID: 0}
     - target: {fileID: 3252377524079231698, guid: 3ef26ff8311ae5d48ac975bd3bc88480, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
