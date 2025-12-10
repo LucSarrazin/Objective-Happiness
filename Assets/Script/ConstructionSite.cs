@@ -16,6 +16,7 @@ public class ConstructionSite : MonoBehaviour
     private bool canBuild = true;
 
     private float buildTime = 0f;
+    private List<Villager> assignedMasons = new List<Villager>();
     public int masonCount = 0;
     public bool isBuilding = false;
 
@@ -40,7 +41,7 @@ public class ConstructionSite : MonoBehaviour
             GameManager.totalRock -= buildingCosts.rockCost;
 
             isPreview = false;
-            GameManager.ListBuildingInConstruction.Add(gameObject);
+            GameManager.Instance.ListBuildingInConstruction.Add(gameObject);
         }
         else
             Destroy(gameObject);
@@ -53,8 +54,15 @@ public class ConstructionSite : MonoBehaviour
             spriteRenderer.color = new Color(1, 0, 0, alpha);
             canBuild = false;
         }
-        else if (other.gameObject.tag == "Villager" && other.gameObject.GetComponent<Villager>().type == Villager.types.mason)
-            masonCount++;
+        else if (other.gameObject.tag == "Villager")
+        {
+            Villager villager = other.gameObject.GetComponent<Villager>();
+            if (villager.type == Villager.types.mason && !assignedMasons.Contains(villager) && masonCount < buildingCosts.requiredMason)
+            {
+                assignedMasons.Add(villager);
+                masonCount++;
+            }
+        }
     }
 
     public void OnTriggerExit(Collider other)
@@ -64,8 +72,15 @@ public class ConstructionSite : MonoBehaviour
             spriteRenderer.color = new Color(1, 1, 1, alpha);
             canBuild = true;
         }
-        else if (other.gameObject.tag == "Villager" && other.gameObject.GetComponent<Villager>().type == Villager.types.mason)
-            masonCount--;
+        else if (other.gameObject.tag == "Villager")
+        {
+            Villager villager = other.gameObject.GetComponent<Villager>();
+            if (villager.type == Villager.types.mason && assignedMasons.Contains(villager))
+            {
+                assignedMasons.Remove(villager);
+                masonCount--;
+            }
+        }
     }
 
     public void Update()
@@ -82,10 +97,11 @@ public class ConstructionSite : MonoBehaviour
 
             if (buildTime >= buildingCosts.buildTime)
             {
+                isBuilding = false;
                 spriteRenderer.color = new Color(1, 1, 1, 1);
                 buildingScript.enabled = true;
                 navMeshObstacle.enabled = true;
-                GameManager.ListBuildingInConstruction.Remove(gameObject);
+                GameManager.Instance.ListBuildingInConstruction.Remove(gameObject);
                 Destroy(this);
             }
         }
