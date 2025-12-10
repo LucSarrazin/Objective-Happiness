@@ -2659,6 +2659,7 @@ MonoBehaviour:
   ageOfDeath: 50
   sleep: 0
   numberOfTimeToLearn: 15
+  goToLearn: 0
   woodPlace: 0
   rockPlace: 0
   foodPlace: 0
@@ -2666,7 +2667,7 @@ MonoBehaviour:
   rockList: []
   foodList: []
   houseList: []
-  school: {fileID: 0}
+  schoolList: []
   buildingInConstruction: []
   render: {fileID: 4778444648154738307}
   render1: {fileID: 1497828013105722264}
