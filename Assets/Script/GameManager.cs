@@ -6,15 +6,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public static int days = 1;
-    public static float minutes;
-    public static int totalWood = 5;
-    public static int totalRock = 5;
-    public static int totalFood = 5;
-    public static int numberMason = 1;
-    public static int totalPopulation = 5;
+    public int days = 1;
+    public float minutes;
+    public int totalWood = 5;
+    public int totalRock = 5;
+    public int totalFood = 5;
+    public int numberMason = 1;
+    public int totalPopulation = 5;
 
-    public static readonly float requieredProgress = 100f;
+    public readonly float requieredProgress = 100f;
 
 
     public float totalProgress = 0f;

@@ -37,8 +37,8 @@ public class ConstructionSite : MonoBehaviour
     {
         if (canBuild)
         {
-            GameManager.totalWood -= buildingCosts.woodCost;
-            GameManager.totalRock -= buildingCosts.rockCost;
+            GameManager.Instance.totalWood -= buildingCosts.woodCost;
+            GameManager.Instance.totalRock -= buildingCosts.rockCost;
 
             isPreview = false;
             GameManager.Instance.ListBuildingInConstruction.Add(gameObject);

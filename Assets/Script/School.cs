@@ -12,39 +12,14 @@ public class School : MonoBehaviour
     public string name;
     public string type = "School";
     public bool maxStudent;
-    [Space]
-    [Header("School UI Parameters")]
-    [SerializeField] private TextMeshProUGUI nameUI;
-    [SerializeField] private TextMeshProUGUI typeUI;
-    [SerializeField] private Toggle studingUI;
-    [SerializeField] private GameObject UI;
     // Start is called before the first frame update
     void Start()
     {
-        UpdateInfo();
-    }
-
-    private void UpdateInfo()
-    {
-        nameUI.text = name;
-        typeUI.text = type;
-        studingUI.isOn = maxStudent;
-    }
-
-    private void ShowInfo()
-    {
-        UI.SetActive(true);
-    }
-
-    public void HideInfo()
-    {
-        UI.SetActive(false);
+        
     }
     
     public void Touched()
     {
-        UpdateInfo();
-        ShowInfo();
         Debug.Log(name + " has been touched");
         if (maxStudent == true)
         {

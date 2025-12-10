@@ -15,6 +15,6 @@ public class ProgressBarUI : MonoBehaviour
 
     void Update()
     {
-        slider.value = GameManager.Instance.totalProgress / GameManager.requieredProgress * maxValue;
+        slider.value = GameManager.Instance.totalProgress / GameManager.Instance.requieredProgress * maxValue;
     }
 }

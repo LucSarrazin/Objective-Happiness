@@ -61,8 +61,10 @@ public class Villager : MonoBehaviour
     [SerializeField] private Slider hungrySlider;
     [SerializeField] private TextMeshProUGUI ageUI;
     [SerializeField] private GameObject UI;
+    [SerializeField] private UIVillager villagerUI;
     [SerializeField] private TMP_Dropdown dropdownUI;
-    [SerializeField] private Button learnButtonUI;
+    public Button learnButtonUI;
+    [SerializeField] private UIVillager UIvillager;
     
     // private void OnValidate()
     // {
@@ -78,6 +80,16 @@ public class Villager : MonoBehaviour
         foodList = GameObject.FindGameObjectsWithTag("Food");
         houseList = GameObject.FindGameObjectsWithTag("House");
         schoolList = GameObject.FindGameObjectsWithTag("School");
+
+
+        nameUI = GameObject.FindGameObjectWithTag("NameUIVillager").GetComponent<TextMeshProUGUI>();
+        typeUI = GameObject.FindGameObjectWithTag("TypeUIVillager").GetComponent<TextMeshProUGUI>();
+        hungrySlider = GameObject.FindGameObjectWithTag("HungryUIVillager").GetComponent<Slider>();
+        ageUI = GameObject.FindGameObjectWithTag("AgeUIVillager").GetComponent<TextMeshProUGUI>();
+        UI = GameObject.FindGameObjectWithTag("UIVillager");
+        villagerUI = GameObject.FindGameObjectWithTag("UI").GetComponent<UIVillager>();
+        dropdownUI = GameObject.FindGameObjectWithTag("DropdownUIVillager").GetComponent<TMP_Dropdown>();
+        learnButtonUI = GameObject.FindGameObjectWithTag("LearnButtonUIVillager").GetComponent<Button>();
     }
 
     // Start is called before the first frame update
@@ -137,9 +149,9 @@ public class Villager : MonoBehaviour
             if (agent.hasPath == false)
             {
                 Debug.Log(name + " start chooping");
-                yield return new WaitForSeconds(60f);
+                yield return new WaitForSeconds(5f);
                 int wood = Random.Range(1, 4);
-                GameManager.totalWood += wood;
+                GameManager.Instance.totalWood += wood;
                 Debug.Log(name + " get " + wood);
                 agent.destination = woodList[Random.Range(0,woodList.Length)].transform.position;
             }
@@ -154,9 +166,9 @@ public class Villager : MonoBehaviour
             if (agent.hasPath == false)
             {
                 Debug.Log(name + " start minning");
-                yield return new WaitForSeconds(60f);
+                yield return new WaitForSeconds(5f);
                 int rock = Random.Range(1, 4);
-                GameManager.totalWood += rock;
+                GameManager.Instance.totalRock += rock;
                 Debug.Log(name + " get " + rock);
                 agent.destination = rockList[Random.Range(0,rockList.Length)].transform.position;
             }
@@ -171,11 +183,11 @@ public class Villager : MonoBehaviour
             if (agent.hasPath == false)
             {
                 Debug.Log(name + " start searching food");
-                yield return new WaitForSeconds(60f);
+                yield return new WaitForSeconds(5f);
                 int rand = Random.Range(1, 4);
                 float multiplier = Mathf.Pow(1.5f, GameManager.numberFarm);
                 int food = Mathf.RoundToInt(rand * multiplier);
-                GameManager.totalFood += food;
+                GameManager.Instance.totalFood += food;
                 Debug.Log(name + " get " + food);
                 agent.destination = foodList[Random.Range(0,foodList.Length)].transform.position;
             }
@@ -264,6 +276,7 @@ public class Villager : MonoBehaviour
 
     IEnumerator RandomWalk()
     {
+        agent.speed = 1f;
         //Debug.Log("start Walking random");
         if (agent.hasPath == false)
         {
@@ -323,50 +336,28 @@ public class Villager : MonoBehaviour
          ageUI.text = age.ToString();
     }
 
-    private void ShowInfo()
-    {
-        UI.SetActive(true);
-    }
-
     public void HideInfo()
     {
-        UI.SetActive(false);
+        villagerUI.HideInfo();
+    }
+
+    public void ShowInfo()
+    {
+        villagerUI.ShowInfo();
     }
     
     public void Touched()
     {
+        UIvillager.Villager = this;
         UpdateInfo();
         ShowInfo();
         Debug.Log(name + " has been touched");
         
     }
 
-    public void LearnButton()
-    {
-        goToLearn = true;
-        StopAllCoroutines();
-        HideInfo();
-        learnButtonUI.interactable = false;
-        switch (dropdownUI.value)
-        {
-            case 0:
-                type = types.food_picker;
-                break;
-            case 1:
-                type = types.lumberjack;
-                break;
-            case 2:
-                type = types.digger;
-                break;
-            case 3:
-                type = types.mason;
-                break;
-        }
-        StartCoroutine("startingSchool");
-    }
-
     IEnumerator startingSchool()
     {
+        Debug.Log(name + " is starting school");
         School school = null;
         GameObject schoolPlace = null;
         bool foundSchool = false;
@@ -392,6 +383,23 @@ public class Villager : MonoBehaviour
             yield break;
         }
         
+        Debug.Log(name + " find school");
+        switch (dropdownUI.value)
+        {
+            case 0:
+                type = types.food_picker;
+                break;
+            case 1:
+                type = types.lumberjack;
+                break;
+            case 2:
+                type = types.digger;
+                break;
+            case 3:
+                type = types.mason;
+                break;
+        }
+        
         school.maxStudent = true;
         agent.speed = 3f;
         agent.destination = schoolPlace.transform.position;
@@ -403,16 +411,21 @@ public class Villager : MonoBehaviour
         Debug.Log(name + " is studying");
         render1.enabled = false;
         yield return new WaitForSeconds(numberOfTimeToLearn);
-        updateType();
+        Debug.Log(name + " stop studying");
         render1.enabled = true;
+        school.maxStudent = false;
+        updateType();
         learnButtonUI.interactable = true;
         goToLearn = false;
         agent.speed = 1f;
+        Debug.Log(name + " finished studying");
     }
 
+    #region MasonBuildRegion
     IEnumerator needToBuild()
     {
-        int masonCountMax = 0;
+        int masonCountMax = -1;
+        float bestDistance = Mathf.Infinity;
         GameObject masonPlace = null;
         ConstructionSite constructionSite = null;
 
@@ -422,16 +435,37 @@ public class Villager : MonoBehaviour
             ConstructionSite constructionSiteTest = buildingInConstruction.GetComponent<ConstructionSite>();
             if (constructionSiteTest != null)
             {
-                if (masonCountMax > constructionSiteTest.masonCount)
+            //     if (masonCountMax < constructionSiteTest.masonCount)
+            //     {
+            //         masonCountMax = constructionSiteTest.masonCount;
+            //     }
+            //     constructionSite = constructionSiteTest;
+            //     masonPlace = buildingInConstruction;
+                if (constructionSiteTest.isBuilding == false)
                 {
-                    masonCountMax = constructionSiteTest.masonCount;
+                    float dist = Vector3.Distance(transform.position, buildingInConstruction.transform.position);
+                    
+                    if (constructionSiteTest.masonCount > masonCountMax)
+                    {
+                        masonCountMax = constructionSiteTest.masonCount;
+                        constructionSite = constructionSiteTest;
+                        masonPlace = buildingInConstruction;
+                        bestDistance = dist;
+                    }
+                    
+                    else if (constructionSiteTest.masonCount == masonCountMax && dist < bestDistance)
+                    {
+                        constructionSite = constructionSiteTest;
+                        masonPlace = buildingInConstruction;
+                        bestDistance = dist;
+                    }
+                    
                 }
-                constructionSite = constructionSiteTest;
-                masonPlace = buildingInConstruction;
-                break;
             }
+            
         }
         
+        agent.speed = 5f;
         agent.destination = masonPlace.transform.position;
         
         while (agent.pathPending || agent.remainingDistance > 0.2f)
@@ -439,11 +473,9 @@ public class Villager : MonoBehaviour
             yield return null;
         }
 
-        constructionSite.masonCount++;
-
         while (constructionSite.isBuilding == true)
         {
-            Debug.Log("Building");
+            //Debug.Log("Building");
             yield return null;
         }
 
@@ -462,5 +494,6 @@ public class Villager : MonoBehaviour
 
     }
     
+    #endregion
     
 }

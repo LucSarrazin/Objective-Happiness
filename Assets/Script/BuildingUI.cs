@@ -44,14 +44,14 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     public void Update()
     {
-        masonCounter.color = (GameManager.numberMason < buildingCosts.requiredMason) ? Color.red : Color.black;
-        woodCounter.color = (GameManager.totalWood < buildingCosts.woodCost) ? Color.red : Color.black;
-        rockCounter.color = (GameManager.totalRock < buildingCosts.rockCost) ? Color.red : Color.black;
+        masonCounter.color = (GameManager.Instance.numberMason < buildingCosts.requiredMason) ? Color.red : Color.black;
+        woodCounter.color = (GameManager.Instance.totalWood < buildingCosts.woodCost) ? Color.red : Color.black;
+        rockCounter.color = (GameManager.Instance.totalRock < buildingCosts.rockCost) ? Color.red : Color.black;
 
 
-        button.interactable = GameManager.numberMason >= buildingCosts.requiredMason &&
-                              GameManager.totalWood >= buildingCosts.woodCost &&
-                              GameManager.totalRock >= buildingCosts.rockCost;
+        button.interactable = GameManager.Instance.numberMason >= buildingCosts.requiredMason &&
+                              GameManager.Instance.totalWood >= buildingCosts.woodCost &&
+                              GameManager.Instance.totalRock >= buildingCosts.rockCost;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

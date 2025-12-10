@@ -14,6 +14,14 @@ TagManager:
   - Farm
   - School
   - Crypt
+  - NameUIVillager
+  - TypeUIVillager
+  - HungryUIVillager
+  - AgeUIVillager
+  - DropdownUIVillager
+  - LearnButtonUIVillager
+  - UIVillager
+  - UI
   layers:
   - Default
   - TransparentFX
