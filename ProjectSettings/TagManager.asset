@@ -13,6 +13,7 @@ TagManager:
   - Museum
   - Farm
   - School
+  - Crypt
   layers:
   - Default
   - TransparentFX

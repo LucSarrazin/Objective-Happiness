@@ -3275,6 +3275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crypt
       objectReference: {fileID: 0}
+    - target: {fileID: 7544567567371372963, guid: bed69ec59e714e74c9f4d7fc8ca298dd, type: 3}
+      propertyPath: m_TagString
+      value: Crypt
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
