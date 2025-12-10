@@ -447,7 +447,7 @@ public class Villager : MonoBehaviour
             yield return null;
         }
 
-        if (GameManager.ListBuildingInConstruction.Count > 0)
+        if (GameManager.Instance.ListBuildingInConstruction.Count > 0)
         {
             StartCoroutine("needToBuild");
             Debug.Log("start Building");
