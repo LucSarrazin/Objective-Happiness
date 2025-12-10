@@ -10,7 +10,7 @@ public class School : MonoBehaviour
 {
     [Header("School Parameters")]
     public string name;
-    public string type = "House";
+    public string type = "School";
     public bool maxStudent;
     [Space]
     [Header("School UI Parameters")]
