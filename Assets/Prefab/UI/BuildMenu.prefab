@@ -31,9 +31,9 @@ RectTransform:
   m_Children:
   - {fileID: 4484990327249006830}
   - {fileID: 2923182937371594223}
-  - {fileID: 7875038942202740248}
   - {fileID: 8683261757809212980}
   - {fileID: 6466733441775428082}
+  - {fileID: 7875038942202740248}
   m_Father: {fileID: 3755982632027657556}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -608,7 +608,7 @@ PrefabInstance:
     - target: {fileID: 1484730297293267667, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: buildingCosts
       value: 
-      objectReference: {fileID: 11400000, guid: 32e1c6958804475439eefc34c99eaf89, type: 2}
+      objectReference: {fileID: 11400000, guid: 6caddebb81d7eeb4d9397de366edd711, type: 2}
     - target: {fileID: 1484730297293267667, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: buildingPrefab
       value: 
@@ -620,14 +620,14 @@ PrefabInstance:
     - target: {fileID: 2571564666811817773, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c008472d77a4a6c4baa28c776ad82c50, type: 3}
+      objectReference: {fileID: 21300000, guid: 526c7337fad599c43a91a4b2291f4394, type: 3}
     - target: {fileID: 2571564666811817773, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4034472647195931997, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_Name
-      value: Librarie
+      value: Crypt
       objectReference: {fileID: 0}
     - target: {fileID: 8068084043511848938, guid: 02508180a9d64994e969bf4ea4eee80f, type: 3}
       propertyPath: m_text
