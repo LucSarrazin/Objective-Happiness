@@ -18,10 +18,10 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 7.2
+    m_Value: 13.85
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 21.8
+    m_Value: 28.92
   gaussianMaxRadius:
     m_OverrideState: 1
     m_Value: 1
@@ -67,7 +67,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.38
+    m_Value: 0.109
   smoothness:
     m_OverrideState: 1
     m_Value: 1
@@ -92,7 +92,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.584
   response:
     m_OverrideState: 1
     m_Value: 0.8
@@ -166,7 +166,7 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 7.23
+    m_Value: 3.02
   scatter:
     m_OverrideState: 1
     m_Value: 0.7
