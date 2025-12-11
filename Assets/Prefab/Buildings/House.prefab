@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingCosts: {fileID: 11400000, guid: 32e1c6958804475439eefc34c99eaf89, type: 2}
   buildingScript: {fileID: 1372710838100136041}
-  spriteRenderer: {fileID: 0}
+  renderer: {fileID: 3255055388089437977}
   isPreview: 1
   masonCount: 0
   isBuilding: 0
