@@ -186,7 +186,7 @@ public class Villager : MonoBehaviour
                 Debug.Log(name + " start searching food");
                 yield return new WaitForSeconds(5f);
                 int rand = Random.Range(1, 4);
-                float multiplier = Mathf.Pow(1.5f, GameManager.numberFarm);
+                float multiplier = Mathf.Pow(1.5f, GameManager.Instance.numberFarm);
                 int food = Mathf.RoundToInt(rand * multiplier);
                 GameManager.Instance.totalFood += food;
                 Debug.Log(name + " get " + food);

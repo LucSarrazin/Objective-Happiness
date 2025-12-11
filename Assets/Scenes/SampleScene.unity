@@ -4884,15 +4884,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   days: 1
-  minutes: 0
+  minutes: 350
   totalWood: 5
   totalRock: 5
   totalFood: 5
   numberMason: 1
   totalPopulation: 5
   totalProgress: 0
+  dayStart: 0
   night: 0
   ListBuildingInConstruction: []
+  numberFarm: 0
+  directionLight: {fileID: 860507041}
+  plane: {fileID: 579653137}
   elapsedTime: 0
 --- !u!4 &1860822421
 Transform:

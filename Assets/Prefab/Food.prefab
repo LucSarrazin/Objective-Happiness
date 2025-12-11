@@ -99,7 +99,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: -0.03, y: -0.02, z: 0}
+  m_Center: {x: -0.03, y: -0.02, z: -7.84}
   m_TimeToStationary: 0.5
 --- !u!1 &434766824315932509
 GameObject:
@@ -257,7 +257,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: -0.03, y: -0.02, z: 0}
+  m_Center: {x: 0.53, y: -0.02, z: -7.84}
   m_TimeToStationary: 0.5
 --- !u!1 &5849241533998162474
 GameObject:
@@ -358,7 +358,7 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: -0.03, y: -0.02, z: 0}
+  m_Center: {x: -0.03, y: -0.02, z: -7.84}
   m_TimeToStationary: 0.5
 --- !u!1 &8970051503148441236
 GameObject:
@@ -459,5 +459,5 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: -0.03, y: -0.02, z: 0}
+  m_Center: {x: -0.03, y: -0.02, z: -7.84}
   m_TimeToStationary: 0.5

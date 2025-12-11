@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public int days = 1;
-    public float minutes;
+    public float minutes = 350;
     public int totalWood = 5;
     public int totalRock = 5;
     public int totalFood = 5;
@@ -18,10 +18,12 @@ public class GameManager : MonoBehaviour
 
 
     public float totalProgress = 0f;
-    private bool dayStart = false;
+    [SerializeField] private bool dayStart = false;
     public bool night = false;
     public List<GameObject> ListBuildingInConstruction = new List<GameObject>();
-    public static int numberFarm = 0;
+    public int numberFarm = 0;
+    public GameObject directionLight;
+    public GameObject plane;
     
     public float elapsedTime = 0f;
     private void Awake()
@@ -30,10 +32,6 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
     // Start is called before the first frame update
@@ -74,6 +72,12 @@ public class GameManager : MonoBehaviour
                 night = true;
             }
             Debug.Log(elapsedTime);
+            directionLight.transform.RotateAround(
+                plane.transform.position,
+                Vector3.right, 
+                Time.deltaTime * 0.1f
+            );
+
         }
     }
 
