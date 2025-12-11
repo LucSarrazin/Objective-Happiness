@@ -624,8 +624,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowRectTransform: {fileID: 227989536}
-  x3: {fileID: 0}
-  playPause: {fileID: 0}
+  x3: {fileID: 1233982545}
+  playPause: {fileID: 903369468}
   dayStartRotation: -55.55
   nightStartRotation: 264.819
 --- !u!1 &711108522
@@ -928,7 +928,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 412054268}
         m_TargetAssemblyTypeName: Clock, Assembly-CSharp
-        m_MethodName: ChangeSpeed
+        m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

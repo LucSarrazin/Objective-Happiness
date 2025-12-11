@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
     public void SetTimeSpeed(float speed)
     {
         currentTimeScale = speed;
-        Time.timeScale = currentTimeScale;
+        if(Time.timeScale != 0)
+            Time.timeScale = currentTimeScale;
     }
 }
