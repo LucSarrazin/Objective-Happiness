@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public int days = 1;
-    public float minutes = 350;
+    public float dayDuration = 300;
+    private float sunRotationSpeed;
     public int totalWood = 5;
     public int totalRock = 5;
     public int totalFood = 5;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public bool night = false;
     public List<GameObject> ListBuildingInConstruction = new List<GameObject>();
     public GameObject[] ListFarm;
+    private int previousCount = 0;
     public int numberFarm = 0;
     public GameObject directionLight;
     public GameObject plane;
@@ -49,8 +51,6 @@ public class GameManager : MonoBehaviour
         numberFarm = 0;
     }
     
-    
-
     void StartDay()
     {
         
@@ -65,9 +65,9 @@ public class GameManager : MonoBehaviour
         // Timer days of 5 minutes
         if (dayStart == true)
         {
-            minutes -= Time.deltaTime;
-            elapsedTime = Mathf.Floor(minutes / 60);
-            if (minutes <= 0)
+            dayDuration -= Time.deltaTime;
+            elapsedTime = Mathf.Floor(dayDuration / 60);
+            if (dayDuration <= 0)
             {
                 Debug.Log("Nul!");
                 dayStart = false;
@@ -84,18 +84,27 @@ public class GameManager : MonoBehaviour
                 
             }
             Debug.Log(elapsedTime);
-            directionLight.transform.RotateAround(plane.transform.position, Vector3.right, Time.deltaTime * 0.1f);
             
         }
-        
-        ListFarm = GameObject.FindGameObjectsWithTag("Farm");
-        for (int i = 0; i < ListFarm.Length; i++)
+
+        if (night == true)
         {
-            if (ListFarm[i].GetComponent<ConstructionSite>().isActiveAndEnabled == false)
+            directionLight.transform.RotateAround(plane.transform.position, Vector3.right, Time.deltaTime * 60);
+        }
+
+        
+        if (ListFarm.Length > previousCount)
+        {
+            ListFarm = GameObject.FindGameObjectsWithTag("Farm");
+            for (int i = 0; i < ListFarm.Length; i++)
             {
-                numberFarm++;
+                if (ListFarm[i].GetComponent<ConstructionSite>().isActiveAndEnabled == false)
+                {
+                    numberFarm++;
+                }
             }
         }
+        previousCount = ListFarm.Length;
     }
 
     public void StopTime()

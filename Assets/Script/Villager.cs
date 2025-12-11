@@ -137,6 +137,7 @@ public class Villager : MonoBehaviour
             case types.mason:
                 Debug.Log(name + " villager is mason");
                 render1.sprite = spriteList[3];
+                GameManager.Instance.numberMason++;
                 StopAllCoroutines();
                 StartCoroutine("RandomWalk");
                 break;
@@ -385,6 +386,10 @@ public class Villager : MonoBehaviour
         }
         
         Debug.Log(name + " find school");
+        if (type == types.mason)
+        {
+            GameManager.Instance.numberMason--;
+        }
         switch (dropdownUI.value)
         {
             case 0:
