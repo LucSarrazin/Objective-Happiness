@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public float totalProgress = 0f;
     public bool night = false;
     public List<GameObject> ListBuildingInConstruction = new List<GameObject>();
+    public List<GameObject> Villagers = new List<GameObject>();
     public GameObject[] ListFarm;
     private int previousCount = 0;
     public int numberFarm = 0;
@@ -81,6 +82,13 @@ public class GameManager : MonoBehaviour
         if (elapsedTime >= dayDuration + nightDuration) // New Day
         {
             // Consume food and kill surplus
+            if (totalFood <= 0 && Villagers.Count > 0)
+            {
+                GameObject villager = Villagers[Random.Range(0, Villagers.Count)];
+                Villagers.Remove(villager);
+                Destroy(villager);
+                totalPopulation--;
+            }
 
             // Check for defeat
 

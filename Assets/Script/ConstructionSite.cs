@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class ConstructionSite : MonoBehaviour
 {
-    [SerializeField] private BuildingCosts buildingCosts;
+    [SerializeField] public BuildingCosts buildingCosts;
     [SerializeField] private MonoBehaviour buildingScript;
     [SerializeField] private Renderer renderer;
     private NavMeshObstacle navMeshObstacle;
@@ -16,7 +16,7 @@ public class ConstructionSite : MonoBehaviour
     private bool canBuild = true;
 
     private float buildTime = 0f;
-    private List<Villager> assignedMasons = new List<Villager>();
+    public List<Villager> assignedMasons = new List<Villager>();
     public int masonCount = 0;
     public bool isBuilding = false;
 
