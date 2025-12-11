@@ -45,24 +45,11 @@ public class CameraMovement : MonoBehaviour
             moveDir += Vector3.forward;
 
         transform.position += moveDir * speed * Time.unscaledDeltaTime;
-
         
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.position += Vector3.back * speed * Time.unscaledDeltaTime;
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.position += Vector3.forward * speed * Time.unscaledDeltaTime;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.position += Vector3.left * speed * Time.unscaledDeltaTime;
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.position += Vector3.right * speed * Time.unscaledDeltaTime;
-        }
+        float clampedX = Mathf.Clamp(transform.position.x, -30f, 30f);
+        float clampedY = transform.position.y;
+        float clampedZ = Mathf.Clamp(transform.position.z, -21f, 27f);
+        transform.position = new Vector3(clampedX, clampedY, clampedZ);
 
         if (cam.fieldOfView > 20f)
         {

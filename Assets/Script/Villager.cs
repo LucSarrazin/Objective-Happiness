@@ -61,7 +61,6 @@ public class Villager : MonoBehaviour
     [Header("Villager UI Parameters")]
     [SerializeField] private TextMeshProUGUI nameUI;
     [SerializeField] private TextMeshProUGUI typeUI;
-    [SerializeField] private Slider hungrySlider;
     [SerializeField] private TextMeshProUGUI ageUI;
     [SerializeField] private GameObject UI;
     [SerializeField] private UIVillager villagerUI;
@@ -86,7 +85,6 @@ public class Villager : MonoBehaviour
 
         nameUI = GameObject.FindGameObjectWithTag("NameUIVillager").GetComponent<TextMeshProUGUI>();
         typeUI = GameObject.FindGameObjectWithTag("TypeUIVillager").GetComponent<TextMeshProUGUI>();
-        hungrySlider = GameObject.FindGameObjectWithTag("HungryUIVillager").GetComponent<Slider>();
         ageUI = GameObject.FindGameObjectWithTag("AgeUIVillager").GetComponent<TextMeshProUGUI>();
         UI = GameObject.FindGameObjectWithTag("UIVillager");
         villagerUI = GameObject.FindGameObjectWithTag("UI").GetComponent<UIVillager>();
