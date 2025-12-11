@@ -8445,6 +8445,7 @@ MonoBehaviour:
   totalProgress: 0
   night: 0
   ListBuildingInConstruction: []
+  Villagers: []
   ListFarm: []
   numberFarm: 0
   directionLight: {fileID: 860507041}
