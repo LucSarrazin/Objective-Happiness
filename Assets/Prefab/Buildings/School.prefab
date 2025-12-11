@@ -228,6 +228,7 @@ MonoBehaviour:
   buildingCosts: {fileID: 11400000, guid: 51824c93d8c07dd48960b43f09cc0368, type: 2}
   buildingScript: {fileID: 5216516688462456141}
   renderer: {fileID: 1738774305258353521}
+  animator: {fileID: 470928566615135852}
   isPreview: 1
   masonCount: 0
   isBuilding: 0

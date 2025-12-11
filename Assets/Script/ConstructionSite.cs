@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class ConstructionSite : MonoBehaviour
 {
-    [SerializeField] private BuildingCosts buildingCosts;
+    [SerializeField] public BuildingCosts buildingCosts;
     [SerializeField] private MonoBehaviour buildingScript;
     [SerializeField] private Renderer renderer;
+    [SerializeField] private Animator animator;
     private NavMeshObstacle navMeshObstacle;
 
     public bool isPreview = true;
@@ -16,7 +18,7 @@ public class ConstructionSite : MonoBehaviour
     private bool canBuild = true;
 
     private float buildTime = 0f;
-    private List<Villager> assignedMasons = new List<Villager>();
+    public List<Villager> assignedMasons = new List<Villager>();
     public int masonCount = 0;
     public bool isBuilding = false;
 
@@ -89,7 +91,11 @@ public class ConstructionSite : MonoBehaviour
         if (isPreview)
             return;
 
-        renderer.material.SetColor("_ColorChange", new Color(1, 1, 1, buildTime / buildingCosts.buildTime * .6f + .2f));  // starts at .2, jumps from .8 to 1 when finishing, for clear demarcation
+        // float progress = buildTime / buildingCosts.buildTime * .6f + .2f; // starts at .2, jumps from .8 to 1 when finishing, for clear demarcation
+        // renderer.material.SetColor("_ColorChange", new Color(1, 1, 1, progress));
+
+        // while not constructed... so sad we couldn't get transparency to work properly in URP
+        animator.Play("house wiggle");
 
         isBuilding = masonCount >= buildingCosts.requiredMason;
         if (isBuilding)
@@ -98,6 +104,8 @@ public class ConstructionSite : MonoBehaviour
 
             if (buildTime >= buildingCosts.buildTime)
             {
+                animator.Play("idle");
+
                 isBuilding = false;
                 renderer.material.SetColor("_ColorChange", new Color(1, 1, 1, 1));
                 buildingScript.enabled = true;
