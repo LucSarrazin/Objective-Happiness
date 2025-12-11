@@ -5,6 +5,7 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -24,6 +25,7 @@ public class Villager : MonoBehaviour
     };
     public types type;
     public Sprite[] spriteList;
+    public Material[] materialList;
     public bool tired;
     public bool hungry;
     public int age = 10;
@@ -106,13 +108,13 @@ public class Villager : MonoBehaviour
         {
             case types.vagrant:
                 Debug.Log(name + " villager is vagrant");
-                render1.sprite = spriteList[4];
+                render.material = materialList[4];
                 StopAllCoroutines();
                 StartCoroutine("RandomWalk");
                 break;
             case types.food_picker:
                 Debug.unityLogger.Log(name + " villager is food picker");
-                render1.sprite = spriteList[1];
+                render.material = materialList[1];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a food picker and going to take food");
                 agent.destination = foodList[Random.Range(0,foodList.Length)].transform.position;
@@ -120,7 +122,7 @@ public class Villager : MonoBehaviour
                 break;
             case types.lumberjack:
                 Debug.Log(name + " villager is lumberjack");
-                render1.sprite = spriteList[2];
+                render.material = materialList[2];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a lumberjack and going to take wood");
                 agent.destination = woodList[Random.Range(0,woodList.Length)].transform.position;
@@ -128,7 +130,7 @@ public class Villager : MonoBehaviour
                 break;
             case types.digger:
                 Debug.Log(name + " villager is digger");
-                render1.sprite = spriteList[0];
+                render.material = materialList[0];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a digger and going to mine rock");
                 agent.destination = rockList[Random.Range(0,rockList.Length)].transform.position;
@@ -136,7 +138,7 @@ public class Villager : MonoBehaviour
                 break;
             case types.mason:
                 Debug.Log(name + " villager is mason");
-                render1.sprite = spriteList[3];
+                render.material = materialList[3];
                 GameManager.Instance.numberMason++;
                 StopAllCoroutines();
                 StartCoroutine("RandomWalk");
@@ -416,10 +418,10 @@ public class Villager : MonoBehaviour
             yield return null;
         }
         Debug.Log(name + " is studying");
-        render1.enabled = false;
+        render.enabled = false;
         yield return new WaitForSeconds(numberOfTimeToLearn);
         Debug.Log(name + " stop studying");
-        render1.enabled = true;
+        render.enabled = true;
         school.maxStudent = false;
         updateType();
         learnButtonUI.interactable = true;
