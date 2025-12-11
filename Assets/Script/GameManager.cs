@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool dayStart = false;
     public bool night = false;
     public List<GameObject> ListBuildingInConstruction = new List<GameObject>();
+    public GameObject[] ListFarm;
     public int numberFarm = 0;
     public GameObject directionLight;
     public GameObject plane;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         days = 1;
+        dayStart = true;
         totalFood = 5;
         totalRock= 5;
         totalWood = 5;
@@ -70,14 +72,29 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Nul!");
                 dayStart = false;
                 night = true;
+                if (totalPopulation > 0)
+                {
+                    // Faire POP le journal ici
+                    days += 1;  
+                }
+                else
+                {
+                    
+                }
+                
             }
             Debug.Log(elapsedTime);
-            directionLight.transform.RotateAround(
-                plane.transform.position,
-                Vector3.right, 
-                Time.deltaTime * 0.1f
-            );
-
+            directionLight.transform.RotateAround(plane.transform.position, Vector3.right, Time.deltaTime * 0.1f);
+            
+        }
+        
+        ListFarm = GameObject.FindGameObjectsWithTag("Farm");
+        for (int i = 0; i < ListFarm.Length; i++)
+        {
+            if (ListFarm[i].GetComponent<ConstructionSite>().isActiveAndEnabled == false)
+            {
+                numberFarm++;
+            }
         }
     }
 
