@@ -24,7 +24,28 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 direction = move.ReadValue<Vector2>();
+        float edgeSize = 20f; 
+        Vector3 moveDir = Vector3.zero;
+        Vector3 mousePos = Input.mousePosition;
+
+        // Gauche
+        if (mousePos.x <= edgeSize)
+            moveDir += Vector3.left;
+
+        // Droite
+        if (mousePos.x >= Screen.width - edgeSize)
+            moveDir += Vector3.right;
+
+        // Bas
+        if (mousePos.y <= edgeSize)
+            moveDir += Vector3.back;
+
+        // Haut
+        if (mousePos.y >= Screen.height - edgeSize)
+            moveDir += Vector3.forward;
+
+        transform.position += moveDir * speed * Time.unscaledDeltaTime;
+
         
         if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -48,7 +69,6 @@ public class CameraMovement : MonoBehaviour
             if (Input.GetAxis("Mouse ScrollWheel") > 0f)
             {
                 cam.fieldOfView -= scrollSpeed * Time.unscaledDeltaTime;
-                //transform.position += Vector3.down * scrollSpeed * Time.deltaTime;
             }
         }
         if (cam.fieldOfView < 60f)
@@ -56,8 +76,11 @@ public class CameraMovement : MonoBehaviour
             if (Input.GetAxis("Mouse ScrollWheel") < 0f)
             {
                 cam.fieldOfView += scrollSpeed * Time.unscaledDeltaTime;
-                //transform.position += Vector3.up * scrollSpeed * Time.deltaTime;
             }
+        }
+        if (!isOverUi())
+        {
+            transform.position += moveDir * speed * Time.unscaledDeltaTime;
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isOverUi())
