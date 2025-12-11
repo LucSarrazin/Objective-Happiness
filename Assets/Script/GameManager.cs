@@ -85,12 +85,25 @@ public class GameManager : MonoBehaviour
         if (elapsedTime >= dayDuration + nightDuration) // New Day
         {
             // Consume food and kill surplus
-            if (totalFood <= 0 && Villagers.Count > 0)
+            int villagersCount = Villagers.Count;
+
+            if (totalFood >= villagersCount)
             {
-                GameObject villager = Villagers[Random.Range(0, Villagers.Count)];
-                Villagers.Remove(villager);
-                Destroy(villager);
-                totalPopulation--;
+                totalFood -= villagersCount;
+            }
+            else
+            {
+                int deaths = villagersCount - totalFood;
+
+                totalFood = 0;
+
+                for (int i = 0; i < deaths; i++)
+                {
+                    GameObject villager = Villagers[Random.Range(0, Villagers.Count)];
+                    Villagers.Remove(villager);
+                    villager.GetComponent<Villager>().needToEat = true;
+                    totalPopulation--;
+                }
             }
 
             for (int i = 0; i < Villagers.Count; i++)
