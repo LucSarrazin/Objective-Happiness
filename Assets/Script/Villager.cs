@@ -437,7 +437,7 @@ public class Villager : MonoBehaviour
 
         while (GameManager.Instance.ListBuildingInConstruction.Count > 0)
         {
-            int masonCountMax = -1;
+            int masonCountMax = 0;
             float bestDistance = Mathf.Infinity;
             GameObject masonPlace = null;
             ConstructionSite constructionSite = null;
@@ -447,7 +447,9 @@ public class Villager : MonoBehaviour
                 GameObject building = GameManager.Instance.ListBuildingInConstruction[i];
                 ConstructionSite site = building.GetComponent<ConstructionSite>();
 
-                if (site != null && !site.isBuilding)
+                if (site != null &&
+                    !site.isBuilding &&
+                    masonCountMax < site.masonCount)
                 {
                     float dist = Vector3.Distance(transform.position, building.transform.position);
 
