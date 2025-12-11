@@ -207,6 +207,12 @@ public class Villager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        if (needToEat == true)
+        {
+            Debug.Log(name + " is dead from eat...");
+            Destroy(this.gameObject);
+        }
+
         // Three Fonction to verify that the villager is where there is food/tree/rock and stop there
         if (woodPlace == true && agent.hasPath == false)
         {
@@ -255,6 +261,7 @@ public class Villager : MonoBehaviour
                     StopAllCoroutines();
                     StartCoroutine("RandomWalk");
                     GameManager.Instance.totalFood--;
+                    GameManager.Instance.Villagers.Remove(this.gameObject);
                 }
             }
             
@@ -338,6 +345,7 @@ public class Villager : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine("RandomWalk");
                 GameManager.Instance.totalFood--;
+                GameManager.Instance.Villagers.Remove(this.gameObject);
             }
             StartCoroutine("RandomWalk");
             yield break;
