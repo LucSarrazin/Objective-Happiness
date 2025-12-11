@@ -876,6 +876,10 @@ PrefabInstance:
       propertyPath: name
       value: Maison de Feur
       objectReference: {fileID: 0}
+    - target: {fileID: 4162136511051267071, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5932472216744719857, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.21
