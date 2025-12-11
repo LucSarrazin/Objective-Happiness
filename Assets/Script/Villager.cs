@@ -64,7 +64,6 @@ public class Villager : MonoBehaviour
     [SerializeField] private UIVillager villagerUI;
     [SerializeField] private TMP_Dropdown dropdownUI;
     public Button learnButtonUI;
-    [SerializeField] private UIVillager UIvillager;
     
     // private void OnValidate()
     // {
@@ -202,11 +201,13 @@ public class Villager : MonoBehaviour
         if (age >= ageOfDeath)
         {
             Debug.Log(name + " is dead from age...");
+            Destroy(this.gameObject);
         }
 
         if (hunger <= 0)
         {
             Debug.Log(name + " is dead from hunger...");
+            Destroy(this.gameObject);
         }
 
         // Three Fonction to verify that the villager is where there is food/tree/rock and stop there
@@ -349,7 +350,7 @@ public class Villager : MonoBehaviour
     
     public void Touched()
     {
-        UIvillager.Villager = this;
+        villagerUI.Villager = this;
         UpdateInfo();
         ShowInfo();
         Debug.Log(name + " has been touched");
