@@ -28,6 +28,7 @@ public class Villager : MonoBehaviour
     public Material[] materialList;
     public bool tired;
     public bool hungry;
+    public bool needToEat;
     public int age = 10;
     public int ageOfDeath;
     public bool sleep = false;
@@ -98,6 +99,7 @@ public class Villager : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         updateType();
+        GameManager.Instance.Villagers.Add(this.gameObject);
         StartCoroutine(RandomWalk());
         UI.SetActive(false);
     }
@@ -207,12 +209,6 @@ public class Villager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (hungry == true)
-        {
-            Debug.Log(name + " is dead from hunger...");
-            Destroy(this.gameObject);
-        }
-
         // Three Fonction to verify that the villager is where there is food/tree/rock and stop there
         if (woodPlace == true && agent.hasPath == false)
         {
@@ -235,6 +231,7 @@ public class Villager : MonoBehaviour
 
         if (GameManager.Instance.night == true)
         {
+            tired = true;
             if (type != types.vagrant)
             {
                 if (sleep == false)
@@ -248,6 +245,21 @@ public class Villager : MonoBehaviour
                     StartCoroutine("goBackHome");
                 }
             }
+            else
+            {
+                if (GameManager.Instance.totalFood <= 0)
+                {
+                    Debug.Log(name + " is dead from hunger...");
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    StopAllCoroutines();
+                    StartCoroutine("RandomWalk");
+                    GameManager.Instance.totalFood--;
+                }
+            }
+            
         }
 
         if (schoolList.Length == 0)
@@ -318,6 +330,17 @@ public class Villager : MonoBehaviour
             Debug.LogWarning(name + " has no house available !");
             tired = true;
             
+            if (GameManager.Instance.totalFood <= 0)
+            {
+                Debug.Log(name + " is dead from hunger...");
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                StopAllCoroutines();
+                StartCoroutine("RandomWalk");
+                GameManager.Instance.totalFood--;
+            }
             StartCoroutine("RandomWalk");
             yield break;
         }
@@ -429,63 +452,66 @@ public class Villager : MonoBehaviour
         agent.speed = 1f;
         Debug.Log(name + " finished studying");
     }
+    
+#region MasonBuildRegion
+private bool masonRunning = false;
 
-    #region MasonBuildRegion
-    private bool masonRunning = false;
-    IEnumerator needToBuild()
+IEnumerator needToBuild()
+{
+    if (masonRunning) yield break;
+    masonRunning = true;
+    
+    while (GameManager.Instance.ListBuildingInConstruction.Count > 0)
     {
-        if (masonRunning) yield break;
-        masonRunning = true;
-
-        while (GameManager.Instance.ListBuildingInConstruction.Count > 0)
+        GameObject masonPlace = null;
+        ConstructionSite constructionSite = null;
+        int highestNeedForMasons = 0;
+        float bestDistance = Mathf.Infinity;
+        
+        for (int i = 0; i < GameManager.Instance.ListBuildingInConstruction.Count; i++)
         {
-            int masonCountMax = 0;
-            float bestDistance = Mathf.Infinity;
-            GameObject masonPlace = null;
-            ConstructionSite constructionSite = null;
-
-            for (int i = 0; i < GameManager.Instance.ListBuildingInConstruction.Count; i++)
+            GameObject building = GameManager.Instance.ListBuildingInConstruction[i];
+            ConstructionSite site = building.GetComponent<ConstructionSite>();
+            
+            if (site != null && site.masonCount < site.buildingCosts.requiredMason)
             {
-                GameObject building = GameManager.Instance.ListBuildingInConstruction[i];
-                ConstructionSite site = building.GetComponent<ConstructionSite>();
-
-                if (site != null &&
-                    !site.isBuilding &&
-                    masonCountMax < site.masonCount)
+                int masonNeeded = site.buildingCosts.requiredMason - site.masonCount;
+                float dist = Vector3.Distance(transform.position, building.transform.position);
+                
+                if (masonNeeded > highestNeedForMasons || 
+                    (masonNeeded == highestNeedForMasons && dist < bestDistance))
                 {
-                    float dist = Vector3.Distance(transform.position, building.transform.position);
-
-                    if (site.masonCount > masonCountMax ||
-                        (site.masonCount == masonCountMax && dist < bestDistance))
-                    {
-                        masonCountMax = site.masonCount;
-                        constructionSite = site;
-                        masonPlace = building;
-                        bestDistance = dist;
-                    }
+                    highestNeedForMasons = masonNeeded;
+                    bestDistance = dist;
+                    constructionSite = site;
+                    masonPlace = building;
                 }
             }
-
-            if (masonPlace == null)
-                break;
-
-            agent.speed = 5f;
-            agent.destination = masonPlace.transform.position;
-
-            while (agent.pathPending || agent.remainingDistance > 0.2f)
-                yield return null;
-
-            while (constructionSite.isBuilding)
-                yield return null;
-
+        }
+        
+        if (masonPlace == null || highestNeedForMasons == 0)
+            break;
+        
+        agent.speed = 5f;
+        agent.SetDestination(masonPlace.transform.position);
+        
+        while (agent.pathPending || agent.remainingDistance > 0.2f)
+            yield return null;
+        
+        while (constructionSite != null && 
+               constructionSite.assignedMasons.Contains(this) && 
+               GameManager.Instance.ListBuildingInConstruction.Contains(masonPlace))
+        {
             yield return null;
         }
-
-        masonUsed = false;
-        StartCoroutine("RandomWalk");
-        masonRunning = false;
+        
+        yield return new WaitForSeconds(0.5f);
     }
     
-    #endregion
-    
+    masonUsed = false;
+    StartCoroutine("RandomWalk");
+    masonRunning = false;
+}
+#endregion
+        
 }

@@ -18,7 +18,7 @@ public class ConstructionSite : MonoBehaviour
     private bool canBuild = true;
 
     private float buildTime = 0f;
-    private List<Villager> assignedMasons = new List<Villager>();
+    public List<Villager> assignedMasons = new List<Villager>();
     public int masonCount = 0;
     public bool isBuilding = false;
 
