@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public int days = 1;
-    public float minutes = 350;
+    public float dayDuration = 270;
+    public float nightDuration = 30;
     public int totalWood = 5;
     public int totalRock = 5;
     public int totalFood = 5;
@@ -18,15 +19,18 @@ public class GameManager : MonoBehaviour
 
 
     public float totalProgress = 0f;
-    [SerializeField] private bool dayStart = false;
     public bool night = false;
     public List<GameObject> ListBuildingInConstruction = new List<GameObject>();
     public GameObject[] ListFarm;
+    private int previousCount = 0;
     public int numberFarm = 0;
     public GameObject directionLight;
     public GameObject plane;
     
     public float elapsedTime = 0f;
+
+    private Vector3 sunRotation;
+
     private void Awake()
     {
         if (Instance == null)
@@ -39,7 +43,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         days = 1;
-        dayStart = true;
         totalFood = 5;
         totalRock= 5;
         totalWood = 5;
@@ -47,10 +50,10 @@ public class GameManager : MonoBehaviour
         numberMason = 1;
         totalPopulation = 5;
         numberFarm = 0;
+
+        sunRotation = directionLight.transform.rotation.eulerAngles;
     }
     
-    
-
     void StartDay()
     {
         
@@ -59,43 +62,49 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Update Progress
+
         if (totalProgress < requieredProgress)
             totalProgress += Time.deltaTime * 5; // THIS IS JUST FOR TESTING PURPOSES, DO NOT SHIP, REMOVE LATER
 
-        // Timer days of 5 minutes
-        if (dayStart == true)
-        {
-            minutes -= Time.deltaTime;
-            elapsedTime = Mathf.Floor(minutes / 60);
-            if (minutes <= 0)
-            {
-                Debug.Log("Nul!");
-                dayStart = false;
-                night = true;
-                if (totalPopulation > 0)
-                {
-                    // Faire POP le journal ici
-                    days += 1;  
-                }
-                else
-                {
-                    
-                }
-                
-            }
-            Debug.Log(elapsedTime);
-            directionLight.transform.RotateAround(plane.transform.position, Vector3.right, Time.deltaTime * 0.1f);
-            
-        }
+        // Check victory
+
+        // Update Time
+
+        elapsedTime += Time.deltaTime;
+
+        night = elapsedTime >= dayDuration;
+        if (night)
+            directionLight.transform.rotation = Quaternion.Euler(sunRotation.x + (elapsedTime - dayDuration) / nightDuration * 360f, sunRotation.y, sunRotation.z);
         
-        ListFarm = GameObject.FindGameObjectsWithTag("Farm");
-        for (int i = 0; i < ListFarm.Length; i++)
+        if (elapsedTime >= dayDuration + nightDuration) // New Day
         {
-            if (ListFarm[i].GetComponent<ConstructionSite>().isActiveAndEnabled == false)
+            // Consume food and kill surplus
+
+            // Check for defeat
+
+            // Letter here
+            // Pause time to show letter
+
+            // Reset time
+            days++;
+            elapsedTime = 0f;
+        }
+
+
+
+        if (ListFarm.Length > previousCount)
+        {
+            ListFarm = GameObject.FindGameObjectsWithTag("Farm");
+            for (int i = 0; i < ListFarm.Length; i++)
             {
-                numberFarm++;
+                if (ListFarm[i].GetComponent<ConstructionSite>().isActiveAndEnabled == false)
+                {
+                    numberFarm++;
+                }
             }
         }
+        previousCount = ListFarm.Length;
     }
 
     public void StopTime()
