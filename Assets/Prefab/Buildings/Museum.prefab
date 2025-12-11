@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebf33b02eb650d4ebb3a6de98311432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prosperityBoost: 75
+  prosperityBoost: 25
 --- !u!114 &8094606156584882541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingCosts: {fileID: 11400000, guid: 84848703ac79d2342af13a2ef743f99d, type: 2}
   buildingScript: {fileID: 1084912943570247484}
-  spriteRenderer: {fileID: 0}
+  renderer: {fileID: 3189999213142392152}
   isPreview: 1
   masonCount: 0
   isBuilding: 0

@@ -25,6 +25,7 @@ public class ConstructionSite : MonoBehaviour
         if (buildingScript.enabled)
         {
             Destroy(this);
+            isPreview = false;
             return;
         }
 
