@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Museum
   m_EditorClassIdentifier: 
   requiredMason: 3
-  woodCost: 100
+  woodCost: 40
   rockCost: 10
   buildTime: 150
   buildingPrefab: {fileID: 7544567567371372963, guid: 497be21c7b5f5c448b4a435bc4aa1c96, type: 3}

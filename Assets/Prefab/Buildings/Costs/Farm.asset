@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Farm
   m_EditorClassIdentifier: 
   requiredMason: 2
-  woodCost: 12
-  rockCost: 10
+  woodCost: 15
+  rockCost: 0
   buildTime: 60
   buildingPrefab: {fileID: 7544567567371372963, guid: 4a01feaec8049844f8cafb6615a11ca4, type: 3}

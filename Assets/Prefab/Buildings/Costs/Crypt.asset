@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredMason: 3
   woodCost: 0
-  rockCost: 80
+  rockCost: 30
   buildTime: 100
   buildingPrefab: {fileID: 7544567567371372963, guid: bed69ec59e714e74c9f4d7fc8ca298dd, type: 3}
