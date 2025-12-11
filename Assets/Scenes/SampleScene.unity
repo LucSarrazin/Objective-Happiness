@@ -4747,7 +4747,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268277, y: -0, z: -0, w: 0.92387986}
-  m_LocalPosition: {x: 0, y: 5.97, z: -4.08}
+  m_LocalPosition: {x: 0, y: 5.97, z: 27.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8445,6 +8445,7 @@ MonoBehaviour:
   totalProgress: 0
   night: 0
   ListBuildingInConstruction: []
+  Villagers: []
   ListFarm: []
   numberFarm: 0
   directionLight: {fileID: 860507041}
