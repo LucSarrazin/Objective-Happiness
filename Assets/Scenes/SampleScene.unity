@@ -8455,7 +8455,7 @@ MonoBehaviour:
   directionLight: {fileID: 860507041}
   plane: {fileID: 579653137}
   elapsedTime: 0
-  levelLoader: {fileID: 0}
+  levelLoader: {fileID: 1915585038}
 --- !u!4 &1860822421
 Transform:
   m_ObjectHideFlags: 0
@@ -8781,6 +8781,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2202612244110111293, guid: b037c51823efd1647813a4cc9dbc6bdc, type: 3}
   m_PrefabInstance: {fileID: 1199667447}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1915585038 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 653657760808386303, guid: 13047eccfd126844392fd01a8eb6e863, type: 3}
+  m_PrefabInstance: {fileID: 2127089812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cefa1a0b05af943a0a3b355531661d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1939244095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2202612244110111293, guid: b037c51823efd1647813a4cc9dbc6bdc, type: 3}
