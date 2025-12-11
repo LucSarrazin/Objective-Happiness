@@ -812,9 +812,9 @@
     "m_ShaderOutputName": "Emission",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
+        "x": 3.788679361343384,
+        "y": 2.2529306411743166,
+        "z": 0.7934781908988953
     },
     "m_DefaultValue": {
         "x": 0.0,
