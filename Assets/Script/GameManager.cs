@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     
     public float elapsedTime = 0f;
 
+    [SerializeField] private LevelLoader levelLoader;
+
     private float currentTimeScale = 1;
     private Vector3 sunRotation;
 
@@ -64,12 +66,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Update Progress
+        // Update Progress / Check victory
+        if (totalProgress >= requieredProgress)
+            levelLoader.LoadLevelByName("GoodEnding");
+        //else
+        //    totalProgress += Time.deltaTime * 5; // THIS IS JUST FOR TESTING PURPOSES, DO NOT SHIP, REMOVE LATER
 
-        if (totalProgress < requieredProgress)
-            totalProgress += Time.deltaTime * 5; // THIS IS JUST FOR TESTING PURPOSES, DO NOT SHIP, REMOVE LATER
 
-        // Check victory
 
         // Update Time
 
@@ -90,7 +93,15 @@ public class GameManager : MonoBehaviour
                 totalPopulation--;
             }
 
+            for (int i = 0; i < Villagers.Count; i++)
+                if (Villagers[i].GetComponent<Villager>().tired)
+                    totalProgress -= 1f;
+
+            totalProgress = Mathf.Max(0f, totalProgress);
+            
             // Check for defeat
+            if (totalPopulation <= 0)
+                levelLoader.LoadLevelByName("BadEnding");
 
             // Letter here
             // Pause time to show letter
