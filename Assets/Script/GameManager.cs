@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     
     public float elapsedTime = 0f;
 
+    private float currentTimeScale = 1;
     private Vector3 sunRotation;
 
     private void Awake()
@@ -114,18 +115,12 @@ public class GameManager : MonoBehaviour
 
     public void StartTime()
     {
-        Time.timeScale = 1;
+        Time.timeScale = currentTimeScale;
     }
 
-    public void DoubleTime()
+    public void SetTimeSpeed(float speed)
     {
-        Time.timeScale = 2;
+        currentTimeScale = speed;
+        Time.timeScale = currentTimeScale;
     }
-
-    public void TripleTime()
-    {
-        Time.timeScale = 3;
-    }
- 
-    
 }
