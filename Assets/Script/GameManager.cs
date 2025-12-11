@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sunRotationSpeed = 360f / dayDuration;
         days = 1;
         dayStart = true;
         totalFood = 5;
@@ -85,8 +84,12 @@ public class GameManager : MonoBehaviour
                 
             }
             Debug.Log(elapsedTime);
-            directionLight.transform.RotateAround(plane.transform.position, Vector3.right, Time.deltaTime * sunRotationSpeed);
             
+        }
+
+        if (night == true)
+        {
+            directionLight.transform.RotateAround(plane.transform.position, Vector3.right, Time.deltaTime * 60);
         }
 
         
