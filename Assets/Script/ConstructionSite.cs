@@ -28,7 +28,7 @@ public class ConstructionSite : MonoBehaviour
             return;
         }
 
-        spriteRenderer.color = new Color(1, 1, 1, alpha);
+        spriteRenderer.material.SetColor("_BaseColor", new Color(1, 1, 1, alpha));
         navMeshObstacle = GetComponent<NavMeshObstacle>();
         navMeshObstacle.enabled = false;
     }
@@ -51,7 +51,7 @@ public class ConstructionSite : MonoBehaviour
     {
         if (isPreview && other.gameObject.layer == LayerMask.NameToLayer("Buildings"))
         {
-            spriteRenderer.color = new Color(1, 0, 0, alpha);
+            spriteRenderer.material.SetColor("_BaseColor", new Color(1, 0, 0, alpha));
             canBuild = false;
         }
         else if (other.gameObject.tag == "Villager")
@@ -69,7 +69,7 @@ public class ConstructionSite : MonoBehaviour
     {
         if (isPreview && other.gameObject.layer == LayerMask.NameToLayer("Buildings"))
         {
-            spriteRenderer.color = new Color(1, 1, 1, alpha);
+            spriteRenderer.material.SetColor("_BaseColor", new Color(1, 1, 1, alpha));
             canBuild = true;
         }
         else if (other.gameObject.tag == "Villager")
@@ -88,7 +88,7 @@ public class ConstructionSite : MonoBehaviour
         if (isPreview)
             return;
 
-        spriteRenderer.color = new Color(1, 1, 1, buildTime / buildingCosts.buildTime * .6f + .2f);  // starts at .2, jumps from .8 to 1 when finishing, for clear demarcation
+        spriteRenderer.material.SetColor("_BaseColor", new Color(1, 1, 1, buildTime / buildingCosts.buildTime * .6f + .2f));  // starts at .2, jumps from .8 to 1 when finishing, for clear demarcation
 
         isBuilding = masonCount >= buildingCosts.requiredMason;
         if (isBuilding)
@@ -98,7 +98,7 @@ public class ConstructionSite : MonoBehaviour
             if (buildTime >= buildingCosts.buildTime)
             {
                 isBuilding = false;
-                spriteRenderer.color = new Color(1, 1, 1, 1);
+                spriteRenderer.material.SetColor("_BaseColor", new Color(1, 1, 1, 1));
                 buildingScript.enabled = true;
                 navMeshObstacle.enabled = true;
                 GameManager.Instance.ListBuildingInConstruction.Remove(gameObject);

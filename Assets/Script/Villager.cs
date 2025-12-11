@@ -64,7 +64,6 @@ public class Villager : MonoBehaviour
     [SerializeField] private UIVillager villagerUI;
     [SerializeField] private TMP_Dropdown dropdownUI;
     public Button learnButtonUI;
-    [SerializeField] private UIVillager UIvillager;
     
     // private void OnValidate()
     // {
@@ -138,6 +137,7 @@ public class Villager : MonoBehaviour
             case types.mason:
                 Debug.Log(name + " villager is mason");
                 render1.sprite = spriteList[3];
+                GameManager.Instance.numberMason++;
                 StopAllCoroutines();
                 StartCoroutine("RandomWalk");
                 break;
@@ -202,11 +202,13 @@ public class Villager : MonoBehaviour
         if (age >= ageOfDeath)
         {
             Debug.Log(name + " is dead from age...");
+            Destroy(this.gameObject);
         }
 
         if (hunger <= 0)
         {
             Debug.Log(name + " is dead from hunger...");
+            Destroy(this.gameObject);
         }
 
         // Three Fonction to verify that the villager is where there is food/tree/rock and stop there
@@ -349,7 +351,7 @@ public class Villager : MonoBehaviour
     
     public void Touched()
     {
-        UIvillager.Villager = this;
+        villagerUI.Villager = this;
         UpdateInfo();
         ShowInfo();
         Debug.Log(name + " has been touched");
@@ -384,6 +386,10 @@ public class Villager : MonoBehaviour
         }
         
         Debug.Log(name + " find school");
+        if (type == types.mason)
+        {
+            GameManager.Instance.numberMason--;
+        }
         switch (dropdownUI.value)
         {
             case 0:
