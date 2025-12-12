@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 667944055878990243}
   - component: {fileID: 13989284370620774}
   - component: {fileID: 3776930072239416300}
-  - component: {fileID: 5545989613034553666}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -170,28 +169,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5545989613034553666
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3263739584711091322}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5812313815085650920
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +329,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 9e51b0d46bfa902438df3d3fea1dedc8, type: 2}
   tired: 0
   hungry: 0
+  needToEat: 0
   age: 10
   ageOfDeath: 50
   sleep: 0
@@ -370,7 +348,6 @@ MonoBehaviour:
   render1: {fileID: 0}
   nameUI: {fileID: 0}
   typeUI: {fileID: 0}
-  hungrySlider: {fileID: 0}
   ageUI: {fileID: 0}
   UI: {fileID: 0}
   villagerUI: {fileID: 0}
