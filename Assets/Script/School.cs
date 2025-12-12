@@ -4,31 +4,19 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Toggle = UnityEngine.UI.Toggle;
+using UnityEngine.UI;
 
 public class School : MonoBehaviour
 {
-    [Header("School Parameters")]
-    public string name;
-    public string type = "School";
-    public bool maxStudent;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    
-    public void Touched()
-    {
-        Debug.Log(name + " has been touched");
-        if (maxStudent == true)
-        {
-            Debug.Log("Someone is studing in " + name);
-        }
-    }
+    [SerializeField] private Animator animator;
 
-    // Update is called once per frame
+    public bool maxStudent;
+
     void Update()
     {
+        if (maxStudent)
+            animator.Play("house wiggle");
+        else
+            animator.Play("idle");
     }
 }
