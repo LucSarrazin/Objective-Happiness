@@ -57,22 +57,18 @@ public class GameManager : MonoBehaviour
 
         sunRotation = directionLight.transform.rotation.eulerAngles;
     }
-    
-    void StartDay()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         // Update Progress / Check victory
         if (totalProgress >= requieredProgress)
+        {
             levelLoader.LoadLevelByName("GoodEnding");
+            return;
+        }
         //else
         //    totalProgress += Time.deltaTime * 5; // THIS IS JUST FOR TESTING PURPOSES, DO NOT SHIP, REMOVE LATER
-
-
 
         // Update Time
 
@@ -87,21 +83,17 @@ public class GameManager : MonoBehaviour
             // Consume food and kill surplus
             int villagersCount = Villagers.Count;
 
-            if (totalFood >= villagersCount)
-            {
-                totalFood -= villagersCount;
-            }
-            else
-            {
-                int deaths = villagersCount - totalFood;
+            totalFood -= Villagers.Count;
 
+            if (totalFood < 0)
+            {
+                int deaths = -villagersCount;
                 totalFood = 0;
-
                 for (int i = 0; i < deaths; i++)
                 {
                     GameObject villager = Villagers[Random.Range(0, Villagers.Count)];
                     Villagers.Remove(villager);
-                    villager.GetComponent<Villager>().needToEat = true;
+                    Destroy(villager);
                     totalPopulation--;
                 }
             }
@@ -120,8 +112,9 @@ public class GameManager : MonoBehaviour
             // Pause time to show letter
 
             // Reset time
-            days++;
             elapsedTime = 0f;
+
+            days++;
         }
 
 
