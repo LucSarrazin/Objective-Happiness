@@ -91,10 +91,10 @@ public class GameManager : MonoBehaviour
                 totalFood = 0;
                 for (int i = 0; i < deaths; i++)
                 {
+                    totalPopulation--;
                     GameObject villager = Villagers[Random.Range(0, Villagers.Count)];
                     Villagers.Remove(villager);
                     Destroy(villager);
-                    totalPopulation--;
                 }
             }
 
