@@ -146,6 +146,15 @@ public class Villager : MonoBehaviour
                 break;
         }
     }
+
+    public void UpdateObjects()
+    {
+        woodList = GameObject.FindGameObjectsWithTag("Wood");
+        rockList = GameObject.FindGameObjectsWithTag("Rock");
+        foodList = GameObject.FindGameObjectsWithTag("Food");
+        houseList = GameObject.FindGameObjectsWithTag("House");
+        schoolList = GameObject.FindGameObjectsWithTag("School");
+    }
     IEnumerator cuttingTree()
     {
         while (woodPlace != true)
@@ -242,6 +251,7 @@ public class Villager : MonoBehaviour
             {
                 if (sleep == false)
                 {
+                    UpdateObjects();
                     sleep = true;
                     StopAllCoroutines();
                     Debug.Log("Début de la nuit");
@@ -331,7 +341,7 @@ public class Villager : MonoBehaviour
             House houseTest = homeTest.GetComponent<House>();
             Debug.Log("Test house: " + houseTest.name);
 
-            if (!houseTest.sleeping)
+            if (!houseTest.sleeping && !homeTest.GetComponent<ConstructionSite>().isBuilding == false)
             {
                 home = homeTest;
                 house = houseTest;
@@ -520,8 +530,6 @@ IEnumerator needToBuild()
         {
             yield return null;
         }
-        
-        yield return new WaitForSeconds(0.5f);
     }
     
     masonUsed = false;
