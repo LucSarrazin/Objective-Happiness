@@ -36,6 +36,7 @@ public class Villager : MonoBehaviour
     public bool goToLearn;
     private int previousCount = 0;
     private bool masonUsed;
+    private bool oneTime;
     
     [Space]
     
@@ -235,6 +236,7 @@ public class Villager : MonoBehaviour
 
         if (GameManager.Instance.night == true)
         {
+            oneTime = false;
             tired = true;
             if (type != types.vagrant)
             {
@@ -263,6 +265,14 @@ public class Villager : MonoBehaviour
                     GameManager.Instance.totalFood--;
                     GameManager.Instance.Villagers.Remove(this.gameObject);
                 }
+            }
+        }
+        else
+        {
+            if (oneTime == false)
+            {
+                oneTime = true;
+                updateType();
             }
             
         }
