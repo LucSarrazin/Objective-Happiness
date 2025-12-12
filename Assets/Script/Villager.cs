@@ -472,64 +472,81 @@ public class Villager : MonoBehaviour
         agent.speed = 1f;
         Debug.Log(name + " finished studying");
     }
-    
-    #region MasonBuildRegion
-    private bool masonRunning = false;
+#region MasonBuildRegion
+private bool masonRunning = false;
 
-    IEnumerator needToBuild()
+IEnumerator needToBuild()
+{
+    if (masonRunning) yield break;
+    masonRunning = true;
+
+    while (GameManager.Instance.ListBuildingInConstruction.Count > 0)
     {
-        if (masonRunning) yield break;
-        masonRunning = true;
-        
-        while (GameManager.Instance.ListBuildingInConstruction.Count > 0)
+        GameObject masonPlace = null;
+        ConstructionSite constructionSite = null;
+        int highestNeedForMasons = 0;
+        float bestDistance = Mathf.Infinity;
+
+        // Trouver le meilleur site de construction
+        for (int i = 0; i < GameManager.Instance.ListBuildingInConstruction.Count; i++)
         {
-            GameObject masonPlace = null;
-            ConstructionSite constructionSite = null;
-            int highestNeedForMasons = 0;
-            float bestDistance = Mathf.Infinity;
-            
-            for (int i = 0; i < GameManager.Instance.ListBuildingInConstruction.Count; i++)
+            GameObject building = GameManager.Instance.ListBuildingInConstruction[i];
+            ConstructionSite site = building.GetComponent<ConstructionSite>();
+
+            if (site != null && site.masonCount < site.buildingCosts.requiredMason)
             {
-                GameObject building = GameManager.Instance.ListBuildingInConstruction[i];
-                ConstructionSite site = building.GetComponent<ConstructionSite>();
-                
-                if (site != null && site.masonCount < site.buildingCosts.requiredMason)
+                int masonNeeded = site.buildingCosts.requiredMason - site.masonCount;
+                float dist = Vector3.Distance(transform.position, building.transform.position);
+
+                if (masonNeeded > highestNeedForMasons ||
+                    (masonNeeded == highestNeedForMasons && dist < bestDistance))
                 {
-                    int masonNeeded = site.buildingCosts.requiredMason - site.masonCount;
-                    float dist = Vector3.Distance(transform.position, building.transform.position);
-                    
-                    if (masonNeeded > highestNeedForMasons || 
-                        (masonNeeded == highestNeedForMasons && dist < bestDistance))
-                    {
-                        highestNeedForMasons = masonNeeded;
-                        bestDistance = dist;
-                        constructionSite = site;
-                        masonPlace = building;
-                    }
+                    highestNeedForMasons = masonNeeded;
+                    bestDistance = dist;
+                    constructionSite = site;
+                    masonPlace = building;
                 }
             }
-            
-            if (masonPlace == null || highestNeedForMasons == 0)
-                break;
-            
-            agent.speed = 5f;
-            agent.SetDestination(masonPlace.transform.position);
-            
-            while (agent.pathPending || agent.remainingDistance > 0.2f)
-                yield return null;
-            
-            while (constructionSite != null && 
-                   constructionSite.assignedMasons.Contains(this) && 
-                   GameManager.Instance.ListBuildingInConstruction.Contains(masonPlace))
-            {
-                yield return null;
-            }
         }
-        
-        masonUsed = false;
-        StartCoroutine("RandomWalk");
-        masonRunning = false;
+
+        // Plus rien à construire
+        if (masonPlace == null || highestNeedForMasons == 0)
+            break;
+
+        // S'enregistrer sur le site AVANT de se déplacer
+        if (!constructionSite.assignedMasons.Contains(this))
+        {
+            constructionSite.assignedMasons.Add(this);
+            constructionSite.masonCount++;
+        }
+
+        // Se déplacer vers le site
+        agent.speed = 5f;
+        agent.SetDestination(masonPlace.transform.position);
+
+        while (agent.pathPending || agent.remainingDistance > 0.2f)
+            yield return null;
+
+        // Attendre que la construction soit terminée OU annulée
+        while (constructionSite != null && 
+               GameManager.Instance.ListBuildingInConstruction.Contains(masonPlace))
+        {
+            yield return null;
+        }
+
+        // SE RETIRER du site une fois la construction finie
+        if (constructionSite != null && constructionSite.assignedMasons.Contains(this))
+        {
+            constructionSite.assignedMasons.Remove(this);
+            constructionSite.masonCount--;
+        }
     }
-    #endregion
+
+    masonUsed = false;
+    StartCoroutine("RandomWalk");
+    masonRunning = false;
+}
+#endregion
+
         
 }
