@@ -92,7 +92,7 @@ public class ConstructionSite : MonoBehaviour
         if (isPreview)
             return;
 
-        float progress = buildTime / buildingCosts.buildTime * .6f + .2f; // starts at .2, jumps from .8 to 1 when finishing, for clear demarcation
+        float progress = buildTime / buildingCosts.buildTime * .4f + .5f;
         previewRenderer.material.SetColor("_BaseColor", new Color(1, 1, 1, progress));
 
         isBuilding = masonCount >= buildingCosts.requiredMason;
