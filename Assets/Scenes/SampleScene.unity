@@ -290,16 +290,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7524437737893930203, guid: f17b5bd4750653b439e0d5183b4bef40, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524437737893930203, guid: f17b5bd4750653b439e0d5183b4bef40, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524437737893930203, guid: f17b5bd4750653b439e0d5183b4bef40, type: 3}
       propertyPath: ShapeModule.m_Scale.z
       value: 66
       objectReference: {fileID: 0}
+    - target: {fileID: 7524437737893930203, guid: f17b5bd4750653b439e0d5183b4bef40, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524437737893930203, guid: f17b5bd4750653b439e0d5183b4bef40, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524437737893930203, guid: f17b5bd4750653b439e0d5183b4bef40, type: 3}
+      propertyPath: InitialModule.startSizeZ.scalar
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9087459781088713147, guid: f17b5bd4750653b439e0d5183b4bef40, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.59
+      value: -0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087459781088713147, guid: f17b5bd4750653b439e0d5183b4bef40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.76
       objectReference: {fileID: 0}
     - target: {fileID: 9087459781088713147, guid: f17b5bd4750653b439e0d5183b4bef40, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.43
+      value: 4.01
       objectReference: {fileID: 0}
     - target: {fileID: 9087459781088713147, guid: f17b5bd4750653b439e0d5183b4bef40, type: 3}
       propertyPath: m_LocalRotation.w
@@ -854,7 +878,7 @@ Transform:
   m_GameObject: {fileID: 183421762}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0009021089, y: 0.49153018, z: 0.0005091761, w: 0.87086}
-  m_LocalPosition: {x: -42.23, y: 6.16, z: 11.51}
+  m_LocalPosition: {x: -42.23, y: 1.76, z: 11.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1188,7 +1212,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1241,7 +1265,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1294,7 +1318,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1573,7 +1597,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 10, y: 10, z: 55.4}
+    m_Scale: {x: 10, y: 2, z: 66}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -5751,7 +5775,7 @@ Transform:
   m_GameObject: {fileID: 206921260}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0009021089, y: 0.49153018, z: 0.0005091761, w: 0.87086}
-  m_LocalPosition: {x: -6.96, y: 6.2, z: -42.67}
+  m_LocalPosition: {x: -5.9, y: 1.8, z: -44.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6470,7 +6494,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 10, y: 10, z: 51.7}
+    m_Scale: {x: 10, y: 2, z: 66}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -15800,7 +15824,7 @@ Transform:
   m_GameObject: {fileID: 1450159431}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.2795891, z: -0, w: 0.9601197}
-  m_LocalPosition: {x: -47.1, y: 6.2, z: -26.4}
+  m_LocalPosition: {x: -46.3, y: 1.76, z: -25.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16134,7 +16158,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -16187,7 +16211,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -16240,7 +16264,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -16519,7 +16543,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 10, y: 10, z: 63.9}
+    m_Scale: {x: 10, y: 2, z: 66}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
