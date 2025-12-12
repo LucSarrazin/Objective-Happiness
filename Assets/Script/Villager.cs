@@ -334,7 +334,12 @@ public class Villager : MonoBehaviour
         {
             GameObject homeTest = houseList[Random.Range(0, houseList.Length)];
             House houseTest = homeTest.GetComponent<House>();
-            Debug.Log("Test house: " + houseTest.name);
+            if (houseTest == null)
+            {
+                Debug.LogWarning("object in houselist without house script: " + homeTest.name);
+                continue;
+            }
+            //Debug.Log("Test house: " + houseTest.name);
 
             ConstructionSite site;
 
