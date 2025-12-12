@@ -9,7 +9,8 @@ public class ConstructionSite : MonoBehaviour
 {
     [SerializeField] public BuildingCosts buildingCosts;
     [SerializeField] private MonoBehaviour buildingScript;
-    [SerializeField] private Renderer renderer;
+    [SerializeField] private Renderer previewRenderer;
+    [SerializeField] private GameObject buildingModel;
     [SerializeField] private Animator animator;
     private NavMeshObstacle navMeshObstacle;
 
@@ -26,12 +27,12 @@ public class ConstructionSite : MonoBehaviour
     {
         if (buildingScript.enabled)
         {
-            Destroy(this);
-            isPreview = false;
+            Build();
             return;
         }
 
-        renderer.material.SetColor("_ColorChange", new Color(1, 1, 1, alpha));
+        buildingModel.SetActive(false);
+        previewRenderer.material.SetColor("_BaseColor", new Color(1, 1, 1, alpha));
         navMeshObstacle = GetComponent<NavMeshObstacle>();
         navMeshObstacle.enabled = false;
     }
@@ -54,7 +55,7 @@ public class ConstructionSite : MonoBehaviour
     {
         if (isPreview && other.gameObject.layer == LayerMask.NameToLayer("Buildings"))
         {
-            renderer.material.SetColor("_ColorChange", new Color(1, 0, 0, alpha));
+            previewRenderer.material.SetColor("_BaseColor", new Color(1, 0, 0, alpha));
             canBuild = false;
         }
         else if (other.gameObject.tag == "Villager")
@@ -72,7 +73,7 @@ public class ConstructionSite : MonoBehaviour
     {
         if (isPreview && other.gameObject.layer == LayerMask.NameToLayer("Buildings"))
         {
-            renderer.material.SetColor("_ColorChange", new Color(1, 1, 1, alpha));
+            previewRenderer.material.SetColor("_BaseColor", new Color(1, 1, 1, alpha));
             canBuild = true;
         }
         else if (other.gameObject.tag == "Villager")
@@ -91,28 +92,34 @@ public class ConstructionSite : MonoBehaviour
         if (isPreview)
             return;
 
-        // float progress = buildTime / buildingCosts.buildTime * .6f + .2f; // starts at .2, jumps from .8 to 1 when finishing, for clear demarcation
-        // renderer.material.SetColor("_ColorChange", new Color(1, 1, 1, progress));
-
-        // while not constructed... so sad we couldn't get transparency to work properly in URP
-        animator.Play("house wiggle");
+        float progress = buildTime / buildingCosts.buildTime * .6f + .2f; // starts at .2, jumps from .8 to 1 when finishing, for clear demarcation
+        previewRenderer.material.SetColor("_BaseColor", new Color(1, 1, 1, progress));
 
         isBuilding = masonCount >= buildingCosts.requiredMason;
         if (isBuilding)
         {
             buildTime += Time.deltaTime;
+            animator.Play("house wiggle");
 
             if (buildTime >= buildingCosts.buildTime)
             {
                 animator.Play("idle");
-
-                isBuilding = false;
-                renderer.material.SetColor("_ColorChange", new Color(1, 1, 1, 1));
-                buildingScript.enabled = true;
-                navMeshObstacle.enabled = true;
-                GameManager.Instance.ListBuildingInConstruction.Remove(gameObject);
-                Destroy(this);
+                Build();
             }
         }
+        else
+            animator.Play("idle");
+    }
+
+    private void Build()
+    {
+        isBuilding = false;
+        buildingModel.SetActive(true);
+        buildingScript.enabled = true;
+        navMeshObstacle.enabled = true;
+        GameManager.Instance.ListBuildingInConstruction.Remove(gameObject);
+        previewRenderer.gameObject.SetActive(false);
+        Destroy(previewRenderer.gameObject);
+        Destroy(this);
     }
 }
