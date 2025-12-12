@@ -96,6 +96,7 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         rectTransform.position = defaultPosition;
 
         building.GetComponent<ConstructionSite>().Place();
+        building = null;
     }
 
     public void OnDisable()
@@ -110,5 +111,7 @@ public class BuildingUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
         if (building.GetComponent<ConstructionSite>().isPreview)
             Destroy(building);
+
+        building = null;
     }
 }
