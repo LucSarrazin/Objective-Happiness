@@ -263,18 +263,9 @@ public class Villager : MonoBehaviour
             }
             else
             {
-                if (GameManager.Instance.totalFood <= 0)
-                {
-                    Debug.Log(name + " is dead from hunger...");
-                    Destroy(this.gameObject);
-                }
-                else
-                {
-                    StopAllCoroutines();
-                    StartCoroutine("RandomWalk");
-                    GameManager.Instance.totalFood--;
-                    GameManager.Instance.Villagers.Remove(this.gameObject);
-                }
+                StopAllCoroutines();
+                StartCoroutine("RandomWalk");
+                GameManager.Instance.totalFood--;
             }
         }
         else
@@ -341,7 +332,11 @@ public class Villager : MonoBehaviour
             House houseTest = homeTest.GetComponent<House>();
             Debug.Log("Test house: " + houseTest.name);
 
-            if (!houseTest.sleeping && !homeTest.GetComponent<ConstructionSite>().isBuilding == false)
+            ConstructionSite site;
+
+            bool isBuilding = homeTest.TryGetComponent(out site) && site.isBuilding;
+
+            if (!houseTest.sleeping && !isBuilding)
             {
                 home = homeTest;
                 house = houseTest;
