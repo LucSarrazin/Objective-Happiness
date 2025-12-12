@@ -8,26 +8,15 @@ using Toggle = UnityEngine.UI.Toggle;
 
 public class House : MonoBehaviour
 {
-    [Header("House Parameters")]
-    public string name;
-    public string type = "House";
-    public bool sleeping;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-    
-    public void Touched()
-    {
-        Debug.Log(name + " has been touched");
-        if (sleeping == true)
-        {
-            Debug.Log("Someone is sleeping in " + name);
-        }
-    }
+    [SerializeField] private Animator animator;
 
-    // Update is called once per frame
+    public bool sleeping;
+
     void Update()
     {
+        if (sleeping)
+            animator.Play("house wiggle");
+        else
+            animator.Play("idle");
     }
 }
