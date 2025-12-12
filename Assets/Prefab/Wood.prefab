@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6175708024439914468}
   - component: {fileID: 5476996991889861073}
   - component: {fileID: 1308329450770894461}
+  - component: {fileID: 2371002260971720078}
   m_Layer: 7
   m_Name: Wood
   m_TagString: Wood
@@ -72,6 +73,20 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.45, y: 0, z: -0.21}
   m_TimeToStationary: 0.5
+--- !u!114 &2371002260971720078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609336371814945543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d297606caf3424c982342269203081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipOnStart: 1
+  modifySize: 0
 --- !u!1 &6529507988185612100
 GameObject:
   m_ObjectHideFlags: 0
