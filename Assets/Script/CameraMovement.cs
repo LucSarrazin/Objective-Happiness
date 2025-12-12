@@ -75,17 +75,8 @@ public class CameraMovement : MonoBehaviour
             //Clique avec la souris pour faire un debug.log du nom du hit
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider.CompareTag("House") && hit.collider.GetComponentInParent<House>().enabled)
-                {
-                    hit.collider.GetComponentInParent<House>().Touched();
-                }
-                if (hit.collider.CompareTag("Villager"))
-                {
-                    hit.collider.GetComponent<Villager>().Touched();
-                }
-            }
+            if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Villagers")) && hit.collider.CompareTag("Villager"))
+                hit.collider.GetComponent<Villager>().Touched();
             
         }
         

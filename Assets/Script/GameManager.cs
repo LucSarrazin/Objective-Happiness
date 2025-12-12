@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         totalRock= 5;
         totalWood = 5;
         totalProgress = 0;
-        numberMason = 1;
+        numberMason = 0;
         totalPopulation = 5;
         numberFarm = 0;
 

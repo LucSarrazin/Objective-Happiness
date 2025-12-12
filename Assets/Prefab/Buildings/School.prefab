@@ -271,8 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a35bb58f86c1746b68aa951951e00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Ecole de Samuel
-  type: Ecole
+  animator: {fileID: 470928566615135852}
   maxStudent: 0
 --- !u!114 &743604820063768353
 MonoBehaviour:

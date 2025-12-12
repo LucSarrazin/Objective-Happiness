@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1471616736781831545}
   - component: {fileID: 2412508158698815919}
   - component: {fileID: 5626615537375890642}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Villager 2
   m_TagString: Villager
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -527,7 +527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7098826106800086463}
   - component: {fileID: 53946160016146156}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 13989284370620774}
   - component: {fileID: 3776930072239416300}
   - component: {fileID: 3353103962459208525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 8064318219070699905}
   - component: {fileID: 5974694722024642777}
   - component: {fileID: 9029683871135840506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Villager
   m_TagString: Villager
   m_Icon: {fileID: 0}
