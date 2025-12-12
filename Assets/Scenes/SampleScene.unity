@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -3191,10 +3191,6 @@ PrefabInstance:
     - target: {fileID: 7544567567371372963, guid: d0b0e9f8a359ab7498d9d544b651eec0, type: 3}
       propertyPath: m_Name
       value: School
-      objectReference: {fileID: 0}
-    - target: {fileID: 7544567567371372963, guid: d0b0e9f8a359ab7498d9d544b651eec0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5229,6 +5225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1372710838100136041, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5932472216744719857, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.7937183
@@ -5272,10 +5272,6 @@ PrefabInstance:
     - target: {fileID: 7544567567371372963, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_Name
       value: House
-      objectReference: {fileID: 0}
-    - target: {fileID: 7544567567371372963, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5938,6 +5934,10 @@ PrefabInstance:
     - target: {fileID: 4774171788408816564, guid: 676d447c12431d841b60633758cbe22c, type: 3}
       propertyPath: m_Name
       value: Rock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4781213438233412025, guid: 676d447c12431d841b60633758cbe22c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
