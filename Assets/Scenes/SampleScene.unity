@@ -22089,7 +22089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   days: 1
-  dayDuration: 100
+  dayDuration: 30
   nightDuration: 50
   totalWood: 5
   totalRock: 5

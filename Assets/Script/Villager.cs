@@ -425,7 +425,8 @@ public class Villager : MonoBehaviour
 
             ConstructionSite site;
 
-            bool isBuilding = homeTest.TryGetComponent(out site) && site.isBuilding;
+            bool isBuilding = houseTest.GetComponent<ConstructionSite>().isBuilding;
+            Debug.LogWarning("IsBuilding est égal à " + isBuilding);
 
             if (!houseTest.sleeping && !isBuilding)
             {
@@ -493,7 +494,9 @@ public class Villager : MonoBehaviour
             GameObject schoolPlaceTest = schoolList[Random.Range(0, schoolList.Length)];
             School schoolTest = schoolPlaceTest.GetComponent<School>();
 
-            if (!schoolTest.maxStudent)
+            bool isBuilding = schoolTest.GetComponent<ConstructionSite>().isBuilding;
+            Debug.LogWarning("IsBuilding est égal à " + isBuilding);
+            if (!schoolTest.maxStudent && !isBuilding)
             {
                 schoolPlace = schoolPlaceTest;
                 school = schoolTest;
