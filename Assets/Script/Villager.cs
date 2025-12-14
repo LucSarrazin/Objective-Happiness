@@ -26,6 +26,57 @@ public class Villager : MonoBehaviour
     public types type;
     public Sprite[] spriteList;
     public Material[] materialList;
+    public string[] nameList = new string[]
+    {
+        "Lucas",
+        "Emma",
+        "Léo",
+        "Manon",
+        "Hugo",
+        "Léa",
+        "Nathan",
+        "Chloé",
+        "Enzo",
+        "Camille",
+        "Louis",
+        "Inès",
+        "Arthur",
+        "Sarah",
+        "Jules",
+        "Zoé",
+        "Ethan",
+        "Clara",
+        "Paul",
+        "Lola",
+        "Noah",
+        "Alice",
+        "Tom",
+        "Juliette",
+        "Gabriel",
+        "Eva",
+        "Raphaël",
+        "Maëlle",
+        "Mathis",
+        "Anaïs",
+        "Alexandre",
+        "Nina",
+        "Théo",
+        "Mila",
+        "Antoine",
+        "Romane",
+        "Maxime",
+        "Elena",
+        "Baptiste",
+        "Margaux",
+        "Victor",
+        "Océane",
+        "Samuel",
+        "Lucie",
+        "Quentin",
+        "Iris",
+        "Adrien",
+        "Pauline"
+    };
     public bool tired;
     public bool hungry;
     public bool needToEat;
@@ -61,17 +112,6 @@ public class Villager : MonoBehaviour
     [SerializeField] private MeshRenderer render;
     [SerializeField] private SpriteRenderer render1;
     
-    [Space]
-    
-    [Header("Villager UI Parameters")]
-    [SerializeField] private TextMeshProUGUI nameUI;
-    [SerializeField] private TextMeshProUGUI typeUI;
-    [SerializeField] private TextMeshProUGUI ageUI;
-    [SerializeField] private GameObject UI;
-    [SerializeField] private UIVillager villagerUI;
-    [SerializeField] private TMP_Dropdown dropdownUI;
-    public Button learnButtonUI;
-    
     // private void OnValidate()
     // {
     //     if (gameObject.scene.rootCount == 0)
@@ -86,15 +126,6 @@ public class Villager : MonoBehaviour
         foodList = GameObject.FindGameObjectsWithTag("Food");
         houseList = GameObject.FindGameObjectsWithTag("House");
         schoolList = GameObject.FindGameObjectsWithTag("School");
-
-
-        nameUI = GameObject.FindGameObjectWithTag("NameUIVillager").GetComponent<TextMeshProUGUI>();
-        typeUI = GameObject.FindGameObjectWithTag("TypeUIVillager").GetComponent<TextMeshProUGUI>();
-        ageUI = GameObject.FindGameObjectWithTag("AgeUIVillager").GetComponent<TextMeshProUGUI>();
-        UI = GameObject.FindGameObjectWithTag("UIVillager");
-        villagerUI = GameObject.FindGameObjectWithTag("UI").GetComponent<UIVillager>();
-        dropdownUI = GameObject.FindGameObjectWithTag("DropdownUIVillager").GetComponent<TMP_Dropdown>();
-        learnButtonUI = GameObject.FindGameObjectWithTag("LearnButtonUIVillager").GetComponent<Button>();
     }
 
     // Start is called before the first frame update
@@ -104,7 +135,6 @@ public class Villager : MonoBehaviour
         updateType();
         GameManager.Instance.Villagers.Add(this.gameObject);
         StartCoroutine(RandomWalk());
-        UI.SetActive(false);
     }
 
     void updateType()
@@ -279,7 +309,7 @@ public class Villager : MonoBehaviour
                     age += 10;
                 }
             }
-            else
+            else if(type == types.vagrant)
             {
                 StopAllCoroutines();
                 StartCoroutine("RandomWalk");
@@ -287,7 +317,6 @@ public class Villager : MonoBehaviour
                 {
                     onlyOneEat = true;
                     age += 10;
-                    GameManager.Instance.totalFood--;
                 }
             }
         }
@@ -297,7 +326,10 @@ public class Villager : MonoBehaviour
             {
                 oneTime = true;
                 sleep = false;
-                houseIsSleeping.sleeping = false;
+                if (houseIsSleeping != null)
+                {
+                    houseIsSleeping.sleeping = false;
+                }
                 updateType();
             }
             
@@ -305,11 +337,11 @@ public class Villager : MonoBehaviour
 
         if (schoolList.Length == 0)
         {
-           learnButtonUI.interactable = false; 
+           UIVillager.Instance.learnButtonUI.interactable = false; 
         }
         else if(schoolList.Length >= 1 && goToLearn == false)
         {
-            learnButtonUI.interactable = true; 
+            UIVillager.Instance.learnButtonUI.interactable = true; 
         }
         
         
@@ -383,7 +415,6 @@ public class Villager : MonoBehaviour
             tired = true;
             StopAllCoroutines();
             StartCoroutine("RandomWalk");
-            GameManager.Instance.totalFood--;
             yield break;
         }
         
@@ -401,31 +432,25 @@ public class Villager : MonoBehaviour
         }
         yield return null;
     }
-
-    private void UpdateInfo()
-    {
-         nameUI.text = name;
-         typeUI.text = type.ToString();
-         ageUI.text = age.ToString();
-    }
-
-    public void HideInfo()
-    {
-        villagerUI.HideInfo();
-    }
-
     public void ShowInfo()
     {
-        UpdateInfo();
-        villagerUI.ShowInfo();
+        if (UIVillager.Instance == null) return;
+        UIVillager.Instance.ShowInfo(this);
     }
     
     public void Touched()
     {
-        villagerUI.Villager = this;
-        UpdateInfo();
+        if (UIVillager.Instance == null) return;
+
+        UIVillager.Instance.ShowInfo(this);
         ShowInfo();
         Debug.Log(name + " has been touched");
+    }
+
+    public void AddName()
+    {
+        int randomName = Random.Range(0, nameList.Length);
+        name = nameList[randomName];
     }
 
     IEnumerator startingSchool()
@@ -461,7 +486,7 @@ public class Villager : MonoBehaviour
         {
             GameManager.Instance.numberMason--;
         }
-        switch (dropdownUI.value)
+        switch (UIVillager.Instance.dropdownUI.value)
         {
             case 0:
                 type = types.food_picker;
@@ -495,7 +520,7 @@ public class Villager : MonoBehaviour
         render.enabled = true;
         school.maxStudent = false;
         updateType();
-        learnButtonUI.interactable = true;
+        UIVillager.Instance.learnButtonUI.interactable = true;
         goToLearn = false;
         agent.speed = 1f;
         Debug.Log(name + " finished studying");
