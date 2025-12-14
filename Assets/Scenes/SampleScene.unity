@@ -13867,7 +13867,7 @@ AudioSource:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5438703808361531613, guid: 1e8132b51ea16e546b6720cdea2b2666, type: 2}
   m_audioClip: {fileID: 8300000, guid: 6db8c4599c48d55498e06a2945e93d2a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -13963,7 +13963,7 @@ AudioSource:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5438703808361531613, guid: 1e8132b51ea16e546b6720cdea2b2666, type: 2}
   m_audioClip: {fileID: 8300000, guid: aa87b12b862a9964381be24cf64a5099, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -14059,7 +14059,7 @@ AudioSource:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5438703808361531613, guid: 1e8132b51ea16e546b6720cdea2b2666, type: 2}
   m_audioClip: {fileID: 8300000, guid: ba469e2ea28181f4ba1455c1c1087bb4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -14155,7 +14155,7 @@ AudioSource:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2329684652620225979, guid: 1e8132b51ea16e546b6720cdea2b2666, type: 2}
   m_audioClip: {fileID: 8300000, guid: 95a4047c0758c3e4d835b3a8d3f5f1af, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -22089,8 +22089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   days: 1
-  dayDuration: 30
-  nightDuration: 30
+  dayDuration: 100
+  nightDuration: 50
   totalWood: 5
   totalRock: 5
   totalFood: 5

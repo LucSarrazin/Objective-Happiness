@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private int previousCount = 0;
     public int numberFarm = 0;
     private bool oneTime = false;
+    private bool nightFinished = false;
     public GameObject directionLight;
     public GameObject plane;
     
@@ -80,55 +81,15 @@ public class GameManager : MonoBehaviour
         if (night)
             directionLight.transform.rotation = Quaternion.Euler(sunRotation.x + (elapsedTime - dayDuration) / nightDuration * 360f, sunRotation.y, sunRotation.z);
         
-        if (elapsedTime >= dayDuration + nightDuration) // New Day
+        
+        // New Day check
+        if (elapsedTime >= dayDuration + nightDuration)
         {
-            // Consume food and kill surplus
-            totalFood -= Villagers.Count;
-
-            if (totalFood < 0)
+            if (!nightFinished)
             {
-                int deaths = -totalFood;
-                totalFood = 0;
-
-                for (int i = 0; i < deaths && Villagers.Count > 0; i++)
-                {
-                    GameObject villager = Villagers[Random.Range(0, Villagers.Count)];
-                    Villagers.Remove(villager);
-                    Destroy(villager);
-                    totalPopulation--;
-                }
+                nightFinished = true;
+                StartNight();
             }
-
-            // Update Progress
-            for (int i = 0; i < Villagers.Count; i++)
-            {
-                if (Villagers[i].GetComponent<Villager>().tired)
-                    totalProgress -= 1f;
-                else
-                    totalProgress += 2f; // game is too hard :(
-            }
-
-            totalProgress = Mathf.Max(0f, totalProgress);
-            
-            // Check for defeat
-            if (totalPopulation <= 0)
-            {
-                levelLoader.LoadLevelByName("BadEnding");
-                night = false;
-                elapsedTime = 0f;
-            }
-
-            // Letter here
-            // Pause time to show letter
-            
-            //Spawn villagers
-            VillagerSpawn();
-
-            // Reset time
-            elapsedTime = 0f;
-
-            days++;
-            oneTime = false;
         }
 
         if (ListFarm.Length > previousCount)
@@ -145,6 +106,62 @@ public class GameManager : MonoBehaviour
         previousCount = ListFarm.Length;
     }
 
+    void StartNight()
+    {
+        Debug.Log($"Start night: Food={totalFood}, Villagers={Villagers.Count}");
+
+        totalFood -= Villagers.Count;
+
+        Debug.Log($"After consumption: Food={totalFood}, Villagers={Villagers.Count}");
+
+        if (totalFood < 0)
+        {
+            int deaths = Mathf.Min(-totalFood, Villagers.Count);
+            Debug.Log($"Deaths to occur: {deaths}");
+            totalFood = 0;
+
+            for (int i = 0; i < deaths && Villagers.Count > 0; i++)
+            {
+                GameObject villager = Villagers[Random.Range(0, Villagers.Count)];
+                Villagers.Remove(villager);
+                Destroy(villager);
+                totalPopulation--;
+                Debug.Log($"Villager died, remaining: {Villagers.Count}");
+            }
+        }
+
+        // Update Progress
+        for (int i = 0; i < Villagers.Count; i++)
+        {
+            if (Villagers[i].GetComponentInChildren<Villager>().tired)
+                totalProgress -= 1f;
+            else
+                totalProgress += 2f; // game is too hard :(
+        }
+
+        totalProgress = Mathf.Max(0f, totalProgress);
+            
+        // Check for defeat
+        if (totalPopulation <= 0)
+        {
+            levelLoader.LoadLevelByName("BadEnding");
+            night = false;
+            elapsedTime = 0f;
+        }
+
+        // Letter here
+        // Pause time to show letter
+            
+        //Spawn villagers
+        VillagerSpawn();
+
+        // Reset time
+        elapsedTime = 0f;
+
+        days++;
+        oneTime = false;
+        nightFinished = false;
+    }
 
     void VillagerSpawn()
     {
