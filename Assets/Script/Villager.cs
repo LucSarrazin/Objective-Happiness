@@ -143,36 +143,44 @@ public class Villager : MonoBehaviour
         {
             case types.vagrant:
                 Debug.Log(name + " villager is vagrant");
+                render.enabled = true;
                 render.material = materialList[4];
                 StopAllCoroutines();
                 StartCoroutine("RandomWalk");
                 break;
             case types.food_picker:
                 Debug.unityLogger.Log(name + " villager is food picker");
+                render.enabled = true;
                 render.material = materialList[1];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a food picker and going to take food");
                 agent.destination = foodList[Random.Range(0,foodList.Length)].transform.position;
+                agent.speed = 1f;
                 foodPlace = true;
                 break;
             case types.lumberjack:
                 Debug.Log(name + " villager is lumberjack");
+                render.enabled = true;
                 render.material = materialList[2];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a lumberjack and going to take wood");
                 agent.destination = woodList[Random.Range(0,woodList.Length)].transform.position;
+                agent.speed = 1f;
                 woodPlace = true;
                 break;
             case types.digger:
                 Debug.Log(name + " villager is digger");
+                render.enabled = true;
                 render.material = materialList[0];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a digger and going to mine rock");
                 agent.destination = rockList[Random.Range(0,rockList.Length)].transform.position;
+                agent.speed = 1f;
                 rockPlace = true;
                 break;
             case types.mason:
                 Debug.Log(name + " villager is mason");
+                render.enabled = true;
                 render.material = materialList[3];
                 StopAllCoroutines();
                 StartCoroutine("needToBuild");
@@ -364,16 +372,16 @@ public class Villager : MonoBehaviour
 
     IEnumerator RandomWalk()
     {
+        isWalking = true;
         agent.speed = 1f;
         //Debug.Log("start Walking random");
-        isWalking = true;
         if (agent.hasPath == false)
         {
             agent.destination = new Vector3(Random.Range(-15,15),0,Random.Range(-15,15));
         }
         //Debug.Log("end Walking random");
-        isWalking = false;
         yield return new WaitForSeconds(1);
+        isWalking = false;
         StartCoroutine(RandomWalk());
     }
     
@@ -428,6 +436,7 @@ public class Villager : MonoBehaviour
             yield return null;
             tired = false;
             isWalking = false;
+            render.enabled = false;
             Debug.Log(name + " is sleeping");
         }
         yield return null;
