@@ -12987,6 +12987,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: School
       objectReference: {fileID: 0}
+    - target: {fileID: 7544567567371372963, guid: d0b0e9f8a359ab7498d9d544b651eec0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15067,6 +15071,10 @@ PrefabInstance:
     - target: {fileID: 7544567567371372963, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
       propertyPath: m_Name
       value: House
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544567567371372963, guid: 3e34ae656e761b342bf7b5185235b565, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22081,8 +22089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   days: 1
-  dayDuration: 100
-  nightDuration: 50
+  dayDuration: 30
+  nightDuration: 30
   totalWood: 5
   totalRock: 5
   totalFood: 5

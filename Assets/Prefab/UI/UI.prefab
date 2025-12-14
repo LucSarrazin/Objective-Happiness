@@ -2239,6 +2239,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 1291042454688823849}
   Villager: {fileID: 0}
+  nameUI: {fileID: 2886443284921520161}
+  typeUI: {fileID: 8103591301962704283}
+  ageUI: {fileID: 6039798032238331672}
+  dropdownUI: {fileID: 2316816847230298739}
+  learnButtonUI: {fileID: 5506824345998683189}
 --- !u!1 &7829594712997102175
 GameObject:
   m_ObjectHideFlags: 0

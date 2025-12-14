@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] ListFarm;
     private int previousCount = 0;
     public int numberFarm = 0;
+    private bool oneTime = false;
     public GameObject directionLight;
     public GameObject plane;
     
@@ -111,7 +112,11 @@ public class GameManager : MonoBehaviour
             
             // Check for defeat
             if (totalPopulation <= 0)
+            {
                 levelLoader.LoadLevelByName("BadEnding");
+                night = false;
+                elapsedTime = 0f;
+            }
 
             // Letter here
             // Pause time to show letter
@@ -123,6 +128,7 @@ public class GameManager : MonoBehaviour
             elapsedTime = 0f;
 
             days++;
+            oneTime = false;
         }
 
         if (ListFarm.Length > previousCount)
@@ -142,19 +148,23 @@ public class GameManager : MonoBehaviour
 
     void VillagerSpawn()
     {
-        int spawnCount = Random.Range(1, 4);
-
-        for (int i = 0; i < spawnCount; i++)
+        if (oneTime == false)
         {
-            GameObject villager = Instantiate(villagerPrefab);
-            villager.transform.position = new Vector3(
-                Random.Range(-5, 5),
-                0,
-                Random.Range(-5, 5)
-            );
+            oneTime = true;
+            int spawnCount = Random.Range(1, 4);
 
-            Villagers.Add(villager);
-            totalPopulation++;
+            for (int i = 0; i < spawnCount; i++)
+            {
+                GameObject villager = Instantiate(villagerPrefab);
+                villager.transform.position = new Vector3(
+                    Random.Range(-5, 5),
+                    0,
+                    Random.Range(-5, 5)
+                );
+
+                Villagers.Add(villager);
+                totalPopulation++;
+            }
         }
     }
 
