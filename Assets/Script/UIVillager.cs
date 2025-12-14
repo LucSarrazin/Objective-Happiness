@@ -59,6 +59,7 @@ public class UIVillager : MonoBehaviour
     {
         if (Villager == null) return;
         Villager.goToLearn = true;
+        Villager.StartCoroutine("startingSchool");
         HideInfo();
     }
 }

@@ -345,6 +345,55 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b26fd14d38fd62c4197f5635cd3b976f, type: 2}
   - {fileID: 2100000, guid: 1a87962ce1597fb409962d4d85199508, type: 2}
   - {fileID: 2100000, guid: 9e51b0d46bfa902438df3d3fea1dedc8, type: 2}
+  nameList:
+  - Lucas
+  - Emma
+  - "L\xE9o"
+  - Manon
+  - Hugo
+  - "L\xE9a"
+  - Nathan
+  - "Chlo\xE9"
+  - Enzo
+  - Camille
+  - Louis
+  - "In\xE8s"
+  - Arthur
+  - Sarah
+  - Jules
+  - "Zo\xE9"
+  - Ethan
+  - Clara
+  - Paul
+  - Lola
+  - Noah
+  - Alice
+  - Tom
+  - Juliette
+  - Gabriel
+  - Eva
+  - "Rapha\xEBl"
+  - "Ma\xEBlle"
+  - Mathis
+  - "Ana\xEFs"
+  - Alexandre
+  - Nina
+  - "Th\xE9o"
+  - Mila
+  - Antoine
+  - Romane
+  - Maxime
+  - Elena
+  - Baptiste
+  - Margaux
+  - Victor
+  - "Oc\xE9ane"
+  - Samuel
+  - Lucie
+  - Quentin
+  - Iris
+  - Adrien
+  - Pauline
   tired: 0
   hungry: 0
   needToEat: 0
@@ -365,13 +414,6 @@ MonoBehaviour:
   render: {fileID: 3776930072239416300}
   render1: {fileID: 0}
   animator: {fileID: 53946160016146156}
-  nameUI: {fileID: 0}
-  typeUI: {fileID: 0}
-  ageUI: {fileID: 0}
-  UI: {fileID: 0}
-  villagerUI: {fileID: 0}
-  dropdownUI: {fileID: 0}
-  learnButtonUI: {fileID: 0}
 --- !u!82 &6927034682556452837
 AudioSource:
   m_ObjectHideFlags: 0
