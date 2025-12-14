@@ -381,7 +381,9 @@ public class Villager : MonoBehaviour
                 if (houseIsSleeping != null)
                 {
                     houseIsSleeping.sleeping = false;
+                    tired = false;
                 }
+                StopAllCoroutines();
                 updateType();
             }
             
@@ -482,6 +484,7 @@ public class Villager : MonoBehaviour
             yield break;
         }
         
+        tired = false;
         house.sleeping = true;
         houseIsSleeping = house;
         agent.speed = 5f;
