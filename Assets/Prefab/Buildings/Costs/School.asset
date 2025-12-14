@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1bafd1f70aa7eb46b7146e5cc614ed1, type: 3}
   m_Name: School
   m_EditorClassIdentifier: 
-  requiredMason: 3
+  requiredMason: 1
   woodCost: 10
   rockCost: 10
   buildTime: 100
