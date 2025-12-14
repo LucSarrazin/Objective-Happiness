@@ -50,9 +50,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         days = 1;
-        totalFood = 5;
-        totalRock= 5;
-        totalWood = 5;
         totalProgress = 0;
         numberMason = 1;
         totalPopulation = 5;

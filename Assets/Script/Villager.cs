@@ -134,6 +134,11 @@ public class Villager : MonoBehaviour
         schoolList = GameObject.FindGameObjectsWithTag("School");
     }
 
+    private void OnEnable()
+    {
+        UpdateObjects();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -160,9 +165,16 @@ public class Villager : MonoBehaviour
                 render.material = materialList[1];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a food picker and going to take food");
-                agent.destination = foodList[Random.Range(0,foodList.Length)].transform.position;
-                agent.speed = 1f;
-                foodPlace = true;
+                if (tired == false)
+                {
+                    agent.destination = foodList[Random.Range(0,foodList.Length)].transform.position;
+                    agent.speed = 1f;
+                    foodPlace = true;
+                }
+                else
+                {
+                    StartCoroutine("RandomWalk");
+                }
                 break;
             case types.lumberjack:
                 Debug.Log(name + " villager is lumberjack");
@@ -170,9 +182,16 @@ public class Villager : MonoBehaviour
                 render.material = materialList[2];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a lumberjack and going to take wood");
-                agent.destination = woodList[Random.Range(0,woodList.Length)].transform.position;
-                agent.speed = 1f;
-                woodPlace = true;
+                if (tired == false)
+                {
+                    agent.destination = woodList[Random.Range(0,woodList.Length)].transform.position;
+                    agent.speed = 1f;
+                    woodPlace = true;
+                }
+                else
+                {
+                    StartCoroutine("RandomWalk");
+                }
                 break;
             case types.digger:
                 Debug.Log(name + " villager is digger");
@@ -180,16 +199,30 @@ public class Villager : MonoBehaviour
                 render.material = materialList[0];
                 StopAllCoroutines();
                 Debug.Log(name + " is now a digger and going to mine rock");
-                agent.destination = rockList[Random.Range(0,rockList.Length)].transform.position;
-                agent.speed = 1f;
-                rockPlace = true;
+                if (tired == false)
+                {
+                    agent.destination = rockList[Random.Range(0,rockList.Length)].transform.position;
+                    agent.speed = 1f;
+                    rockPlace = true;
+                }
+                else
+                {
+                    StartCoroutine("RandomWalk");
+                }
                 break;
             case types.mason:
                 Debug.Log(name + " villager is mason");
                 render.enabled = true;
                 render.material = materialList[3];
                 StopAllCoroutines();
-                StartCoroutine("needToBuild");
+                if (tired == false)
+                {
+                    StartCoroutine("needToBuild");
+                }
+                else
+                {
+                    StartCoroutine("RandomWalk");
+                }
                 break;
         }
     }
@@ -311,11 +344,11 @@ public class Villager : MonoBehaviour
         {
             oneTime = false;
             tired = true;
+            UpdateObjects();
             if (type != types.vagrant)
             {
                 if (sleep == false)
                 {
-                    UpdateObjects();
                     sleep = true;
                     StopAllCoroutines();
                     masonUsed = false;
@@ -368,7 +401,7 @@ public class Villager : MonoBehaviour
 
         if (currentCount > previousCount)
         {
-            if (type == types.mason && masonUsed == false)
+            if (type == types.mason && masonUsed == false && tired == false)
             {
                 masonUsed = true;
                 StopAllCoroutines();
@@ -425,8 +458,11 @@ public class Villager : MonoBehaviour
 
             ConstructionSite site;
 
-            bool isBuilding = houseTest.GetComponent<ConstructionSite>().isBuilding;
-            Debug.LogWarning("IsBuilding est égal à " + isBuilding);
+            bool isBuilding = false;
+            if(houseTest.GetComponent<ConstructionSite>() != null)
+            {
+                isBuilding = houseTest.GetComponent<ConstructionSite>().isBuilding;
+            }
 
             if (!houseTest.sleeping && !isBuilding)
             {
@@ -485,6 +521,7 @@ public class Villager : MonoBehaviour
     IEnumerator startingSchool()
     {
         Debug.Log(name + " is starting school");
+        int typeWanted = UIVillager.Instance.dropdownUI.value;
         School school = null;
         GameObject schoolPlace = null;
         bool foundSchool = false;
@@ -493,9 +530,12 @@ public class Villager : MonoBehaviour
         {
             GameObject schoolPlaceTest = schoolList[Random.Range(0, schoolList.Length)];
             School schoolTest = schoolPlaceTest.GetComponent<School>();
-
-            bool isBuilding = schoolTest.GetComponent<ConstructionSite>().isBuilding;
-            Debug.LogWarning("IsBuilding est égal à " + isBuilding);
+            
+            bool isBuilding = false;
+            if(schoolTest.GetComponent<ConstructionSite>() != null)
+            {
+               isBuilding = schoolTest.GetComponent<ConstructionSite>().isBuilding;
+            }
             if (!schoolTest.maxStudent && !isBuilding)
             {
                 schoolPlace = schoolPlaceTest;
@@ -508,7 +548,7 @@ public class Villager : MonoBehaviour
         if (!foundSchool)
         {
             Debug.LogWarning(name + " has no school available !");
-            StartCoroutine("RandomWalk");
+            updateType();
             yield break;
         }
         
@@ -517,7 +557,7 @@ public class Villager : MonoBehaviour
         {
             GameManager.Instance.numberMason--;
         }
-        switch (UIVillager.Instance.dropdownUI.value)
+        switch (typeWanted)
         {
             case 0:
                 type = types.food_picker;
