@@ -72,12 +72,10 @@ public class CameraMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isOverUi())
         {
-            //Clique avec la souris pour faire un debug.log du nom du hit
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Villagers")) && hit.collider.CompareTag("Villager"))
                 hit.collider.GetComponent<Villager>().Touched();
-            
         }
         
     }

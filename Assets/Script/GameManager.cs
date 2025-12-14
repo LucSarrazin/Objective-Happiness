@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int totalFood = 5;
     public int numberMason = 1;
     public int totalPopulation = 5;
+    [SerializeField] private GameObject villagerPrefab;
 
     public readonly float requieredProgress = 100f;
 
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
         totalRock= 5;
         totalWood = 5;
         totalProgress = 0;
-        numberMason = 0;
+        numberMason = 1;
         totalPopulation = 5;
         numberFarm = 0;
 
@@ -81,22 +82,22 @@ public class GameManager : MonoBehaviour
         if (elapsedTime >= dayDuration + nightDuration) // New Day
         {
             // Consume food and kill surplus
-            int villagersCount = Villagers.Count;
-
             totalFood -= Villagers.Count;
 
             if (totalFood < 0)
             {
-                int deaths = -villagersCount;
+                int deaths = -totalFood;
                 totalFood = 0;
-                for (int i = 0; i < deaths; i++)
+
+                for (int i = 0; i < deaths && Villagers.Count > 0; i++)
                 {
-                    totalPopulation--;
                     GameObject villager = Villagers[Random.Range(0, Villagers.Count)];
                     Villagers.Remove(villager);
                     Destroy(villager);
+                    totalPopulation--;
                 }
             }
+
 
             for (int i = 0; i < Villagers.Count; i++)
                 if (Villagers[i].GetComponent<Villager>().tired)
@@ -110,6 +111,9 @@ public class GameManager : MonoBehaviour
 
             // Letter here
             // Pause time to show letter
+            
+            //Spawn villagers
+            VillagerSpawn();
 
             // Reset time
             elapsedTime = 0f;
@@ -133,6 +137,26 @@ public class GameManager : MonoBehaviour
         previousCount = ListFarm.Length;
     }
 
+
+    void VillagerSpawn()
+    {
+        int spawnCount = Random.Range(1, 4);
+
+        for (int i = 0; i < spawnCount; i++)
+        {
+            GameObject villager = Instantiate(villagerPrefab);
+            villager.transform.position = new Vector3(
+                Random.Range(-5, 5),
+                0,
+                Random.Range(-5, 5)
+            );
+
+            Villagers.Add(villager);
+            totalPopulation++;
+        }
+    }
+
+    
     public void StopTime()
     {
         Time.timeScale = 0;

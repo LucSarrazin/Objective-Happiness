@@ -11992,6 +11992,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9029683871135840506, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
+      propertyPath: name
+      value: "Zo\xE9"
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029683871135840506, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
       propertyPath: type
       value: 3
       objectReference: {fileID: 0}
@@ -22084,6 +22088,7 @@ MonoBehaviour:
   totalFood: 5
   numberMason: 1
   totalPopulation: 5
+  villagerPrefab: {fileID: 481267821883970822, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
   totalProgress: 0
   night: 0
   ListBuildingInConstruction: []
