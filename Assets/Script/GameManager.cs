@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Update Progress / Check victory
+        // Check victory
         if (totalProgress >= requieredProgress)
         {
             levelLoader.LoadLevelByName("GoodEnding");
@@ -98,10 +98,14 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-
+            // Update Progress
             for (int i = 0; i < Villagers.Count; i++)
+            {
                 if (Villagers[i].GetComponent<Villager>().tired)
                     totalProgress -= 1f;
+                else
+                    totalProgress += 2f; // game is too hard :(
+            }
 
             totalProgress = Mathf.Max(0f, totalProgress);
             
@@ -120,8 +124,6 @@ public class GameManager : MonoBehaviour
 
             days++;
         }
-
-
 
         if (ListFarm.Length > previousCount)
         {

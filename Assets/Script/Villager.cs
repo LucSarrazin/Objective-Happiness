@@ -60,7 +60,13 @@ public class Villager : MonoBehaviour
     private NavMeshAgent agent;
     [SerializeField] private MeshRenderer render;
     [SerializeField] private SpriteRenderer render1;
-    
+    [SerializeField] private Animator animator;
+    //[SerializeField] private AudioSource choppingAudioSource;
+    //[SerializeField] private AudioSource miningAudioSource;
+    //[SerializeField] private AudioSource diggingAudioSource;
+    //[SerializeField] private AudioSource buildingAudioSource;
+    //[SerializeField] private AudioSource walkingAudioSource;
+
     [Space]
     
     [Header("Villager UI Parameters")]
@@ -168,6 +174,7 @@ public class Villager : MonoBehaviour
                 Debug.Log(name + " start chooping");
                 isWorking = true;
                 yield return new WaitForSeconds(5f);
+                //choppingAudioSource.Play();
                 int wood = Random.Range(1, 4);
                 GameManager.Instance.totalWood += wood;
                 Debug.Log(name + " get " + wood);
@@ -189,6 +196,7 @@ public class Villager : MonoBehaviour
                 Debug.Log(name + " start minning");
                 isWorking = true;
                 yield return new WaitForSeconds(5f);
+                //miningAudioSource.Play();
                 int rock = Random.Range(1, 4);
                 GameManager.Instance.totalRock += rock;
                 Debug.Log(name + " get " + rock);
@@ -210,6 +218,7 @@ public class Villager : MonoBehaviour
                 Debug.Log(name + " start searching food");
                 isWorking = true;
                 yield return new WaitForSeconds(5f);
+                //diggingAudioSource.Play();
                 int rand = Random.Range(1, 4);
                 float multiplier = Mathf.Pow(1.5f, GameManager.Instance.numberFarm);
                 int food = Mathf.RoundToInt(rand * multiplier);
@@ -229,12 +238,14 @@ public class Villager : MonoBehaviour
         if (age >= ageOfDeath)
         {
             Debug.Log(name + " is dead from age...");
+            // TODO: player needs feedback
             Destroy(this.gameObject);
         }
 
         if (needToEat == true)
         {
             Debug.Log(name + " is dead from eat...");
+            // TODO: player needs feedback
             Destroy(this.gameObject);
         }
 
@@ -326,9 +337,17 @@ public class Villager : MonoBehaviour
         }
 
         previousCount = currentCount;
-        
+
+        // Handle animations
+
+        if (isWorking)
+            animator.Play("house wiggle");
+        else if (isWalking)
+            animator.Play("walking chara");
+        else
+            animator.Play("idle");
     }
-    
+
 
     IEnumerator RandomWalk()
     {
