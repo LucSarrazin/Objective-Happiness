@@ -496,15 +496,18 @@ public class Villager : MonoBehaviour
         agent.speed = 5f;
         agent.destination = home.transform.position;
         isWalking = true;
-
-        while (agent.pathPending || agent.remainingDistance > 0.2f)
+        if (agent != null)
         {
-            yield return null;
-        }
-        tired = false;
-        isWalking = false;
-        render.enabled = false;
-        Debug.Log(name + " is sleeping");
+            
+            while (agent.pathPending || agent.remainingDistance > 0.2f)
+            {
+                yield return null;
+            }
+            tired = false;
+            isWalking = false;
+            render.enabled = false;
+            Debug.Log(name + " is sleeping");
+        } 
     }
     public void ShowInfo()
     {
