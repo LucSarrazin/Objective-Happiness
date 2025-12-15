@@ -308,15 +308,23 @@ public class Villager : MonoBehaviour
     {
         if (age >= ageOfDeath)
         {
+            tired = false;
+            if (houseIsSleeping != null)
+            {
+                houseIsSleeping.sleeping = false;
+            }
             Debug.Log(name + " is dead from age...");
-            // TODO: player needs feedback
             Destroy(this.gameObject);
         }
 
         if (needToEat == true)
         {
+            tired = false;
+            if (houseIsSleeping != null)
+            {
+                houseIsSleeping.sleeping = false;
+            }
             Debug.Log(name + " is dead from eat...");
-            // TODO: player needs feedback
             Destroy(this.gameObject);
         }
 
@@ -458,12 +466,10 @@ public class Villager : MonoBehaviour
             }
             //Debug.Log("Test house: " + houseTest.name);
 
-            ConstructionSite site;
-
             bool isBuilding = false;
-            if(houseTest.GetComponent<ConstructionSite>() != null)
+            if(homeTest.GetComponent<ConstructionSite>() != null)
             {
-                isBuilding = houseTest.GetComponent<ConstructionSite>().isBuilding;
+                isBuilding = homeTest.GetComponent<ConstructionSite>().enabled;
             }
 
             if (!houseTest.sleeping && !isBuilding)
@@ -490,15 +496,15 @@ public class Villager : MonoBehaviour
         agent.speed = 5f;
         agent.destination = home.transform.position;
         isWalking = true;
-        if (agent.isStopped == true)
+
+        while (agent.pathPending || agent.remainingDistance > 0.2f)
         {
             yield return null;
-            tired = false;
-            isWalking = false;
-            render.enabled = false;
-            Debug.Log(name + " is sleeping");
         }
-        yield return null;
+        tired = false;
+        isWalking = false;
+        render.enabled = false;
+        Debug.Log(name + " is sleeping");
     }
     public void ShowInfo()
     {
@@ -537,7 +543,7 @@ public class Villager : MonoBehaviour
             bool isBuilding = false;
             if(schoolTest.GetComponent<ConstructionSite>() != null)
             {
-               isBuilding = schoolTest.GetComponent<ConstructionSite>().isBuilding;
+               isBuilding = schoolTest.GetComponent<ConstructionSite>().enabled;
             }
             if (!schoolTest.maxStudent && !isBuilding)
             {

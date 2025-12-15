@@ -130,6 +130,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1545734233}
     m_Modifications:
+    - target: {fileID: 207123717280645699, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 207123717280645699, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.94371665
+      objectReference: {fileID: 0}
+    - target: {fileID: 207123717280645699, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9037736
+      objectReference: {fileID: 0}
     - target: {fileID: 7274730855239823149, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
       propertyPath: m_Name
       value: GUI
@@ -232,6 +244,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7509816324758478301, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
   m_PrefabInstance: {fileID: 4044284}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4044286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6388592359628164283, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
+  m_PrefabInstance: {fileID: 4044284}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &10635419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2202612244110111293, guid: b037c51823efd1647813a4cc9dbc6bdc, type: 3}
@@ -22154,7 +22177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   days: 1
-  dayDuration: 100
+  dayDuration: 30
   nightDuration: 50
   totalWood: 5
   totalRock: 5
@@ -22172,6 +22195,7 @@ MonoBehaviour:
   plane: {fileID: 579653137}
   elapsedTime: 0
   levelLoader: {fileID: 1915585038}
+  dayCounter: {fileID: 4044286}
 --- !u!4 &1860822421
 Transform:
   m_ObjectHideFlags: 0
