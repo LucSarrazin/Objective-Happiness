@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     public float elapsedTime = 0f;
 
     [SerializeField] private LevelLoader levelLoader;
+    [SerializeField] private TextMeshProUGUI dayCounter;
 
     private float currentTimeScale = 1;
     private Vector3 sunRotation;
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         days = 1;
+        dayCounter.text = "DAY " + days;
         totalProgress = 0;
         numberMason = 1;
         totalPopulation = 5;
@@ -156,6 +159,7 @@ public class GameManager : MonoBehaviour
         elapsedTime = 0f;
 
         days++;
+        dayCounter.text = "DAY " + days;
         oneTime = false;
         nightFinished = false;
     }
