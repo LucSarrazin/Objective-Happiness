@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4884509076052325882}
   - component: {fileID: 7922857297358057346}
-  m_Layer: 0
+  - component: {fileID: 4409291988670478990}
+  m_Layer: 7
   m_Name: Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,6 +51,27 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: -0.59}
   m_TimeToStationary: 0.5
+--- !u!65 &4409291988670478990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912969787893862195}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.48, y: 0.32, z: 1.01}
+  m_Center: {x: 0.04, y: 0.07, z: -0.58}
 --- !u!1 &3278876881117301142
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +84,7 @@ GameObject:
   - component: {fileID: 8407667961649237517}
   - component: {fileID: 4303584830283588918}
   - component: {fileID: 662434084984974855}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +190,7 @@ GameObject:
   - component: {fileID: 6127501833800294570}
   - component: {fileID: 2973734125392484873}
   - component: {fileID: 7456858925832393754}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
