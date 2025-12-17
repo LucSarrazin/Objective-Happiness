@@ -142,6 +142,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9037736
       objectReference: {fileID: 0}
+    - target: {fileID: 605362126391633241, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.6779785
+      objectReference: {fileID: 0}
+    - target: {fileID: 605362126391633241, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5666504
+      objectReference: {fileID: 0}
     - target: {fileID: 7274730855239823149, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
       propertyPath: m_Name
       value: GUI
@@ -13896,10 +13904,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5438703808361531613, guid: 1e8132b51ea16e546b6720cdea2b2666, type: 2}
   m_audioClip: {fileID: 8300000, guid: 6db8c4599c48d55498e06a2945e93d2a, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -14184,10 +14192,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2329684652620225979, guid: 1e8132b51ea16e546b6720cdea2b2666, type: 2}
   m_audioClip: {fileID: 8300000, guid: 95a4047c0758c3e4d835b3a8d3f5f1af, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_PlayOnAwake: 1
+  m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -22179,10 +22187,10 @@ MonoBehaviour:
   days: 1
   dayDuration: 100
   nightDuration: 50
-  totalWood: 5
-  totalRock: 5
-  totalFood: 5
-  numberMason: 1
+  totalWood: 500
+  totalRock: 500
+  totalFood: 500
+  numberMason: 5
   totalPopulation: 5
   villagerPrefab: {fileID: 481267821883970822, guid: f884d57351e5dfe42a748f8a5af3d3a5, type: 3}
   totalProgress: 0
