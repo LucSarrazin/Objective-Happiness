@@ -142,6 +142,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9037736
       objectReference: {fileID: 0}
+    - target: {fileID: 605362126391633241, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.6781006
+      objectReference: {fileID: 0}
+    - target: {fileID: 605362126391633241, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5667114
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900546414412575331, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.0000076
+      objectReference: {fileID: 0}
     - target: {fileID: 7274730855239823149, guid: bf50cc4cb52fc594a80db7a40bb2cb8a, type: 3}
       propertyPath: m_Name
       value: GUI
@@ -21241,10 +21253,6 @@ PrefabInstance:
     - target: {fileID: 4884509076052325882, guid: a9fe628e64a437148b3ff0655772ff6d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7922857297358057346, guid: a9fe628e64a437148b3ff0655772ff6d, type: 3}
-      propertyPath: m_Carve
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
