@@ -28,54 +28,51 @@ public class Villager : MonoBehaviour
     public Material[] materialList;
     public string[] nameList = new string[]
     {
-        "Lucas",
-        "Emma",
-        "Léo",
-        "Manon",
-        "Hugo",
-        "Léa",
-        "Nathan",
-        "Chloé",
-        "Enzo",
-        "Camille",
-        "Louis",
-        "Inès",
-        "Arthur",
-        "Sarah",
-        "Jules",
-        "Zoé",
-        "Ethan",
-        "Clara",
-        "Paul",
-        "Lola",
-        "Noah",
-        "Alice",
-        "Tom",
-        "Juliette",
-        "Gabriel",
-        "Eva",
-        "Raphaël",
-        "Maëlle",
-        "Mathis",
-        "Anaïs",
         "Alexandre",
-        "Nina",
-        "Théo",
-        "Mila",
-        "Antoine",
-        "Romane",
-        "Maxime",
-        "Elena",
-        "Baptiste",
-        "Margaux",
-        "Victor",
-        "Océane",
+        "Eva",
+        "Noah",
+        "Sirius",
+        "Ali",
+        "Raphaël",
+        "Solal",
+        "Luc",
+        "Zoé",
+        "Nell",
+        "Axel",
+        "Alice",
+        "Pauline",
+        "Noémie",
+        "Gaspard",
         "Samuel",
-        "Lucie",
-        "Quentin",
-        "Iris",
-        "Adrien",
-        "Pauline"
+        "Hugo",
+        "Ugo",
+        "Alix",
+        "Tom",
+        "Elliot",
+        "Lise",
+        "Louison",
+        "Cassandre",
+        "Nathan",
+        "Elouan",
+        "Nelson",
+        "Pablo",
+        "Dorian",
+        "Fabio",
+        "Mylan",
+        "Endy",
+        "Mathéo",
+        "Thomas",
+        "Misha",
+        "Jacques",
+        "Moana",
+        "Enzo",
+        "Maël",
+        "Ange",
+        "Evann",
+        "Guillaume",
+        "Esteban",
+        "Loutre",
+        "Kerian"
     };
     public bool tired;
     public bool hungry;
@@ -143,6 +140,7 @@ public class Villager : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        name = nameList[Random.Range(0, nameList.Length)];
         updateType();
         GameManager.Instance.Villagers.Add(this.gameObject);
         StartCoroutine(RandomWalk());
@@ -355,9 +353,10 @@ public class Villager : MonoBehaviour
             UpdateObjects();
             if (type != types.vagrant)
             {
-                if (sleep == false)
+                if (sleep == false && goToLearn == false)
                 {
                     sleep = true;
+                    goToLearn = false;
                     StopAllCoroutines();
                     masonUsed = false;
                     masonRunning = false;
@@ -523,13 +522,6 @@ public class Villager : MonoBehaviour
         ShowInfo();
         Debug.Log(name + " has been touched");
     }
-
-    public void AddName()
-    {
-        int randomName = Random.Range(0, nameList.Length);
-        name = nameList[randomName];
-    }
-
     IEnumerator startingSchool()
     {
         Debug.Log(name + " is starting school");
@@ -597,6 +589,7 @@ public class Villager : MonoBehaviour
         }
         isWalking = false;
         Debug.Log(name + " is studying");
+        agent.speed = 0f;
         render.enabled = false;
         yield return new WaitForSeconds(numberOfTimeToLearn);
         Debug.Log(name + " stop studying");
