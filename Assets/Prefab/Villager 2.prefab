@@ -347,54 +347,56 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 1a87962ce1597fb409962d4d85199508, type: 2}
   - {fileID: 2100000, guid: 9e51b0d46bfa902438df3d3fea1dedc8, type: 2}
   nameList:
-  - Lucas
-  - Emma
-  - "L\xE9o"
-  - Manon
-  - Hugo
-  - "L\xE9a"
-  - Nathan
-  - "Chlo\xE9"
-  - Enzo
-  - Camille
-  - Louis
-  - "In\xE8s"
-  - Arthur
-  - Sarah
-  - Jules
-  - "Zo\xE9"
-  - Ethan
-  - Clara
-  - Paul
-  - Lola
-  - Noah
-  - Alice
-  - Tom
-  - Juliette
-  - Gabriel
-  - Eva
-  - "Rapha\xEBl"
-  - "Ma\xEBlle"
-  - Mathis
-  - "Ana\xEFs"
-  - Alexandre
-  - Nina
-  - "Th\xE9o"
-  - Mila
-  - Antoine
-  - Romane
-  - Maxime
-  - Elena
-  - Baptiste
-  - Margaux
-  - Victor
-  - "Oc\xE9ane"
-  - Samuel
-  - Lucie
-  - Quentin
-  - Iris
-  - Adrien
-  - Pauline
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  jobSounds:
+  - {fileID: 8300000, guid: a35f916d7f300524eb9007f8a5f6f126, type: 3}
+  - {fileID: 8300000, guid: 0299af07eac3e2241a6a5f7f0afdf670, type: 3}
+  - {fileID: 8300000, guid: f671c0b0af80197488a9549b106671a8, type: 3}
+  - {fileID: 8300000, guid: 921f3fdc4d8b9354cbf5d05a959c9084, type: 3}
+  - {fileID: 8300000, guid: 0a67d1251a0eb214daef5d31b3f46ac0, type: 3}
   tired: 0
   hungry: 0
   needToEat: 0
@@ -415,6 +417,7 @@ MonoBehaviour:
   render: {fileID: 3776930072239416300}
   render1: {fileID: 0}
   animator: {fileID: 53946160016146156}
+  audioSource: {fileID: 6927034682556452837}
 --- !u!82 &6927034682556452837
 AudioSource:
   m_ObjectHideFlags: 0
@@ -429,16 +432,16 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 11
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -446,23 +449,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.33724594
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -1.1428572
+      outSlope: -1.1428572
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -471,7 +474,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

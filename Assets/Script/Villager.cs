@@ -74,6 +74,8 @@ public class Villager : MonoBehaviour
         "Loutre",
         "Kerian"
     };
+
+    [SerializeField] private AudioClip[] jobSounds;
     public bool tired;
     public bool hungry;
     public bool needToEat;
@@ -109,10 +111,7 @@ public class Villager : MonoBehaviour
     [SerializeField] private MeshRenderer render;
     [SerializeField] private SpriteRenderer render1;
     [SerializeField] private Animator animator;
-    //[SerializeField] private AudioSource choppingAudioSource;
-    //[SerializeField] private AudioSource miningAudioSource;
-    //[SerializeField] private AudioSource diggingAudioSource;
-    //[SerializeField] private AudioSource buildingAudioSource;
+    [SerializeField] private AudioSource audioSource;
     //[SerializeField] private AudioSource walkingAudioSource;
 
     // private void OnValidate()
@@ -129,6 +128,54 @@ public class Villager : MonoBehaviour
         foodList = GameObject.FindGameObjectsWithTag("Food");
         houseList = GameObject.FindGameObjectsWithTag("House");
         schoolList = GameObject.FindGameObjectsWithTag("School");
+        nameList = new string[]
+        {
+            "Alexandre",
+            "Eva",
+            "Noah",
+            "Sirius",
+            "Ali",
+            "Raphaël",
+            "Solal",
+            "Luc",
+            "Zoé",
+            "Nell",
+            "Axel",
+            "Alice",
+            "Pauline",
+            "Noémie",
+            "Gaspard",
+            "Samuel",
+            "Hugo",
+            "Ugo",
+            "Alix",
+            "Tom",
+            "Elliot",
+            "Lise",
+            "Louison",
+            "Cassandre",
+            "Nathan",
+            "Elouan",
+            "Nelson",
+            "Pablo",
+            "Dorian",
+            "Fabio",
+            "Mylan",
+            "Endy",
+            "Mathéo",
+            "Thomas",
+            "Misha",
+            "Jacques",
+            "Moana",
+            "Enzo",
+            "Maël",
+            "Ange",
+            "Evann",
+            "Guillaume",
+            "Esteban",
+            "Loutre",
+            "Kerian"
+        };
     }
 
     private void OnEnable()
@@ -233,45 +280,71 @@ public class Villager : MonoBehaviour
         houseList = GameObject.FindGameObjectsWithTag("House");
         schoolList = GameObject.FindGameObjectsWithTag("School");
     }
+    
+    private bool isChopping = false;
     IEnumerator cuttingTree()
     {
         while (woodPlace != true)
         {
-            if (agent.hasPath == false)
+            if (!isChopping && !agent.pathPending && agent.remainingDistance <= 0.2f)
             {
+                isChopping = true;
+
                 isWalking = false;
-                Debug.Log(name + " start chooping");
                 isWorking = true;
+
+                Debug.Log(name + " start chopping");
+
+                audioSource.clip = jobSounds[1];
+                audioSource.Play();
+
                 yield return new WaitForSeconds(5f);
-                //choppingAudioSource.Play();
+
+                audioSource.Stop();
+
                 int wood = Random.Range(1, 4);
                 GameManager.Instance.totalWood += wood;
                 Debug.Log(name + " get " + wood);
-                agent.destination = woodList[Random.Range(0,woodList.Length)].transform.position;
+
                 isWorking = false;
                 isWalking = true;
+
+                Transform nextWood = woodList[Random.Range(0, woodList.Length)].transform;
+                agent.SetDestination(nextWood.position);
+
+                yield return new WaitUntil(() => agent.remainingDistance > 1f);
+
+                isChopping = false;
             }
+
             yield return null;
         }
     }
     
+    private bool isMining = false;
     IEnumerator miningRock()
     {
         while (rockPlace != true)
         {
-            if (agent.hasPath == false)
+            if (!isMining && !agent.pathPending && agent.remainingDistance <= 0.2f)
             {
+                isMining = true;
                 isWalking = false;
-                Debug.Log(name + " start minning");
                 isWorking = true;
+                Debug.Log(name + " start minning");
+                audioSource.clip = jobSounds[3];
+                audioSource.Play();
                 yield return new WaitForSeconds(5f);
-                //miningAudioSource.Play();
+                audioSource.Stop();
                 int rock = Random.Range(1, 4);
                 GameManager.Instance.totalRock += rock;
                 Debug.Log(name + " get " + rock);
-                agent.destination = rockList[Random.Range(0,rockList.Length)].transform.position;
                 isWorking = false;
                 isWalking = true;
+                Transform nextRock = rockList[Random.Range(0,rockList.Length)].transform;
+                agent.SetDestination(nextRock.position);
+                yield return new WaitUntil(() => agent.remainingDistance > 1f);
+                isMining = false;
             }
             yield return null;
         }
@@ -281,26 +354,33 @@ public class Villager : MonoBehaviour
     {
         while (foodPlace != true)
         {
-            if (agent.hasPath == false)
+            if (!isMining && !agent.pathPending && agent.remainingDistance <= 0.2f)
             {
+                isMining = true;
                 isWalking = false;
-                Debug.Log(name + " start searching food");
                 isWorking = true;
+                Debug.Log(name + " start searching food");
+                audioSource.clip = jobSounds[0];
+                audioSource.Play();
                 yield return new WaitForSeconds(5f);
-                //diggingAudioSource.Play();
+                audioSource.Stop();
                 int rand = Random.Range(1, 4);
                 float multiplier = Mathf.Pow(1.5f, GameManager.Instance.numberFarm);
                 int food = Mathf.RoundToInt(rand * multiplier);
                 GameManager.Instance.totalFood += food;
                 Debug.Log(name + " get " + food);
-                agent.destination = foodList[Random.Range(0,foodList.Length)].transform.position;
                 isWorking = false;
                 isWalking = true;
+                Transform nextFood = foodList[Random.Range(0, foodList.Length)].transform;
+                agent.SetDestination(nextFood.position);
+                yield return new WaitUntil(() => agent.remainingDistance > 1f);
+                isMining = false;
             }
             yield return null;
         }
     }
 
+    private bool oneTimePlay;
     // Update is called once per frame
     void Update()
     {
@@ -348,6 +428,7 @@ public class Villager : MonoBehaviour
 
         if (GameManager.Instance.night == true)
         {
+            audioSource.Stop();
             oneTime = false;
             tired = true;
             UpdateObjects();
@@ -423,11 +504,26 @@ public class Villager : MonoBehaviour
         // Handle animations
 
         if (isWorking)
+        {
+            oneTimePlay = false;
             animator.Play("house wiggle");
+        }
         else if (isWalking)
+        {
             animator.Play("walking chara");
+            if (oneTimePlay == false)
+            {
+                oneTimePlay = true;
+                audioSource.clip = jobSounds[4];
+                audioSource.Play();
+            }
+        }
         else
+        {
             animator.Play("idle");
+            oneTimePlay = false;
+            audioSource.Stop(); 
+        }
     }
 
 
@@ -448,7 +544,78 @@ public class Villager : MonoBehaviour
     
     IEnumerator goBackHome()
     {
+        if (type == types.mason)
+        {
+            StartCoroutine(goBackHomeMason());
+            StopCoroutine(goBackHome());
+        }
+
+        yield return new WaitForSeconds(2f);
         Debug.Log("Go Back Home Villager");
+        
+        House house = null;
+        GameObject home = null;
+        bool foundHome = false;
+
+        for (int i = 0; i < houseList.Length; i++)
+        {
+            GameObject homeTest = houseList[Random.Range(0, houseList.Length)];
+            House houseTest = homeTest.GetComponent<House>();
+            if (houseTest == null)
+            {
+                Debug.LogWarning("object in houselist without house script: " + homeTest.name);
+                continue;
+            }
+            //Debug.Log("Test house: " + houseTest.name);
+
+            bool isBuilding = false;
+            if(homeTest.GetComponent<ConstructionSite>() != null)
+            {
+                isBuilding = homeTest.GetComponent<ConstructionSite>().enabled;
+            }
+
+            if (!houseTest.sleeping && !isBuilding)
+            {
+                home = homeTest;
+                house = houseTest;
+                foundHome = true;
+                break;
+            }
+        }
+        
+        if (!foundHome)
+        {
+            Debug.LogWarning(name + " has no house available !");
+            tired = true;
+            StopAllCoroutines();
+            StartCoroutine("RandomWalk");
+            yield break;
+        }
+        
+        tired = false;
+        house.sleeping = true;
+        houseIsSleeping = house;
+        agent.speed = 5f;
+        agent.destination = home.transform.position;
+        isWalking = true;
+        if (agent != null)
+        {
+            
+            while (agent.pathPending || agent.remainingDistance > 0.2f)
+            {
+                yield return null;
+            }
+            tired = false;
+            isWalking = false;
+            render.enabled = false;
+            Debug.Log(name + " is sleeping");
+        } 
+    }
+    
+    IEnumerator goBackHomeMason()
+    {
+        StopCoroutine(goBackHome());
+        Debug.Log("Go Back Home mason");
         
         House house = null;
         GameObject home = null;
@@ -601,72 +768,75 @@ public class Villager : MonoBehaviour
         agent.speed = 1f;
         Debug.Log(name + " finished studying");
     }
-    
-#region MasonBuildRegion
-private bool masonRunning = false;
-
-IEnumerator needToBuild()
-{
-    if (GameManager.Instance.night == false)
-    {
         
-        if (masonRunning) yield break;
-        masonRunning = true;
+    #region MasonBuildRegion
+    private bool masonRunning = false;
 
-        while (GameManager.Instance.ListBuildingInConstruction.Count > 0)
+    IEnumerator needToBuild()
+    {
+        if (GameManager.Instance.night == false)
         {
-            GameObject masonPlace = null;
-            ConstructionSite constructionSite = null;
-            int highestNeedForMasons = 0;
-            float bestDistance = Mathf.Infinity;
+            
+            if (masonRunning) yield break;
+            masonRunning = true;
 
-            for (int i = 0; i < GameManager.Instance.ListBuildingInConstruction.Count; i++)
+            while (GameManager.Instance.ListBuildingInConstruction.Count > 0)
             {
-                GameObject building = GameManager.Instance.ListBuildingInConstruction[i];
-                ConstructionSite site = building.GetComponent<ConstructionSite>();
+                GameObject masonPlace = null;
+                ConstructionSite constructionSite = null;
+                int highestNeedForMasons = 0;
+                float bestDistance = Mathf.Infinity;
 
-                if (site != null && site.masonCount < site.buildingCosts.requiredMason)
+                for (int i = 0; i < GameManager.Instance.ListBuildingInConstruction.Count; i++)
                 {
-                    int masonNeeded = site.buildingCosts.requiredMason - site.masonCount;
-                    float dist = Vector3.Distance(transform.position, building.transform.position);
+                    GameObject building = GameManager.Instance.ListBuildingInConstruction[i];
+                    ConstructionSite site = building.GetComponent<ConstructionSite>();
 
-                    if (masonNeeded > highestNeedForMasons ||
-                        (masonNeeded == highestNeedForMasons && dist < bestDistance))
+                    if (site != null && site.masonCount < site.buildingCosts.requiredMason)
                     {
-                        highestNeedForMasons = masonNeeded;
-                        bestDistance = dist;
-                        constructionSite = site;
-                        masonPlace = building;
+                        int masonNeeded = site.buildingCosts.requiredMason - site.masonCount;
+                        float dist = Vector3.Distance(transform.position, building.transform.position);
+
+                        if (masonNeeded > highestNeedForMasons ||
+                            (masonNeeded == highestNeedForMasons && dist < bestDistance))
+                        {
+                            highestNeedForMasons = masonNeeded;
+                            bestDistance = dist;
+                            constructionSite = site;
+                            masonPlace = building;
+                        }
                     }
+                }
+
+                if (masonPlace == null || highestNeedForMasons == 0)
+                    break;
+
+                agent.speed = 5f;
+                agent.SetDestination(masonPlace.transform.position);
+                isWalking = true;
+
+                while (agent.pathPending || agent.remainingDistance > 0.2f)
+                    yield return null;
+
+                isWorking = true;
+                audioSource.clip = jobSounds[2];
+                audioSource.Play();
+                isWalking = false;
+                while (constructionSite != null && 
+                       GameManager.Instance.ListBuildingInConstruction.Contains(masonPlace))
+                {
+                    yield return null;
                 }
             }
 
-            if (masonPlace == null || highestNeedForMasons == 0)
-                break;
-
-            agent.speed = 5f;
-            agent.SetDestination(masonPlace.transform.position);
-            isWalking = true;
-
-            while (agent.pathPending || agent.remainingDistance > 0.2f)
-                yield return null;
-
-            isWorking = true;
-            isWalking = false;
-            while (constructionSite != null && 
-                   GameManager.Instance.ListBuildingInConstruction.Contains(masonPlace))
-            {
-                yield return null;
-            }
+            audioSource.Stop();
+            isWorking = false;
+            masonUsed = false;
+            StartCoroutine("RandomWalk");
+            masonRunning = false;
         }
-
-        isWorking = false;
-        masonUsed = false;
-        StartCoroutine("RandomWalk");
-        masonRunning = false;
     }
-}
-#endregion
+    #endregion
 
         
 }
